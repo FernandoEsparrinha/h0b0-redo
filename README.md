@@ -1,5 +1,5 @@
 # h0b0-redo
-[H0b0](https://h0b0.me/) redo album experience
+[h0b0](https://h0b0.me/) redo album experience
 
 ## Links
 ### Tutorials
