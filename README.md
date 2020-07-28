@@ -1,9 +1,10 @@
 # h0b0-redo
 [h0b0](https://h0b0.me/) redo album experience
 
-[background video](https://files.cargocollective.com/c597718/bbc_final_edit_lq.mov) on the website
-
 ## Links
+### References
+[Background video](https://files.cargocollective.com/c597718/bbc_final_edit_lq.mov) on the website
+
 ### Tutorials
 [Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
 
