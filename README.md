@@ -22,3 +22,5 @@
 [Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
 
 [p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
+
+[p5js shader examples](https://github.com/aferriss)
