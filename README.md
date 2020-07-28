@@ -25,6 +25,6 @@
 
 [p5.PeakDetect](https://p5js.org/reference/#/p5.PeakDetect)
 
-[Loading Animation](https://youtu.be/UWgDKtvnjIU)
+[9.14: Loading Animation - p5.js Tutorial](https://youtu.be/UWgDKtvnjIU)
 
-[Spring Animations](https://youtu.be/VWfXiSUDquw)
+[Guest Tutorial #3: Spring Animations and p5.js with Val Head](https://youtu.be/VWfXiSUDquw)
