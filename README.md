@@ -16,3 +16,9 @@
 [Glitch Brush](https://www.openprocessing.org/sketch/736688)
 
 [Glitch City](https://www.openprocessing.org/sketch/745534)
+
+[Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
+
+[Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
+
+[p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
