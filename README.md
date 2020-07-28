@@ -5,13 +5,6 @@
 ### References
 [Background video](https://files.cargocollective.com/c597718/bbc_final_edit_lq.mov) on the website
 
-### Tutorials
-[Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
-
-[Images and Pixels - Processing](https://processing.org/tutorials/pixels/)
-
-[p5.PeakDetect](https://p5js.org/reference/#/p5.PeakDetect)
-
 ### Inspiration
 [Glitch Brush](https://www.openprocessing.org/sketch/736688)
 
@@ -24,3 +17,14 @@
 [p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
 
 [p5js shader examples](https://github.com/aferriss)
+
+## Tutorials
+[Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
+
+[Images and Pixels - Processing](https://processing.org/tutorials/pixels/)
+
+[p5.PeakDetect](https://p5js.org/reference/#/p5.PeakDetect)
+
+[Loading Animation](https://youtu.be/UWgDKtvnjIU)
+
+[Spring Animations](https://youtu.be/VWfXiSUDquw)
