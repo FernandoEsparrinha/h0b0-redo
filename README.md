@@ -40,3 +40,6 @@
 * [Simple Spring 1d (p5) with sliders](https://codepen.io/valhead/full/7d0081669a31715fe9f3997a3cb4d8f4/)
 * [Spring to mouse (p5.js)](https://codepen.io/valhead/pen/Lbzywb?editors=0010)
 * [Springy circles (p5.js)](https://codepen.io/valhead/pen/oLrqaN)
+
+### Interaction
+[7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
