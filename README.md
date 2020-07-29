@@ -41,5 +41,7 @@
 * [Spring to mouse (p5.js)](https://codepen.io/valhead/pen/Lbzywb?editors=0010)
 * [Springy circles (p5.js)](https://codepen.io/valhead/pen/oLrqaN)
 
+[Morph Between Shapes Made From Arrays](https://p5js.org/examples/motion-morph.html)
+
 ### Interaction
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
