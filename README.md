@@ -37,4 +37,6 @@
 [Guest Tutorial #3: Spring Animations and p5.js with Val Head](https://youtu.be/VWfXiSUDquw)
 
 * [Simple Spring 1d (p5)](https://codepen.io/valhead/pen/fa66f4df2b783d245632f1cc24e71929)
+* [Simple Spring 1d (p5) with sliders](https://codepen.io/valhead/full/7d0081669a31715fe9f3997a3cb4d8f4/)
+* [Spring to mouse (p5.js)](https://codepen.io/valhead/pen/Lbzywb?editors=0010)
 * [Springy circles (p5.js)](https://codepen.io/valhead/pen/oLrqaN)
