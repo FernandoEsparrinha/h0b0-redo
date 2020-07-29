@@ -43,5 +43,7 @@
 
 [Morph Between Shapes Made From Arrays](https://p5js.org/examples/motion-morph.html)
 
+[Fade between random colours for a background](https://discourse.processing.org/t/fade-between-random-colours-for-a-background/1433/6)
+
 ### Interaction
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
