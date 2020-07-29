@@ -18,6 +18,10 @@
 
 [p5js shader examples](https://github.com/aferriss)
 
+[Purin Phanichphant experiments with P5.js](http://purin.co/Experiments-with-P5-js)
+
+[Springy circles (p5.js)](https://codepen.io/valhead/pen/oLrqaN)
+
 ## Tutorials
 [Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
 
