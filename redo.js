@@ -12,12 +12,16 @@ function setup() {
 
 function draw() {
     clear()
+
+    background(21, 0, 12)
+
     noFill()
     strokeWeight(1)
+
     if (tracksLoaded) {
         polygon.draw()
     } else {
-        fill(0, 102, 153)
+        fill(170, 57, 57)
         textSize(32)
         text('Loading (' + (loadIndex + 1) + '/18)', windowWidth / 2, windowHeight / 2)
     }
