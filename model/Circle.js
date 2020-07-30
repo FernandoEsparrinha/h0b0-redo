@@ -1,9 +1,9 @@
 class Circle {
 
-    constructor(x, y, radius, index) {
+    constructor(x, y, diameter, index) {
         this.X = x
         this.Y = y
-        this.radius = radius
+        this.diameter = diameter
         this.index = index
     }
 
@@ -15,7 +15,7 @@ class Circle {
         } else {
             stroke('red')
         }
-        circle(this.X, this.Y, this.radius)
+        circle(this.X, this.Y, this.diameter)
         text(this.index, this.X, this.Y)
         pop()
     }
