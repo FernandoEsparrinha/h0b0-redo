@@ -11,9 +11,11 @@ class Circle {
         push()
         let isPlaying = this.index == musicController.getTrackNumberPlaying()
         if (isPlaying) {
-            stroke('teal');
+            stroke('white');
         } else {
-            stroke('red')
+            colorMode(HSB)
+            let h = this.index * (360 / 18)
+            stroke(h, 100, 100)
         }
         circle(this.X, this.Y, this.diameter)
         text(this.index, this.X, this.Y)
