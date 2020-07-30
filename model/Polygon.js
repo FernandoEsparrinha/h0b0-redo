@@ -1,7 +1,6 @@
 class Polygon {
     constructor(x, y, radius, n) {
         this.vertices = []
-        this.activeTrack = 0
 
         let angle = TWO_PI / n;
         for (let a = 0; a < TWO_PI; a += angle) {
@@ -9,13 +8,13 @@ class Polygon {
             let sx = x + cos(a) * radius
             let sy = y + sin(a) * radius
 
-            this.vertices[index] = new Circle(sx, sy, radius / 5, index == 0);
+            this.vertices[index] = new Circle(sx, sy, radius / 5, index);
         }
     }
 
     draw() {
         translate(windowWidth / 2, windowHeight / 2)
-        rotate((PI / 2) + ((TWO_PI / 18) * this.activeTrack))
+        rotate((PI / 2) - ((TWO_PI / 18) * musicController.getTrackNumberPlaying()))
 
         for (let i = 0; i < 18; i++) {
             this.vertices[i].draw();
@@ -23,11 +22,4 @@ class Polygon {
 
     }
 
-    next() {
-        this.activeTrack++
-    }
-
-    previous() {
-        this.activeTrack--
-    }
 }
