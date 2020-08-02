@@ -1,18 +1,19 @@
 p5.disableFriendlyErrors = true;
 
-let polygon, musicController;
+let polygon, musicController
+let verticesPosition = []
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
 
     // loadTracklist()
     musicController = new MusicController();
-    polygon = new Polygon(0, 0, 400, 18)
+    polygon = new Polygon(400, 18)
 }
 
 function draw() {
     clear()
-
+    colorMode(HSB)
     background(21, 0, 12)
 
     noFill()
@@ -29,20 +30,17 @@ function draw() {
 
 function keyPressed() {
     if (keyCode === 37) {
-        // polygon.next()
         musicController.next()
-
     } else if (keyCode === 39) {
-        // polygon.previous()
         musicController.previous()
     }
 }
 
 function mousePressed() {
-    print(mouseX)
-    print(mouseY)
-    // let d = dist(mouseX, mouseY, circleCenterX, circleCenterY)
-    // if (d < circleSize) {
-    //   active = !active;
-    // }
+    for (let i = 0; i < 18; i++) {
+        let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
+        if (d < polygon.vertices[0].diameter) {
+            musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 18)
+        }
+    }
 }

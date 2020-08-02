@@ -1,25 +1,31 @@
 class Circle {
 
-    constructor(x, y, diameter, index) {
-        this.X = x
-        this.Y = y
+    constructor(position, diameter, index) {
+        this.X = position[0]
+        this.Y = position[1]
         this.diameter = diameter
         this.index = index
     }
 
     draw() {
-        push()
         let isPlaying = this.index == musicController.getTrackNumberPlaying()
         if (isPlaying) {
-            stroke('white');
+            stroke(0, 0, 100)
         } else {
-            colorMode(HSB)
             let h = this.index * (360 / 18)
             stroke(h, 100, 100)
         }
+
         circle(this.X, this.Y, this.diameter)
+
+        push()
         text(this.index, this.X, this.Y)
         pop()
+    }
+
+    setPosition(position) {
+        this.X = position[0]
+        this.Y = position[1]
     }
 }
 

@@ -28,10 +28,11 @@ class MusicController {
         loadTracklist()
     }
 
-    playTrack(n) {
+    playTrack(tracknumber) {
         tracks[this.trackPlaying].stop()
-        tracks[n].loop()
-        this.trackPlaying = n
+        tracks[tracknumber].loop()
+        this.trackPlaying = tracknumber
+        polygon.refreshPositions()
     }
 
     next() {
@@ -51,7 +52,6 @@ class MusicController {
     }
 
     getTrackNumberPlaying() {
-        print(this.trackPlaying)
         return this.trackPlaying
     }
 }
