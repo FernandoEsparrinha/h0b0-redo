@@ -4,13 +4,13 @@ class Polygon {
 
         createVerticesPosition(n, radius)
         for (let i = 0; i < n; i++) {
-            this.vertices[i] = new Circle(verticesPosition[i], radius / 5, i);
+            this.vertices[i] = new Circle(verticesPosition[i], radius / 5, i)
         }
     }
 
     draw() {
         for (let i = 0; i < 18; i++) {
-            this.vertices[i].draw();
+            this.vertices[i].draw()
         }
     }
 
@@ -22,7 +22,7 @@ class Polygon {
             } else {
                 x = (i - musicController.getTrackNumberPlaying())
             }
-            this.vertices[i].setPosition(verticesPosition[x]);
+            this.vertices[i].setPosition(verticesPosition[x])
         }
     }
 

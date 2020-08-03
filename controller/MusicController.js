@@ -3,16 +3,14 @@ let trackAmount = 18
 let tracks = []
 let loadIndex = 0
 
+/**
+ * Carrega todas as musicas do album, atualizando o loadIndex conforme vai carregando
+ */
 function loadTracklist() {
     loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded);
 
     function trackLoaded(track) {
-        // console.log(loadIndex);
-        // console.log(track);
         tracks.push(track);
-        if (loadIndex == 0) {
-            tracks[0].loop()
-        }
         loadIndex++;
         if (loadIndex == trackAmount) {
             tracksLoaded = true;
@@ -24,7 +22,7 @@ function loadTracklist() {
 
 class MusicController {
     constructor() {
-        this.trackPlaying = 0;
+        this.trackPlaying = 0
         loadTracklist()
     }
 
@@ -48,6 +46,14 @@ class MusicController {
             this.playTrack(17)
         } else {
             this.playTrack(this.trackPlaying - 1)
+        }
+    }
+
+    play() {
+        if (tracks[this.trackPlaying].isPlaying()) {
+            tracks[this.trackPlaying].pause()
+        } else {
+            tracks[this.trackPlaying].play()
         }
     }
 
