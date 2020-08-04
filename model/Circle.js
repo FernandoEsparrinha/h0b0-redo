@@ -23,13 +23,16 @@ class Circle {
     }
 
     draw() {
-        let isPlaying = this.index == musicController.getTrackNumberPlaying()
+        push()
         this.calculateMovement()
 
+        let isPlaying = this.index == musicController.getTrackNumberPlaying()
+        let isBeingHovered = (dist(mouseX, mouseY, this.X, this.Y) < (this.diameter / 2))
         // h is used for full 360 hue (rainbow)
-        // hRange is used to restrict the palette
         let h = this.index * (360 / 18)
+        // hRange is used to restrict the palette
         let hRange = map(h, 0, 360, 150, 300)
+
         if (!open) {
             // Antes do primeiro click
             stroke(hRange, 100, 100)
@@ -41,6 +44,11 @@ class Circle {
             } else {
                 stroke(hRange, 100, 100)
             }
+
+            if (isBeingHovered) {
+                fill(hRange, 100, 100)
+            }
+
             text(this.index, this.X, this.Y)
         }
 
@@ -48,6 +56,7 @@ class Circle {
         if (loadIndex >= this.index) {
             circle(this.X, this.Y, this.diameter)
         }
+        pop()
     }
 
     /**
