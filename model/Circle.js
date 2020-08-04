@@ -26,17 +26,20 @@ class Circle {
         let isPlaying = this.index == musicController.getTrackNumberPlaying()
         this.calculateMovement()
 
+        // h is used for full 360 hue (rainbow)
+        // hRange is used to restrict the palette
         let h = this.index * (360 / 18)
+        let hRange = map(h, 0, 360, 150, 300)
         if (!open) {
             // Antes do primeiro click
-            stroke(h, 100, 100)
-            fill(h, 100, 100, 0.05)
+            stroke(hRange, 100, 100)
+            fill(hRange, 100, 100, 0.05)
         } else {
             // Depois do primeiro click
             if (isPlaying) {
                 stroke(0, 0, 100)
             } else {
-                stroke(h, 100, 100)
+                stroke(hRange, 100, 100)
             }
             text(this.index, this.X, this.Y)
         }
