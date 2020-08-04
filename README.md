@@ -17,9 +17,12 @@
 
 [Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
 
-### Experiments
+### Shaders
+[Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
+
 [p5js shader examples](https://github.com/aferriss)
 
+### Experiments
 [Purin Phanichphant experiments with P5.js](http://purin.co/Experiments-with-P5-js)
 
 ## Tutorials
