@@ -28,25 +28,43 @@ class Circle {
 
         let isPlaying = this.index == musicController.getTrackNumberPlaying()
         let isBeingHovered = (dist(mouseX, mouseY, this.X, this.Y) < (this.diameter / 2))
+
         // h is used for full 360 hue (rainbow)
-        let h = this.index * (360 / 18)
         // hRange is used to restrict the palette
+        let h = this.index * (360 / 18)
         let hRange = map(h, 0, 360, 150, 300)
 
+        // fade colors
+        let lerpAmount = 0
+        let fade = lerp(0.1, 0.5, lerpAmount)
+        
         if (!open) {
-            // Antes do primeiro click
+            // When Polygon is still closed
             stroke(hRange, 100, 100)
-            fill(hRange, 100, 100, 0.05)
+            fill(hRange, 100, 100, 0.1)
         } else {
-            // Depois do primeiro click
+            // After Polygon has been opened (click)
             if (isPlaying) {
                 stroke(0, 0, 100)
+                fill(0, 0, 100, 0.1)
             } else {
                 stroke(hRange, 100, 100)
             }
 
-            if (isBeingHovered) {
-                fill(hRange, 100, 100)
+            if (isBeingHovered && lerpAmount < 1.0) {
+                lerpAmount += 0.06
+                fade = lerp(0.1, 0.5, lerpAmount)
+                fill(hRange, 100, 100, fade)
+            }
+
+            if (!isBeingHovered && lerpAmount > 0.0) {
+                lerpAmount -= 0.06
+                fade = lerp(0.1, 0.5, lerpAmount)
+                fill(hRange, 100, 100, fade)
+            }
+
+            if (isBeingHovered && isPlaying) {
+                fill(0, 0, 100, 0.5)
             }
 
             text(this.index, this.X, this.Y)
