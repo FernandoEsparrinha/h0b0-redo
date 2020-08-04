@@ -3,12 +3,17 @@ p5.disableFriendlyErrors = true
 let open = false;
 let polygon, musicController, target
 let verticesPosition = []
+let fontMono
+
+function preload() {
+    fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
+}
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
 
-    musicController = new MusicController();
-    polygon = new Polygon(400, 18)
+    musicController = new MusicController()
+    polygon = new Polygon(300, 18)
 }
 
 function draw() {
@@ -21,10 +26,14 @@ function draw() {
     polygon.draw()
 
     if (!tracksLoaded) {
-        fill(170, 57, 57)
+        stroke(0, 0, 0)
+        strokeWeight(2)
+        fill(55, 90, 100)
+
+        textFont(fontMono)
         textSize(32)
         textAlign(CENTER)
-        text('Loading (' + (loadIndex + 1) + '/18)', windowWidth / 2, windowHeight / 3)
+        text('LOADING (' + (loadIndex + 1) + '/18)', windowWidth * 0.5, windowHeight * 0.8)
     }
 }
 
