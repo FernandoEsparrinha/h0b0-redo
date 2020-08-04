@@ -55,7 +55,7 @@ function mousePressed() {
 
         for (let i = 0; i < 18; i++) {
             let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
-            if (d < polygon.vertices[0].diameter) {
+            if (d < (polygon.vertices[0].diameter / 2)) {
                 if (i == 0) {
                     musicController.play()
                 } else {
