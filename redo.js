@@ -4,11 +4,15 @@ let open = false;
 let polygon, musicController, target
 let verticesPosition = []
 let fontMono
-let bgGradientShader
+
+// this variable will hold our createGraphics layer
+let shaderGraphics
+// this variable will hold our shader object
+let gradientShader
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
-    //bgGradientShader = loadShader('bgGradient.vert', 'bgGradient.frag')
+    gradientShader = loadShader('shaders/texcoord.vert', 'shaders/texcoord.frag')
 }
 
 function setup() {
@@ -16,11 +20,22 @@ function setup() {
 
     musicController = new MusicController()
     polygon = new Polygon(300, 18)
+
+    // shaders require WEBGL mode to work
+    shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
+    shaderGraphics.noStroke()
 }
 
 function draw() {
+    // sets the active shader
+    shaderGraphics.shader(gradientShader)
+    // rect gives us some geometry on the screen
+    shaderGraphics.rect(0, 0, windowWidth, windowHeight)
+
+    image(shaderGraphics, 0, 0, windowWidth, windowHeight)
+
     // DRAW SETTINGS
-    clear()
+    //clear()
     colorMode(HSB)
     noFill()
     strokeWeight(1)
@@ -30,11 +45,12 @@ function draw() {
     if (!tracksLoaded) {
         stroke(0, 0, 0)
         strokeWeight(2)
-        fill(55, 90, 100)
-
+        
         textFont(fontMono)
-        textSize(32)
         textAlign(CENTER)
+
+        textSize(32)
+        fill(55, 90, 100)
         text('LOADING (' + (loadIndex + 1) + '/18)', windowWidth * 0.5, windowHeight * 0.8)
     }
 }
