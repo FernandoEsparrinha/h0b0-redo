@@ -10,7 +10,7 @@ class Circle {
         this.pos = new p5.Vector(0, 0)
         // this.target = new p5.Vector(position[0], position[1])
         // this.target = new p5.Vector(windowWidth / 2, windowHeight / 2)
-        this.target = new p5.Vector(lerp(windowWidth / 2, this.originalX, 0.2), lerp(windowHeight / 2, this.originalY, 0.2))
+        this.target = new p5.Vector(lerp(windowWidth / 2, this.originalX, 0.15), lerp(windowHeight / 2, this.originalY, 0.15))
 
         this.vel = new p5.Vector(0, 0)
         this.velX = 0
@@ -29,7 +29,8 @@ class Circle {
         let h = this.index * (360 / 18)
         if (!open) {
             // Antes do primeiro click
-            fill(h, 100, 100)
+            stroke(h, 100, 100)
+            fill(h, 100, 100, 0.05)
         } else {
             // Depois do primeiro click
             if (isPlaying) {
