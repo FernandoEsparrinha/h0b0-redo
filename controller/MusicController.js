@@ -1,5 +1,5 @@
 let tracksLoaded = false
-let trackAmount = 18
+let tracksAmount = 18
 let tracks = []
 let loadIndex = 0
 
@@ -12,7 +12,7 @@ function loadTracklist() {
     function trackLoaded(track) {
         tracks.push(track);
         loadIndex++;
-        if (loadIndex == trackAmount) {
+        if (loadIndex == tracksAmount) {
             tracksLoaded = true;
         } else {
             loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded);
