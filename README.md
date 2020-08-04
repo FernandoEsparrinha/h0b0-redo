@@ -23,6 +23,11 @@
 [Purin Phanichphant experiments with P5.js](http://purin.co/Experiments-with-P5-js)
 
 ## Tutorials
+### P5 WIKI
+[Positioning the Canvas](https://github.com/processing/p5.js/wiki/Positioning-your-canvas)
+
+[Getting started with WebGL in p5](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5)
+
 ### Audio
 [Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
 

@@ -4,9 +4,11 @@ let open = false;
 let polygon, musicController, target
 let verticesPosition = []
 let fontMono
+let bgGradientShader
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
+    //bgGradientShader = loadShader('bgGradient.vert', 'bgGradient.frag')
 }
 
 function setup() {
