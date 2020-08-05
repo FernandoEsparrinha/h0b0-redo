@@ -3,6 +3,8 @@ let tracksAmount = 18
 let tracks = []
 let loadIndex = 0
 
+let loopMode = true
+
 /**
  * Carrega todas as musicas do album, atualizando o loadIndex conforme vai carregando
  */
@@ -27,17 +29,22 @@ class MusicController {
     }
 
     playTrack(tracknumber) {
-        tracks[this.trackPlaying].stop()
-        tracks[tracknumber].loop()
+        if (loopMode) {
+            tracks[this.trackPlaying].stop()
+            tracks[tracknumber].loop()
+        } else {
+            tracks[tracknumber].onended(musicController.next)
+            tracks[tracknumber].play()
+        }
         this.trackPlaying = tracknumber
         polygon.refreshPositions()
     }
 
     next() {
-        if (this.trackPlaying == 17) {
-            this.playTrack(0)
+        if (musicController.trackPlaying == 17) {
+            musicController.playTrack(0)
         } else {
-            this.playTrack(this.trackPlaying + 1)
+            musicController.playTrack(musicController.trackPlaying + 1)
         }
     }
 
