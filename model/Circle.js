@@ -20,49 +20,23 @@ class Circle {
         this.index = index
 
         this.lerpAmount = 0
+        this.hRange = map(this.index * (360 / 18), 0, 360, 150, 300)
     }
 
     draw() {
         push()
         this.calculateMovement()
 
-        let isPlaying = this.index == musicController.getTrackNumberPlaying()
-        let isBeingHovered = (dist(mouseX, mouseY, this.X, this.Y) < (this.diameter / 2))
-
-        // h is used for full 360 hue (rainbow)
-        // hRange is used to restrict the palette
-        let h = this.index * (360 / 18)
-        let hRange = map(h, 0, 360, 150, 300)
-
         if (!open) {
             // When Polygon is still closed
-            stroke(hRange, 100, 100)
-            fill(hRange, 100, 100, 0.1)
+            stroke(this.hRange, 100, 100)
+            fill(this.hRange, 100, 100, 0.1)
         } else {
             // After Polygon has been opened (click)
-            if (isPlaying) {
-                stroke(0, 0, 100)
-                fill(0, 0, 100, 0.1)
-            } else {
-                stroke(hRange, 100, 100)
-            }
 
-            if (isBeingHovered) {
-                if (this.lerpAmount <= 1.0) {
-                    this.lerpAmount += 0.06
-                }
-                fill(hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
-                stroke(hRange, 100, lerp(0.1, 0.5, this.lerpAmount))
+            this.handlePlaying()
+            this.handleHovering()
 
-                if (isPlaying) {
-                    fill(0, 0, 100, 0.5)
-                }
-            }
-
-            if (!isBeingHovered && this.lerpAmount > 0.0) {
-                this.lerpAmount -= 0.06
-                fill(hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
-            }
 
             text(this.index, this.X, this.Y)
         }
@@ -72,6 +46,54 @@ class Circle {
             circle(this.X, this.Y, this.diameter)
         }
         pop()
+    }
+
+    /**
+     * Animates the playing circle
+     */
+    handlePlaying() {
+        if (this.isPlaying()) {
+            stroke(0, 0, 100)
+            fill(0, 0, 100, 0.1)
+        } else {
+            stroke(this.hRange, 100, 100)
+        }
+    }
+
+    /**
+     * Animates hovering action
+     */
+    handleHovering() {
+        if (this.isBeingHovered()) {
+            if (this.lerpAmount <= 1.0) {
+                this.lerpAmount += 0.06
+            }
+            fill(this.hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
+            stroke(this.hRange, 100, lerp(0.1, 0.5, this.lerpAmount))
+
+            if (this.isPlaying()) {
+                fill(0, 0, 100, 0.5)
+            }
+        }
+
+        if (!this.isBeingHovered() && this.lerpAmount > 0.0) {
+            this.lerpAmount -= 0.06
+            fill(this.hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
+        }
+    }
+
+    /**
+     * Return if the circle is being hovered by the mouse
+     */
+    isBeingHovered() {
+        return (dist(mouseX, mouseY, this.X, this.Y) < (this.diameter / 2))
+    }
+
+    /**
+     * Return if the circle is the one being played or not
+     */
+    isPlaying() {
+        return this.index == musicController.getTrackNumberPlaying()
     }
 
     /**
