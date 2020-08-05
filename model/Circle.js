@@ -14,7 +14,7 @@ class Circle {
         this.velX = 0
         this.velY = 0
         this.spring = 0.20
-        this.speed = 0.05
+        this.speed = 0.08
 
         this.diameter = diameter
         this.index = index
@@ -27,17 +27,20 @@ class Circle {
         push()
         this.calculateMovement()
 
+        // circle base style is common to any state
+        stroke(this.hRange, 100, 100, 1.0)
+        fill(this.hRange, 100, 100, 0.1)
+
         if (!open) {
             // When Polygon is still closed
-            stroke(this.hRange, 100, 100)
-            fill(this.hRange, 100, 100, 0.1)
+
         } else {
             // After Polygon has been opened (click)
 
             this.handlePlaying()
             this.handleHovering()
 
-
+            // Displays (music) index number over circle
             text(this.index, this.X, this.Y)
         }
 
@@ -53,10 +56,10 @@ class Circle {
      */
     handlePlaying() {
         if (this.isPlaying()) {
-            stroke(0, 0, 100)
+            stroke(0, 0, 100, 1.0)
             fill(0, 0, 100, 0.1)
         } else {
-            stroke(this.hRange, 100, 100)
+            stroke(this.hRange, 100, 100, 1.0)
         }
     }
 
@@ -66,19 +69,20 @@ class Circle {
     handleHovering() {
         if (this.isBeingHovered()) {
             if (this.lerpAmount <= 1.0) {
-                this.lerpAmount += 0.06
+                this.lerpAmount += 0.1
             }
-            fill(this.hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
-            stroke(this.hRange, 100, lerp(0.1, 0.5, this.lerpAmount))
+
+            fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
 
             if (this.isPlaying()) {
-                fill(0, 0, 100, 0.5)
+                stroke(0, 0, 100, 1.0)
+                fill(0, 0, 100, 0.4)
             }
         }
 
         if (!this.isBeingHovered() && this.lerpAmount > 0.0) {
-            this.lerpAmount -= 0.06
-            fill(this.hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
+            this.lerpAmount -= 0.04
+            fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
         }
     }
 
