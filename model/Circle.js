@@ -8,8 +8,6 @@ class Circle {
         this.Y = windowHeight / 2
 
         this.pos = new p5.Vector(0, 0)
-        // this.target = new p5.Vector(position[0], position[1])
-        // this.target = new p5.Vector(windowWidth / 2, windowHeight / 2)
         this.target = new p5.Vector(lerp(windowWidth / 2, this.originalX, 0.15), lerp(windowHeight / 2, this.originalY, 0.15))
 
         this.vel = new p5.Vector(0, 0)
@@ -20,6 +18,8 @@ class Circle {
 
         this.diameter = diameter
         this.index = index
+
+        this.lerpAmount = 0
     }
 
     draw() {
@@ -34,10 +34,6 @@ class Circle {
         let h = this.index * (360 / 18)
         let hRange = map(h, 0, 360, 150, 300)
 
-        // fade colors
-        let lerpAmount = 0
-        let fade = lerp(0.1, 0.5, lerpAmount)
-        
         if (!open) {
             // When Polygon is still closed
             stroke(hRange, 100, 100)
@@ -51,20 +47,21 @@ class Circle {
                 stroke(hRange, 100, 100)
             }
 
-            if (isBeingHovered && lerpAmount < 1.0) {
-                lerpAmount += 0.06
-                fade = lerp(0.1, 0.5, lerpAmount)
-                fill(hRange, 100, 100, fade)
+            if (isBeingHovered) {
+                if (this.lerpAmount <= 1.0) {
+                    this.lerpAmount += 0.06
+                }
+                fill(hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
+                stroke(hRange, 100, lerp(0.1, 0.5, this.lerpAmount))
+
+                if (isPlaying) {
+                    fill(0, 0, 100, 0.5)
+                }
             }
 
-            if (!isBeingHovered && lerpAmount > 0.0) {
-                lerpAmount -= 0.06
-                fade = lerp(0.1, 0.5, lerpAmount)
-                fill(hRange, 100, 100, fade)
-            }
-
-            if (isBeingHovered && isPlaying) {
-                fill(0, 0, 100, 0.5)
+            if (!isBeingHovered && this.lerpAmount > 0.0) {
+                this.lerpAmount -= 0.06
+                fill(hRange, 100, 100, lerp(0.1, 0.5, this.lerpAmount))
             }
 
             text(this.index, this.X, this.Y)
