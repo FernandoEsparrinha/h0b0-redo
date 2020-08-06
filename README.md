@@ -34,6 +34,8 @@ This project is inspired by the circularity of the album's concept, redo. The lo
 ### Web:
 - [ ] deploy for testing (github page);
 
-[Website](hobo.me) is currently hosted on cargocollective.
+[h0b0's website](hobo.me) is currently hosted on [Cargo](https://cargo.site/).
   - can the project be hosted there?
+    - access required to the account.
   - can the project specific page be hosted in GitHub and keep the **h0b0.me** url?
+    - example: h0b0.me/redo
