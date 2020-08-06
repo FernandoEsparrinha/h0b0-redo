@@ -28,4 +28,4 @@ This project is inspired by the circularity of the album's concept, redo. The lo
 
 ### Responsiveness
 - [ ] adapt to canvas/screen resize (e.g. device rotation);
-- [ ] polygon/circles drawing on smaller screens (will it work?);
+- [ ] polygon/circles drawing on smaller screens (does the polygon method work);
