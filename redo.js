@@ -1,7 +1,12 @@
 p5.disableFriendlyErrors = true
 
 let open = false;
-let polygon, musicController, target
+let polygon, polygonRadius
+let  musicController
+
+// podes verificar se este target não está a mais?
+let target
+
 let verticesPosition = []
 let fontMono
 
@@ -14,14 +19,16 @@ let oscillation
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
-    gradientShader = loadShader('shaders/texcoord.vert', 'shaders/texcoord.frag')
+    gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
 
+    polygonRadius = windowHeight * 0.4
+
     musicController = new MusicController()
-    polygon = new Polygon(300, 18)
+    polygon = new Polygon(polygonRadius, 18)
 
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
@@ -31,6 +38,12 @@ function setup() {
 }
 
 function draw() {
+    // DRAW SETTINGS
+    clear()
+    colorMode(HSB)
+    noFill()
+    strokeWeight(1)
+    
     // sets the active shader
     shaderGraphics.shader(gradientShader)
     // rect gives us some geometry on the screen
@@ -38,14 +51,8 @@ function draw() {
 
     image(shaderGraphics, 0, 0, windowWidth, windowHeight)
 
-    // DRAW SETTINGS
-    //clear()
-    colorMode(HSB)
-    noFill()
-    strokeWeight(1)
-
     polygon.draw()
-
+    
     if (!tracksLoaded) {
         textFont(fontMono)
         textAlign(CENTER)
@@ -109,3 +116,13 @@ function mousePressed() {
         }
     }
 }
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight)
+
+    // era importante que o polígono se adaptasse ao canvas
+    // imagino isto como sendo importante no caso do telemóvel e alguém o rodar
+    // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
+    polygonRadius = windowHeight * 0.4
+    console.log(polygonRadius)
+  }
