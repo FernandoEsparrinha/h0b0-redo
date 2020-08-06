@@ -13,8 +13,8 @@ class Circle {
         this.vel = new p5.Vector(0, 0)
         this.velX = 0
         this.velY = 0
-        this.spring = 0.20
-        this.speed = 0.08
+        this.spring = 0.66
+        this.speed = 0.1
 
         this.diameter = diameter
         this.index = index
@@ -76,13 +76,21 @@ class Circle {
 
             if (this.isPlaying()) {
                 stroke(0, 0, 100, 1.0)
-                fill(0, 0, 100, 0.4)
+                fill(0, 0, 100, lerp(0.1, 0.4, this.lerpAmount))
             }
         }
 
-        if (!this.isBeingHovered() && this.lerpAmount > 0.0) {
-            this.lerpAmount -= 0.04
+        if (!this.isBeingHovered()){
+            if (this.lerpAmount > 0.0) {
+                this.lerpAmount -= 0.04
+            }
+
             fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
+
+            if (this.isPlaying()) {
+                stroke(0, 0, 100, 1.0)
+                fill(0, 0, 100, lerp(0.1, 0.4, this.lerpAmount))
+            }
         }
     }
 
