@@ -16,6 +16,16 @@ class Circle {
         this.spring = 0.66
         this.speed = 0.1
 
+        // circle scale on hover with fake spring motion
+        this.targetSize  = 0
+        this.initialSize = diameter
+        this.finalSize   = diameter * 1.34
+        this.circleSize = 0
+        this.scaleForce = 0
+        this.scaleVelocity = 0
+        this.scaleDrag     = 0.75
+        this.scaleStrength = 0.1
+
         this.diameter = diameter
         this.index = index
 
@@ -70,6 +80,34 @@ class Circle {
         if (this.isBeingHovered()) {
             if (this.lerpAmount <= 1.0) {
                 this.lerpAmount += 0.1
+
+                //this.diameter = this.finalSize
+
+                // fake spring motion on hover scaling
+                // set target to expanded size
+                this.targetSize = this.finalSize
+                // calculate spring motion
+                this.scaleForce = this.targetSize - this.circleSize;
+                this.scaleForce *= this.scaleStrength
+                this.scaleVelocity *= this.scaleDrag
+                this.scaleVelocity += this.scaleForce
+                this.circleSize += this.scaleVelocity
+                // output result to diameter
+                this.diameter = this.circleSize
+
+                /*
+                // fake spring motion
+                // the force is the amount of pulling done
+                var force = target - circleSize;
+                // the strength of the spring reduces the force
+                force *= strength;
+                // velocity decreases with the drag amount
+                velocity *= drag;
+                // velocity and force work together
+                velocity += force;
+                // for every frame the velocity affects our spring
+                circleSize += velocity;
+                */
             }
 
             fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
@@ -83,6 +121,20 @@ class Circle {
         if (!this.isBeingHovered()){
             if (this.lerpAmount > 0.0) {
                 this.lerpAmount -= 0.04
+
+                //this.diameter = this.initialSize
+
+                // fake spring motion on !hover scaling
+                // set target to base size
+                this.targetSize = this.initialSize
+                // calculate spring motion
+                this.scaleForce = this.targetSize - this.circleSize;
+                this.scaleForce *= this.scaleStrength
+                this.scaleVelocity *= this.scaleDrag
+                this.scaleVelocity += this.scaleForce
+                this.circleSize += this.scaleVelocity
+                // output result to diameter
+                this.diameter = this.circleSize
             }
 
             fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
