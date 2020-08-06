@@ -29,3 +29,11 @@ This project is inspired by the circularity of the album's concept, redo. The lo
 ### Responsiveness
 - [ ] adapt to canvas/screen resize (e.g. device rotation);
 - [ ] polygon/circles drawing on smaller screens (does the polygon method work);
+
+## Technical
+### Web:
+- [ ] deploy for testing (github page);
+
+[Website](hobo.me) is currently hosted on cargocollective.
+  - can the project be hosted there?
+  - can the project specific page be hosted in GitHub and keep the **h0b0.me** url?
