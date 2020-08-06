@@ -1,57 +1,41 @@
-# h0b0-redo
-[h0b0](https://h0b0.me/) redo album experience
+# h0b0-redo ♫
+[h0b0](https://h0b0.me/) redo web album experience project.
 
-## Reference Content
-[h0b0 background video](https://files.cargocollective.com/c597718/bbc_final_edit_lq.mov) on the website
+This project is inspired by the circularity of the album's concept, redo. The loop is ever present — a circle.
 
-## Inspiration
-### Glitch
-[Glitch Brush](https://www.openprocessing.org/sketch/736688)
+## Development
+### Create a circular element that represents the album:
+- [x] polygon with n vertices (18 → album-size);
+- [x] each vertex contains a circle (song);
+- [x] clickable circles that jump to song;
 
-[Glitch City](https://www.openprocessing.org/sketch/745534)
+### Music Controller
+- [x] song loop mode;
+- [x] album loop mode;
+- [ ] user controls for album / song mode;
 
-### Feedback / Fract
-[Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
+### Circles
+- [x] on hover: animate color;
+- [ ] on hover: animate circle size;
+- [ ] isPlaying: circle reacts to sound;
 
-[p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
+### Background visuals (shaders):
+- [x] made template gradient background with GLSL;
+- [ ] imported and played video on the background;
+- [ ] applied effects to imported video;
+- [ ] effect manipulation: mouseXY changes;
+- [ ] effect manipulation: audio reactivity;
 
-[Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
+### Responsiveness
+- [ ] adapt to canvas/screen resize (e.g. device rotation);
+- [ ] polygon/circles drawing on smaller screens (does the polygon method work);
 
-### Shaders
-[Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
+## Technical
+### Web:
+- [ ] deploy for testing (github page);
 
-[p5js shader examples](https://github.com/aferriss)
-
-### Experiments
-[Purin Phanichphant experiments with P5.js](http://purin.co/Experiments-with-P5-js)
-
-## Tutorials
-### P5 WIKI
-[Positioning the Canvas](https://github.com/processing/p5.js/wiki/Positioning-your-canvas)
-
-[Getting started with WebGL in p5](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5)
-
-### Audio
-[Visualizing Music with p5.js](https://therewasaguy.github.io/p5-music-viz/)
-
-[p5.PeakDetect](https://p5js.org/reference/#/p5.PeakDetect)
-
-### Pixel Manipulation
-[Images and Pixels - Processing](https://processing.org/tutorials/pixels/)
-
-### Animation
-[9.14: Loading Animation - p5.js Tutorial](https://youtu.be/UWgDKtvnjIU)
-
-[Guest Tutorial #3: Spring Animations and p5.js with Val Head](https://youtu.be/VWfXiSUDquw)
-
-* [Simple Spring 1d (p5)](https://codepen.io/valhead/pen/fa66f4df2b783d245632f1cc24e71929)
-* [Simple Spring 1d (p5) with sliders](https://codepen.io/valhead/full/7d0081669a31715fe9f3997a3cb4d8f4/)
-* [Spring to mouse (p5.js)](https://codepen.io/valhead/pen/Lbzywb?editors=0010)
-* [Springy circles (p5.js)](https://codepen.io/valhead/pen/oLrqaN)
-
-[Morph Between Shapes Made From Arrays](https://p5js.org/examples/motion-morph.html)
-
-[Fade between random colours for a background](https://discourse.processing.org/t/fade-between-random-colours-for-a-background/1433/6)
-
-### Interaction
-[7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
+[h0b0's website](hobo.me) is currently hosted on [Cargo](https://cargo.site/).
+  - can the project be hosted there?
+    - access required to the account.
+  - can the project specific page be hosted in GitHub and keep the **h0b0.me** url?
+    - example: h0b0.me/redo
