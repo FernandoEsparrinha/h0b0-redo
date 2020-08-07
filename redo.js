@@ -4,26 +4,24 @@ let open = false;
 let polygon, polygonRadius
 let musicController
 
-// podes verificar se este target não está a mais?
-let target
-
 let verticesPosition = []
 let fontMono
 
-let vidSkyPlane
+let vidSky
 
 // this variable will hold our createGraphics layer
 let shaderGraphics
 // this variable will hold our shader object
 let gradientShader
-
-let oscillation
+let videoShader
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
-    gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
 
-    vidSkyPlane = createVideo(['assets/video/aviao-ceu-01.mov'])
+    vidSky = createVideo(['assets/video/aviao-ceu-01.mov', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
+
+    gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
+    videoShader = loadShader('shaders/video.vert', 'shaders/video.frag')
 }
 
 function setup() {
@@ -37,8 +35,6 @@ function setup() {
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
     shaderGraphics.noStroke()
-
-    oscillation = 0
 }
 
 function draw() {
@@ -47,9 +43,15 @@ function draw() {
     colorMode(HSB)
     noFill()
     strokeWeight(1)
+    
+    vidSky.hide()
 
     // sets the active shader
-    shaderGraphics.shader(gradientShader)
+    shaderGraphics.shader(videoShader)
+
+    // lets just send the video to our shader as a uniform
+    videoShader.setUniform('tex0', vidSky);
+
     // rect gives us some geometry on the screen
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
 
@@ -76,25 +78,19 @@ function draw() {
         for (let w = 0; w < 10; w++) {
             text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - w)
         }
-
-        // "3D" arrow effect (oscillating)
-        /*
-        for (let w = 0; w < 10; w++) {
-            text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - (((sin(oscillation) * 10) / 2) + 5) - w)
-        }
-        */
-
-        // single oscillating arrow
-        /*
-        text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - (((sin(oscillation) * 10) / 2) + 5))
-        oscillation += 0.06
-        */
     }
 
     if (tracksLoaded && open) {
+        textAlign(LEFT)
         fill(55, 90, 100)
-        text(loopMode ? "Looping" : "Album mode", windowWidth * 0.5, windowHeight * 0.8)
+        text(loopMode ? "looping" : "album mode", windowWidth * 0.05, windowHeight * 0.95)
     }
+}
+
+// This function is called when the video loads
+function videoLoaded() {
+    vidSky.loop()
+    vidSky.volume(0)
 }
 
 function keyPressed() {
