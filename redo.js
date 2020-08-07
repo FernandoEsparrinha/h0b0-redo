@@ -90,13 +90,22 @@ function draw() {
         oscillation += 0.06
         */
     }
+
+    if (tracksLoaded && open) {
+        fill(55, 90, 100)
+        text(loopMode ? "Looping" : "Album mode", windowWidth * 0.5, windowHeight * 0.8)
+    }
 }
 
 function keyPressed() {
     if (keyCode === 37) {
-        musicController.next()
-    } else if (keyCode === 39) {
         musicController.previous()
+    }
+    else if (keyCode === 39) {
+        musicController.next()
+    }
+    else if (keyCode === 38) {
+        loopMode = !loopMode
     }
 }
 
