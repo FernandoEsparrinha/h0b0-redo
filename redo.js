@@ -2,7 +2,7 @@ p5.disableFriendlyErrors = true
 
 let open = false;
 let polygon, polygonRadius
-let  musicController
+let musicController
 
 // podes verificar se este target não está a mais?
 let target
@@ -43,7 +43,7 @@ function draw() {
     colorMode(HSB)
     noFill()
     strokeWeight(1)
-    
+
     // sets the active shader
     shaderGraphics.shader(gradientShader)
     // rect gives us some geometry on the screen
@@ -52,7 +52,7 @@ function draw() {
     image(shaderGraphics, 0, 0, windowWidth, windowHeight)
 
     polygon.draw()
-    
+
     if (!tracksLoaded) {
         textFont(fontMono)
         textAlign(CENTER)
@@ -63,7 +63,7 @@ function draw() {
         fill(55, 90, 100)
         text('LOADING (' + (loadIndex + 1) + '/18)', windowWidth * 0.5, windowHeight * 0.8)
     }
-    
+
     if (tracksLoaded && !open) {
         fill(55, 90, 100)
         text('h0b0   redo', windowWidth * 0.5, windowHeight * 0.8)
@@ -79,7 +79,7 @@ function draw() {
             text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - (((sin(oscillation) * 10) / 2) + 5) - w)
         }
         */
-        
+
         // single oscillating arrow
         /*
         text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - (((sin(oscillation) * 10) / 2) + 5))
@@ -99,21 +99,18 @@ function keyPressed() {
 function mousePressed() {
     if (tracksLoaded) {
         if (!open) {
-            open = true
             polygon.refreshPositions()
-            musicController.playTrack(0)
-        }
-
-        for (let i = 0; i < 18; i++) {
-            let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
-            if (d < (polygon.vertices[0].diameter / 2)) {
-                if (i == 0) {
-                    musicController.play()
-                } else {
+            musicController.startPlaying()
+            open = true
+        } else {
+            for (let i = 0; i < 18; i++) {
+                let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
+                if (d < (polygon.vertices[0].diameter / 2)) {
                     musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 18)
                 }
             }
         }
+
     }
 }
 
@@ -125,4 +122,4 @@ function windowResized() {
     // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
     polygonRadius = windowHeight * 0.4
     console.log(polygonRadius)
-  }
+}

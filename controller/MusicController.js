@@ -3,7 +3,13 @@ let tracksAmount = 18
 let tracks = []
 let loadIndex = 0
 
-let loopMode = true
+let loopMode = false
+
+function endCallback() {
+    if (tracks[musicController.trackPlaying].isPlaying()) {
+        musicController.next()
+    }
+}
 
 /**
  * Carrega todas as musicas do album, atualizando o loadIndex conforme vai carregando
@@ -28,16 +34,34 @@ class MusicController {
         loadTracklist()
     }
 
-    playTrack(tracknumber) {
+    startPlaying() {
         if (loopMode) {
-            tracks[this.trackPlaying].stop()
-            tracks[tracknumber].loop()
+            tracks[this.trackPlaying].loop()
         } else {
-            tracks[tracknumber].onended(musicController.next)
-            tracks[tracknumber].play()
+            tracks[this.trackPlaying].onended(endCallback)
+            tracks[this.trackPlaying].play()
         }
-        this.trackPlaying = tracknumber
-        polygon.refreshPositions()
+    }
+
+    playTrack(tracknumber) {
+        if (tracknumber == this.trackPlaying) {
+            if (tracks[tracknumber].isPlaying()) {
+                tracks[tracknumber].pause()
+            } else {
+                tracks[tracknumber].play()
+            }
+        } else {
+            if (loopMode) {
+                tracks[this.trackPlaying].stop()
+                tracks[tracknumber].loop()
+            } else {
+                // tracks[this.trackPlaying].pause()
+                tracks[tracknumber].onended(endCallback)
+                tracks[tracknumber].play()
+            }
+            this.trackPlaying = tracknumber
+            polygon.refreshPositions()
+        }
     }
 
     next() {
@@ -53,14 +77,6 @@ class MusicController {
             this.playTrack(17)
         } else {
             this.playTrack(this.trackPlaying - 1)
-        }
-    }
-
-    play() {
-        if (tracks[this.trackPlaying].isPlaying()) {
-            tracks[this.trackPlaying].pause()
-        } else {
-            tracks[this.trackPlaying].play()
         }
     }
 
