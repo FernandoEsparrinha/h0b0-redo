@@ -28,8 +28,8 @@ void main() {
   // mix takes 3 arguments
   // mix(color1, color2, gradient mask)
   
-  vec3 color1 = vec3(0.9, 0.1, 0.8); // magenta
-  vec3 color2 = vec3(0.1, 0.8, 0.9); // cyan
+  vec3 color1 = vec3(0.1, 0.8, 0.9); // cyan
+  vec3 color2 = vec3(0.9, 0.1, 0.8); // magenta
 
   // lets use the texcoords as a mask for the mix function
   // what happens if you choose coord.y instead?
