@@ -10,6 +10,8 @@ let target
 let verticesPosition = []
 let fontMono
 
+let vidSkyPlane
+
 // this variable will hold our createGraphics layer
 let shaderGraphics
 // this variable will hold our shader object
@@ -20,6 +22,8 @@ let oscillation
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
     gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
+
+    vidSkyPlane = createVideo(['assets/video/aviao-ceu-01.mov'])
 }
 
 function setup() {
