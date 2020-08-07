@@ -44,17 +44,19 @@ function draw() {
     noFill()
     strokeWeight(1)
     
+    // hide the video window that is automatically displayed
     vidSky.hide()
 
     // sets the active shader
     shaderGraphics.shader(videoShader)
 
-    // lets just send the video to our shader as a uniform
+    // send the video to the shader as a uniform
     videoShader.setUniform('tex0', vidSky);
 
     // rect gives us some geometry on the screen
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
 
+    // displays the shader image
     image(shaderGraphics, 0, 0, windowWidth, windowHeight)
 
     polygon.draw()
