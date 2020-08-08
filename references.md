@@ -17,7 +17,7 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
 
-### Shaders
+### P5 Shaders
 [Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
 
 [p5js shader examples](https://github.com/aferriss)
@@ -55,3 +55,6 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 ### Interaction
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
+
+### Shaders
+[Clamp](https://www.shadertoy.com/view/MtyXRc)
