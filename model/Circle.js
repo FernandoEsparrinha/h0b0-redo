@@ -17,10 +17,10 @@ class Circle {
         this.speed = 0.1
 
         // circle scale on hover with fake spring motion
-        this.targetSize  = 0
+        this.targetSize  = diameter
         this.initialSize = diameter
-        this.finalSize   = diameter * 1.34
-        this.circleSize = 0
+        this.finalSize   = diameter * 1.2
+        this.circleSize = diameter
         this.scaleForce = 0
         this.scaleVelocity = 0
         this.scaleDrag     = 0.75
@@ -81,8 +81,6 @@ class Circle {
             if (this.lerpAmount <= 1.0) {
                 this.lerpAmount += 0.1
 
-                //this.diameter = this.finalSize
-
                 // fake spring motion on hover scaling
                 // set target to expanded size
                 this.targetSize = this.finalSize
@@ -98,15 +96,10 @@ class Circle {
                 /*
                 // fake spring motion
                 // the force is the amount of pulling done
-                var force = target - circleSize;
                 // the strength of the spring reduces the force
-                force *= strength;
                 // velocity decreases with the drag amount
-                velocity *= drag;
                 // velocity and force work together
-                velocity += force;
                 // for every frame the velocity affects our spring
-                circleSize += velocity;
                 */
             }
 
@@ -121,8 +114,6 @@ class Circle {
         if (!this.isBeingHovered()){
             if (this.lerpAmount > 0.0) {
                 this.lerpAmount -= 0.04
-
-                //this.diameter = this.initialSize
 
                 // fake spring motion on !hover scaling
                 // set target to base size
@@ -189,5 +180,3 @@ class Circle {
         this.velY = this.vel.y;
     }
 }
-
-
