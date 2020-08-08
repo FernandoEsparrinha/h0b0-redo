@@ -11,17 +11,18 @@ let vidSky
 
 // this variable will hold our createGraphics layer
 let shaderGraphics
-// this variable will hold our shader object
+// this variable will hold our shader objects
 let gradientShader
-let videoShader
+let videoShader, videoMirorShader
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
 
-    vidSky = createVideo(['assets/video/aviao-ceu-01.mov', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
+    vidSky = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
 
     gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
     videoShader = loadShader('shaders/video.vert', 'shaders/video.frag')
+    videoMirorShader = loadShader('shaders/videoMirror.vert', 'shaders/videoMirror.frag')
 }
 
 function setup() {
@@ -43,6 +44,7 @@ function draw() {
     colorMode(HSB)
     noFill()
     strokeWeight(1)
+    textAlign(CENTER)
     
     // hide the video window that is automatically displayed
     vidSky.hide()
@@ -63,7 +65,6 @@ function draw() {
 
     if (!tracksLoaded) {
         textFont(fontMono)
-        textAlign(CENTER)
         textSize(32)
 
         stroke(0, 0, 0)
@@ -107,7 +108,7 @@ function keyPressed() {
     }
 }
 
-function mousePressed() {
+function mouseClicked() {
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
@@ -121,8 +122,12 @@ function mousePressed() {
                 }
             }
         }
-
     }
+}
+
+function doubleClicked() {
+    // falta fazer com que seja só dentro do círculo activo
+    loopMode = !loopMode
 }
 
 function windowResized() {
@@ -132,5 +137,4 @@ function windowResized() {
     // imagino isto como sendo importante no caso do telemóvel e alguém o rodar
     // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
     polygonRadius = windowHeight * 0.4
-    console.log(polygonRadius)
 }
