@@ -16,13 +16,13 @@ This project is inspired by the circularity of the album's concept, redo. The lo
 
 ### Circles
 - [x] on hover: animate color;
-- [ ] on hover: animate circle size;
+- [x] on hover: animate circle size;
 - [ ] isPlaying: circle reacts to sound;
 
 ### Background visuals (shaders):
 - [x] made template gradient background with GLSL;
-- [ ] imported and played video on the background;
-- [ ] applied effects to imported video;
+- [x] imported and played video on the background;
+- [x] applied effects to imported video;
 - [ ] effect manipulation: mouseXY changes;
 - [ ] effect manipulation: audio reactivity;
 
