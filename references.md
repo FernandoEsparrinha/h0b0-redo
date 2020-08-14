@@ -54,6 +54,7 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
 
 ## Shaders
+[The Book of Shaders](https://thebookofshaders.com/)
 
 [Porting Shadertoy Code to p5.js Shaders](https://itp-xstory.github.io/p5js-shaders/#/./docs/examples/shadertoy)
 
