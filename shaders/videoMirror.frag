@@ -1,3 +1,6 @@
+// obtained from
+// https://github.com/aferriss/p5jsShaderExamples
+
 precision mediump float;
 
 // lets grab texcoords from the vertex shader

@@ -1,3 +1,6 @@
+// obtained from
+// https://github.com/aferriss/p5jsShaderExamples
+
 // our vertex data
 attribute vec3 aPosition;
 attribute vec2 aTexCoord;
