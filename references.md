@@ -57,4 +57,18 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
 
 ### Shaders
+[iResolution, iMouse, iDate, etc](https://www.shadertoy.com/view/llySRh)
+
+[Just A High-Quality Gradient](https://www.shadertoy.com/view/lscGDr)
+
 [Clamp](https://www.shadertoy.com/view/MtyXRc)
+
+[Shader Switching](https://glitch.com/edit/#!/shaderswitching)
+
+[Zoom Blur Transition](https://www.shadertoy.com/view/Ml3XR2)
+
+[Feedback Hueish](https://www.shadertoy.com/view/ttSXzc)
+
+[Simple Feedback Example](https://www.shadertoy.com/view/wtVXz3)
+
+[Procedural Palette](https://iquilezles.org/www/articles/palettes/palettes.htm)
