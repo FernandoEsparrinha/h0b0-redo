@@ -3,6 +3,12 @@
 
 This project is inspired by the circularity of the album's concept, redo. The loop is ever present — a circle.
 
+Official album content available [here](https://drive.google.com/drive/folders/1kbU2m7MsgDR70X9ytpOXQHqAP5D7XkWZ).
+
+[h0b0_dissatisfaction](https://youtu.be/twTQTY6uEU8)
+
+[h0b0_another_missed_call](https://youtu.be/5mxBF0tPP5g)
+
 ## Development
 ### Create a circular element that represents the album:
 - [x] polygon with n vertices (18 → album-size);
@@ -29,6 +35,9 @@ This project is inspired by the circularity of the album's concept, redo. The lo
 ### Responsiveness
 - [ ] adapt to canvas/screen resize (e.g. device rotation);
 - [ ] polygon/circles drawing on smaller screens (does the polygon method work);
+
+### Lyrics
+- [ ] use album typeface to write the song's lyrics;
 
 ## Technical
 ### Web:
