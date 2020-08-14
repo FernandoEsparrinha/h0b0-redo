@@ -1,26 +1,23 @@
 # h0b0-redo
 Inspiration, references and tutorials for the _h0b0 redo_ **web album experience**.
 
-## Reference Content
-[h0b0 background video](https://files.cargocollective.com/c597718/bbc_final_edit_lq.mov) on the website
-
 ## Inspiration
-### Glitch
+### Glitch / Feedback
 [Glitch Brush](https://www.openprocessing.org/sketch/736688)
 
 [Glitch City](https://www.openprocessing.org/sketch/745534)
 
-### Feedback / Fract
-[Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
-
 [p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
-
-[Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
 
 ### P5 Shaders
 [Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
 
 [p5js shader examples](https://github.com/aferriss)
+
+#### Feedback / Fract
+[Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
+
+[Webcam Blur Fract](https://glitch.com/~webcam-blur-fract)
 
 ### Experiments
 [Purin Phanichphant experiments with P5.js](http://purin.co/Experiments-with-P5-js)
@@ -56,19 +53,46 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 ### Interaction
 [7.4: Mouse Interaction with Objects - p5.js Tutorial](https://youtu.be/TaN5At5RWH8)
 
-### Shaders
+## Shaders
+### Utils
 [iResolution, iMouse, iDate, etc](https://www.shadertoy.com/view/llySRh)
-
-[Just A High-Quality Gradient](https://www.shadertoy.com/view/lscGDr)
-
-[Clamp](https://www.shadertoy.com/view/MtyXRc)
 
 [Shader Switching](https://glitch.com/edit/#!/shaderswitching)
 
+[continuous bool as proba or sets](https://www.shadertoy.com/view/WtsyzM)
+
+### Misc
 [Zoom Blur Transition](https://www.shadertoy.com/view/Ml3XR2)
 
-[Feedback Hueish](https://www.shadertoy.com/view/ttSXzc)
+[Procedural Palette](https://iquilezles.org/www/articles/palettes/palettes.htm)
 
+### Gradient
+[Just A High-Quality Gradient](https://www.shadertoy.com/view/lscGDr)
+
+[Radial Gradient Steps](https://www.shadertoy.com/view/XtXyWH)
+
+### Image Processing
+[Clamp](https://www.shadertoy.com/view/MtyXRc)
+
+[Soft Threshold Filter](https://www.shadertoy.com/view/4ssGR8)
+
+[Simple Bloom/Glow (white)](https://www.shadertoy.com/view/lsXGWn)
+
+[GLOW TUTORIAL](https://www.shadertoy.com/view/3s3GDn)
+
+[Filter: Solarization](https://www.shadertoy.com/view/ll2GWc)
+
+[Pixel Sorting for Video](https://www.shadertoy.com/view/XlGXzw)
+
+[Random color replacement (RGB)](https://www.shadertoy.com/view/4ltBRM)
+
+[Random color replacement (Hue)](https://www.shadertoy.com/view/XtdBRM)
+
+[Random color replacement (HSV)](https://www.shadertoy.com/view/4tdBRM)
+
+[Shift color ranges](https://www.shadertoy.com/view/MlcBWH)
+
+### Feedback
 [Simple Feedback Example](https://www.shadertoy.com/view/wtVXz3)
 
-[Procedural Palette](https://iquilezles.org/www/articles/palettes/palettes.htm)
+[Feedback Hueish](https://www.shadertoy.com/view/ttSXzc)
