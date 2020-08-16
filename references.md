@@ -65,6 +65,16 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [continuous bool as proba or sets](https://www.shadertoy.com/view/WtsyzM)
 
+[Basics - Coordinate Scale](https://www.shadertoy.com/view/ts2SWt)
+
+[Basics - Coordinate Translation](https://www.shadertoy.com/view/3s2XDd)
+
+[Basics - Coordinate Rotation](https://www.shadertoy.com/view/wdjSWt)
+
+[Programming tricks in Shadertoy / GLSL](https://shadertoyunofficial.wordpress.com/2019/01/02/programming-tricks-in-shadertoy-glsl/)
+
+[texture matrix rotate translate](https://www.shadertoy.com/view/4sByWd)
+
 ### Misc
 [Zoom Blur Transition](https://www.shadertoy.com/view/Ml3XR2)
 
@@ -100,3 +110,8 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 [Simple Feedback Example](https://www.shadertoy.com/view/wtVXz3)
 
 [Feedback Hueish](https://www.shadertoy.com/view/ttSXzc)
+
+[hueish](https://www.shadertoy.com/view/llcczf)
+
+### Fluid
+[spilled](https://www.shadertoy.com/view/MsGSRd)
