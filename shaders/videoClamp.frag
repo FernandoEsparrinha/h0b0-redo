@@ -13,7 +13,7 @@ uniform vec2 mouse;
 
 uniform sampler2D tex0;
 
-#define mode 5
+#define mode 4
 
 void main() {
 
@@ -47,7 +47,7 @@ void main() {
         
     #if mode == 5
         //vertical stripes meet in the middle
-        vec4 t = texture2D(tex0, vec2(uv.x, clamp(uv.y,1.0 - mouse.y, mouse.y)+mouse.x));
+        vec4 t = texture2D(tex0, vec2(uv.x, clamp(uv.y, 1.0 - mouse.y, mouse.y) + mouse.x));
     #endif
     
     gl_FragColor = t;
