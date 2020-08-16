@@ -7,22 +7,31 @@ let musicController
 let verticesPosition = []
 let fontMono
 
-let vidSky
+// videos
+let vidSky, vidWater
 
 // this variable will hold our createGraphics layer
 let shaderGraphics
-// this variable will hold our shader objects
+
+// copy layer for the video feedback effect
+let copyLayer
+
+// these variables will hold our shader objects
 let gradientShader
-let videoShader, videoMirorShader
+let videoShader, videoMirrorShader, videoFeedbackShader
+
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
 
-    vidSky = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
+    vidSky   = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
+    vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
 
-    gradientShader = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
-    videoShader = loadShader('shaders/video.vert', 'shaders/video.frag')
-    videoMirorShader = loadShader('shaders/videoMirror.vert', 'shaders/videoMirror.frag')
+    gradientShader      = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
+    videoShader         = loadShader('shaders/video.vert', 'shaders/video.frag')
+    videoMirrorShader   = loadShader('shaders/videoMirror.vert', 'shaders/videoMirror.frag')
+    videoFeedbackShader = loadShader('shaders/videoFeedback.vert', 'shaders/videoFeedback.frag')
+    videoClampShader    = loadShader('shaders/videoClamp.vert', 'shaders/videoClamp.frag')
 }
 
 function setup() {
@@ -36,6 +45,12 @@ function setup() {
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
     shaderGraphics.noStroke()
+
+    // this layer will just be a copy of what we just did with the shader
+    copyLayer = createGraphics(windowWidth, windowHeight)
+    
+    // sets the active shader
+    shaderGraphics.shader(gradientShader)
 }
 
 function draw() {
@@ -48,15 +63,32 @@ function draw() {
     
     // hide the video window that is automatically displayed
     vidSky.hide()
-
-    // sets the active shader
-    shaderGraphics.shader(videoShader)
+    vidWater.hide()
 
     // send the video to the shader as a uniform
-    videoShader.setUniform('tex0', vidSky);
+    videoShader.setUniform('tex0', vidWater)
+    videoMirrorShader.setUniform('tex0', vidWater)
+    videoFeedbackShader.setUniform('tex0', vidWater)
+    videoClampShader.setUniform('tex0', vidSky)
+
+    // clamp shader, shadertoy porting
+    videoClampShader.setUniform("resolution", [width, height])
+    videoClampShader.setUniform("mouse", [mouseX, map(mouseY, 0, height, height, 0)])
+
+    // also send the copy layer to the shader as a uniform
+    videoFeedbackShader.setUniform('tex1', copyLayer)
+
+    // send mouseIsPressed to the shader as a int (either 0 or 1)
+    videoFeedbackShader.setUniform('mouseDown', int(mouseIsPressed))
+
+    // send frame based "time" to shader
+    videoFeedbackShader.setUniform('time', frameCount * 0.01)
 
     // rect gives us some geometry on the screen
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
+
+    // draw the shaderlayer into the copy layer
+    copyLayer.image(shaderGraphics, 0,0,width, height)
 
     // displays the shader image
     image(shaderGraphics, 0, 0, windowWidth, windowHeight)
@@ -94,17 +126,60 @@ function draw() {
 function videoLoaded() {
     vidSky.loop()
     vidSky.volume(0)
+    console.log('vidSky: has loaded')
+
+    vidWater.loop()
+    vidWater.volume(0)
+    console.log('vidWater: has loaded')
 }
 
 function keyPressed() {
+    // left
     if (keyCode === 37) {
         musicController.previous()
     }
+    // right
     else if (keyCode === 39) {
         musicController.next()
     }
+    // up
     else if (keyCode === 38) {
         loopMode = !loopMode
+    }
+    // 1
+    else if (keyCode === 49) {
+        console.log('keyPressed: 1')
+
+        // sets the active shader
+        shaderGraphics.shader(gradientShader)
+    }
+    // 2
+    else if (keyCode === 50) {
+        console.log('keyPressed: 2')
+
+        // sets the active shader
+        shaderGraphics.shader(videoShader)
+    }
+    // 3
+    else if (keyCode === 51) {
+        console.log('keyPressed: 3')
+
+        // sets the active shader
+        shaderGraphics.shader(videoMirrorShader)
+    }
+    // 4
+    else if (keyCode === 52) {
+        console.log('keyPressed: 4')
+
+        // sets the active shader
+        shaderGraphics.shader(videoFeedbackShader)
+    }
+    // 5
+    else if (keyCode === 53) {
+        console.log('keyPressed: 5')
+
+        // sets the active shader
+        shaderGraphics.shader(videoClampShader)
     }
 }
 
@@ -126,8 +201,20 @@ function mouseClicked() {
 }
 
 function doubleClicked() {
-    // falta fazer com que seja só dentro do círculo activo
-    loopMode = !loopMode
+    if (tracksLoaded) {
+        if (open) {
+            // bottom circle is the only one that can be active
+            // we can compare only with that array position
+            let d = dist(mouseX, mouseY, verticesPosition[0][0], verticesPosition[0][1])
+            if (d < (polygon.vertices[0].diameter / 2)) {
+                console.log('doubleClicked: inside playing circle')
+                loopMode = !loopMode
+            }
+            else {
+                console.log('doubleClicked: outside playing circle')
+            }
+        }
+    }
 }
 
 function windowResized() {
