@@ -27,11 +27,11 @@ function preload() {
     vidSky   = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
     vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
 
-    gradientShader      = loadShader('shaders/gradient.vert', 'shaders/gradient.frag')
-    videoShader         = loadShader('shaders/video.vert', 'shaders/video.frag')
-    videoMirrorShader   = loadShader('shaders/videoMirror.vert', 'shaders/videoMirror.frag')
-    videoFeedbackShader = loadShader('shaders/videoFeedback.vert', 'shaders/videoFeedback.frag')
-    videoClampShader    = loadShader('shaders/videoClamp.vert', 'shaders/videoClamp.frag')
+    gradientShader      = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
+    videoShader         = loadShader('shaders/shader.vert', 'shaders/video.frag')
+    videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
+    videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
+    videoClampShader    = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
 }
 
 function setup() {
@@ -65,17 +65,18 @@ function draw() {
     vidSky.hide()
     vidWater.hide()
 
-    // send the video to the shader as a uniform
+    // send video to the shader as a uniform
     videoShader.setUniform('tex0', vidWater)
     videoMirrorShader.setUniform('tex0', vidWater)
     videoFeedbackShader.setUniform('tex0', vidWater)
-    videoClampShader.setUniform('tex0', vidSky)
+    videoClampShader.setUniform('tex0', vidWater)
 
-    // clamp shader, shadertoy porting
+    // other shader uniforms
+    gradientShader.setUniform("resolution", [width, height])
     videoClampShader.setUniform("resolution", [width, height])
     videoClampShader.setUniform("mouse", [mouseX, map(mouseY, 0, height, height, 0)])
 
-    // also send the copy layer to the shader as a uniform
+    // send the copy layer to the shader as a uniform
     videoFeedbackShader.setUniform('tex1', copyLayer)
 
     // send mouseIsPressed to the shader as a int (either 0 or 1)
