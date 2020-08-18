@@ -14,7 +14,6 @@ uniform sampler2D tex0;
 uniform sampler2D tex1;
 
 uniform float mouseDown;
-uniform float time;
 
 vec3 rgb2hsb(vec3 c){
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
