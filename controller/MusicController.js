@@ -7,15 +7,8 @@ let loopMode = false
 
 function endCallback() {
     if (!loopMode) {
-        if (this.isPlaying()) {
+        if (this.isPlaying() && !this.isPaused()) {
             musicController.next()
-        } else {
-            //print("Music is paused or stopped. Callback ignored.")
-        }
-    } else {
-        //Loop mode was activated mid song so we must put the song on at the end callback
-        if (!this.isLooping()) {
-            this.loop()
         }
     }
 }
@@ -29,11 +22,11 @@ function loadTracklist() {
     function trackLoaded(track) {
         track.onended(endCallback)
         tracks.push(track)
-        loadIndex++;
+        loadIndex++
         if (loadIndex == tracksAmount) {
             tracksLoaded = true;
         } else {
-            loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded);
+            loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded)
         }
     }
 }
@@ -52,34 +45,44 @@ class MusicController {
         }
     }
 
-    playTrack(tracknumber) {
-        if (loopMode) {
-            if (tracknumber == this.trackPlaying) {
-                if (tracks[tracknumber].isPlaying()) {
-                    tracks[tracknumber].pause()
-                } else {
-                    tracks[tracknumber].loop()
-                }
+    playTrack(tracknumber, changeLoopMode = false) {
+        if (changeLoopMode) {
+            if (loopMode) {
+                tracks[tracknumber].setLoop(true)
             } else {
-                tracks[this.trackPlaying].stop()
-                tracks[tracknumber].loop()
-                this.trackPlaying = tracknumber
-                polygon.refreshPositions()
+                tracks[tracknumber].setLoop(false)
             }
         } else {
-            if (tracknumber == this.trackPlaying) {
-                if (tracks[tracknumber].isPlaying()) {
-                    tracks[tracknumber].pause()
+            if (loopMode) {
+                if (tracknumber == this.trackPlaying) {
+                    if (tracks[tracknumber].isPlaying() && tracks[tracknumber].isLooping()) {
+                        tracks[tracknumber].pause()
+                    } else {
+                        tracks[tracknumber].loop()
+                    }
+
                 } else {
-                    tracks[tracknumber].play()
+                    tracks[this.trackPlaying].stop()
+                    tracks[tracknumber].loop()
+                    this.trackPlaying = tracknumber
+                    polygon.refreshPositions()
                 }
             } else {
-                tracks[this.trackPlaying].pause()
-                tracks[tracknumber].play()
-                this.trackPlaying = tracknumber
-                polygon.refreshPositions()
+                if (tracknumber == this.trackPlaying) {
+                    if (tracks[tracknumber].isPlaying()) {
+                        tracks[tracknumber].pause()
+                    } else {
+                        tracks[tracknumber].play()
+                    }
+                } else {
+                    tracks[this.trackPlaying].pause()
+                    tracks[tracknumber].play()
+                    this.trackPlaying = tracknumber
+                    polygon.refreshPositions()
+                }
             }
         }
+        console.groupEnd()
     }
 
     next() {
