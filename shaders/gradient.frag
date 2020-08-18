@@ -8,7 +8,7 @@ precision mediump float;
 varying vec2 vTexCoord;
 
 // pass in the width and height of the screen
-uniform vec2 resolution;
+uniform vec2 u_resolution;
 
 // define the center for the radial graident
 vec2 center = vec2(0.5, 0.5);
@@ -34,8 +34,8 @@ void main() {
 
   #if mode == 0
     // https://www.shadertoy.com/view/XtXyWH
-    float aspect = resolution.x / resolution.y;
-    vec2 uv = gl_FragCoord.xy / resolution.xy;
+    float aspect = u_resolution.x / u_resolution.y;
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     
 	  uv.x *= aspect;
     center.x *= aspect;

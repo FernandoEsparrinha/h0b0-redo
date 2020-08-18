@@ -13,7 +13,7 @@ varying vec2 vTexCoord;
 uniform sampler2D tex0;
 uniform sampler2D tex1;
 
-uniform float mouseDown;
+uniform float u_mouseDown;
 
 vec3 rgb2hsb(vec3 c){
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -56,7 +56,7 @@ void main() {
   vec4 tex = cam;
   
   // if the mouse isn't clicked we'll run the feedback loop
-  if(mouseDown == 0.0){
+  if(u_mouseDown == 0.0){
 
     // calculate an angle from the hue
     // we will use these to offset the texture coordinates just a little bit
