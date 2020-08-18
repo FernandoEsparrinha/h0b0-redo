@@ -58,7 +58,11 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [Porting Shadertoy Code to p5.js Shaders](https://itp-xstory.github.io/p5js-shaders/#/./docs/examples/shadertoy)
 
+[GLSL 2D Tutorials](https://www.shadertoy.com/view/Md23DV)
+
 ### Utils
+[correct video aspect ratio](https://www.shadertoy.com/view/XlG3DW)
+
 [iResolution, iMouse, iDate, etc](https://www.shadertoy.com/view/llySRh)
 
 [Shader Switching](https://glitch.com/edit/#!/shaderswitching)
@@ -74,6 +78,8 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 [Programming tricks in Shadertoy / GLSL](https://shadertoyunofficial.wordpress.com/2019/01/02/programming-tricks-in-shadertoy-glsl/)
 
 [texture matrix rotate translate](https://www.shadertoy.com/view/4sByWd)
+
+[Texture Loading](https://www.shadertoy.com/view/wldGW8)
 
 ### Misc
 [Zoom Blur Transition](https://www.shadertoy.com/view/Ml3XR2)
@@ -105,6 +111,12 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 [Random color replacement (HSV)](https://www.shadertoy.com/view/4tdBRM)
 
 [Shift color ranges](https://www.shadertoy.com/view/MlcBWH)
+
+[Postprocessing](https://www.shadertoy.com/view/4dfGzn)
+
+[post: Barrel Blur Chroma](https://www.shadertoy.com/view/XssGz8)
+
+[PICO-8 Cartridge (CRT Effects)](https://greggman.github.io/pico-8-post-processing/nano-villager_html)
 
 ### Feedback
 [Simple Feedback Example](https://www.shadertoy.com/view/wtVXz3)
