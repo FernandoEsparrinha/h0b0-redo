@@ -24,14 +24,14 @@ let videoShader, videoMirrorShader, videoFeedbackShader
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
 
-    vidSky   = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
+    vidSky = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
     vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
 
     gradientShader      = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     videoShader         = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
     videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
     videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
-    videoClampShader    = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
+    videoClampShader = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
 }
 
 function setup() {
@@ -48,7 +48,7 @@ function setup() {
 
     // this layer will just be a copy of what we just did with the shader
     copyLayer = createGraphics(windowWidth, windowHeight)
-    
+
     // sets the active shader
     shaderGraphics.shader(gradientShader)
 }
@@ -60,7 +60,7 @@ function draw() {
     noFill()
     strokeWeight(1)
     textAlign(CENTER)
-    
+
     // hide the video window that is automatically displayed
     vidSky.hide()
     vidWater.hide()
@@ -86,7 +86,7 @@ function draw() {
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
 
     // draw the shaderlayer into the copy layer
-    copyLayer.image(shaderGraphics, 0,0,width, height)
+    copyLayer.image(shaderGraphics, 0, 0, width, height)
 
     // displays the shader image
     image(shaderGraphics, 0, 0, windowWidth, windowHeight)
@@ -117,6 +117,9 @@ function draw() {
         textAlign(LEFT)
         fill(55, 90, 100)
         text(loopMode ? "looping" : "album mode", windowWidth * 0.05, windowHeight * 0.95)
+        // textSize(12)
+        // text(JSON.stringify(tracks[musicController.trackPlaying], null, " "), 10, 40)
+        // textSize(32)
     }
 }
 
@@ -143,6 +146,7 @@ function keyPressed() {
     // up
     else if (keyCode === 38) {
         loopMode = !loopMode
+        musicController.playTrack(musicController.trackPlaying, true)
     }
     // 1
     else if (keyCode === 49) {
