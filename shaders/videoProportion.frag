@@ -14,11 +14,13 @@ uniform float videoSizeH;
 vec2 center = vec2(0.5, 0.5);
 
 void main() {
-  vec2 coord = gl_FragCoord.xy / resolution;
-  vec3 color = vec3(0.0);
-
+  vec2 uv = gl_FragCoord.xy / resolution;
+  
   // the texture is loaded upside down and backwards by default so lets flip it
   uv.y = 1.0 - uv.y;
 
-  gl_FragColor = texture2D(tex0, coord);
+  // get the webcam as a vec4 using texture2D
+  vec4 tex = texture2D(tex0, uv);
+
+  gl_FragColor = tex;
 }
