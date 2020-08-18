@@ -120,6 +120,9 @@ function draw() {
         textAlign(LEFT)
         fill(55, 90, 100)
         text(loopMode ? "looping" : "album mode", windowWidth * 0.05, windowHeight * 0.95)
+        // textSize(12)
+        // text(JSON.stringify(tracks[musicController.trackPlaying], null, " "), 10, 40)
+        // textSize(32)
     }
 }
 
