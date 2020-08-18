@@ -9,6 +9,7 @@ let fontMono
 
 // videos
 let vidSky, vidWater
+let vidSkySize
 
 // this variable will hold our createGraphics layer
 let shaderGraphics
@@ -31,7 +32,7 @@ function preload() {
     videoShader         = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
     videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
     videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
-    videoClampShader = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
+    videoClampShader    = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
 }
 
 function setup() {
@@ -41,6 +42,12 @@ function setup() {
 
     musicController = new MusicController()
     polygon = new Polygon(polygonRadius, 18)
+
+    // video sizes
+    vidSkySize = vidSky.size()
+    vidWaterSize = vidWater.size()
+    console.log('vidSkySize: ', vidSkySize)
+    console.log('vidWaterSize: ', vidWaterSize)
 
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
@@ -67,15 +74,18 @@ function draw() {
 
     // send video to the shader as a uniform
     videoShader.setUniform('tex0', vidSky)
+    videoShader.setUniform("videoSizeW", vidSkySize.width)
+    videoShader.setUniform("videoSizeH", vidSkySize.height)
     videoMirrorShader.setUniform('tex0', vidSky)
     videoFeedbackShader.setUniform('tex0', vidSky)
     videoClampShader.setUniform('tex0', vidSky)
 
     // other shader uniforms
     gradientShader.setUniform("resolution", [width, height])
+    videoShader.setUniform("resolution", [width, height])
     videoClampShader.setUniform("resolution", [width, height])
     videoClampShader.setUniform("mouse", [mouseX, map(mouseY, 0, height, height, 0)])
-
+    
     // send the copy layer to the shader as a uniform
     videoFeedbackShader.setUniform('tex1', copyLayer)
 

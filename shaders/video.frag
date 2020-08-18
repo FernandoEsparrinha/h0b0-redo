@@ -9,6 +9,7 @@ uniform sampler2D tex0;
 void main() {
 
   vec2 uv = vTexCoord;
+  
   // the texture is loaded upside down and backwards by default so lets flip it
   uv.y = 1.0 - uv.y;
 
