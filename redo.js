@@ -28,7 +28,7 @@ function preload() {
     vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
 
     gradientShader      = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
-    videoShader         = loadShader('shaders/shader.vert', 'shaders/video.frag')
+    videoShader         = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
     videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
     videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
     videoClampShader    = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
@@ -66,10 +66,10 @@ function draw() {
     vidWater.hide()
 
     // send video to the shader as a uniform
-    videoShader.setUniform('tex0', vidWater)
-    videoMirrorShader.setUniform('tex0', vidWater)
-    videoFeedbackShader.setUniform('tex0', vidWater)
-    videoClampShader.setUniform('tex0', vidWater)
+    videoShader.setUniform('tex0', vidSky)
+    videoMirrorShader.setUniform('tex0', vidSky)
+    videoFeedbackShader.setUniform('tex0', vidSky)
+    videoClampShader.setUniform('tex0', vidSky)
 
     // other shader uniforms
     gradientShader.setUniform("resolution", [width, height])
@@ -81,9 +81,6 @@ function draw() {
 
     // send mouseIsPressed to the shader as a int (either 0 or 1)
     videoFeedbackShader.setUniform('mouseDown', int(mouseIsPressed))
-
-    // send frame based "time" to shader
-    videoFeedbackShader.setUniform('time', frameCount * 0.01)
 
     // rect gives us some geometry on the screen
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
