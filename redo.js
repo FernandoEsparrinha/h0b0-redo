@@ -36,6 +36,8 @@ function preload() {
 }
 
 function setup() {
+    pixelDensity(1)
+    
     createCanvas(windowWidth, windowHeight)
 
     polygonRadius = windowHeight * 0.4
@@ -44,10 +46,10 @@ function setup() {
     polygon = new Polygon(polygonRadius, 18)
 
     // video sizes
-    vidSkySize = vidSky.size()
-    vidWaterSize = vidWater.size()
-    console.log('vidSkySize: ', vidSkySize)
-    console.log('vidWaterSize: ', vidWaterSize)
+    console.log('vidSky.w: ', vidSky.size().width)
+    console.log('vidSky.h: ', vidSky.size().height)
+    console.log('vidWater.w: ', vidWater.size().width)
+    console.log('vidWater.h: ', vidWater.size().height)
 
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
@@ -72,25 +74,27 @@ function draw() {
     vidSky.hide()
     vidWater.hide()
 
-    // send video to the shader as a uniform
+    // gradientShader
+    gradientShader.setUniform("u_resolution", [width, height])
+
+    // videoShader
     videoShader.setUniform('tex0', vidSky)
-    videoShader.setUniform("videoSizeW", vidSkySize.width)
-    videoShader.setUniform("videoSizeH", vidSkySize.height)
+    videoShader.setUniform("u_resolution", [width, height])
+    videoShader.setUniform("u_texResolution", [vidSky.size().width, vidSky.size().height])
+    //videoShader.setUniform("u_texResolution", [1080, 1920])
+
+    // videoMirrorShader
     videoMirrorShader.setUniform('tex0', vidSky)
+
+    // videoFeedbackShader
     videoFeedbackShader.setUniform('tex0', vidSky)
-    videoClampShader.setUniform('tex0', vidSky)
-
-    // other shader uniforms
-    gradientShader.setUniform("resolution", [width, height])
-    videoShader.setUniform("resolution", [width, height])
-    videoClampShader.setUniform("resolution", [width, height])
-    videoClampShader.setUniform("mouse", [mouseX, map(mouseY, 0, height, height, 0)])
-    
-    // send the copy layer to the shader as a uniform
     videoFeedbackShader.setUniform('tex1', copyLayer)
+    videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
 
-    // send mouseIsPressed to the shader as a int (either 0 or 1)
-    videoFeedbackShader.setUniform('mouseDown', int(mouseIsPressed))
+    // videoClampShader
+    videoClampShader.setUniform('tex0', vidSky)
+    videoClampShader.setUniform("u_resolution", [width, height])
+    videoClampShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)])
 
     // rect gives us some geometry on the screen
     shaderGraphics.rect(0, 0, windowWidth, windowHeight)
