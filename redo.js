@@ -28,6 +28,8 @@ function preload() {
     vidSky = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
     vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
 
+    imgVegan = loadImage('assets/image/soyVegano-w216-h152.png')
+
     gradientShader      = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     videoShader         = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
     videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
@@ -65,6 +67,7 @@ function setup() {
 function draw() {
     // DRAW SETTINGS
     clear()
+    background(0)
     colorMode(HSB)
     noFill()
     strokeWeight(1)
@@ -78,10 +81,10 @@ function draw() {
     gradientShader.setUniform("u_resolution", [width, height])
 
     // videoShader
-    videoShader.setUniform('tex0', vidSky)
+    videoShader.setUniform('tex0', imgVegan)
     videoShader.setUniform("u_resolution", [width, height])
-    videoShader.setUniform("u_texResolution", [vidSky.size().width, vidSky.size().height])
-    //videoShader.setUniform("u_texResolution", [1080, 1920])
+    //videoShader.setUniform("u_texResolution", [imgVegan.size().width, imgVegan.size().height])
+    videoShader.setUniform("u_texResolution", [216, 152])
 
     // videoMirrorShader
     videoMirrorShader.setUniform('tex0', vidSky)
