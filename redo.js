@@ -52,6 +52,8 @@ function setup() {
     console.log('vidSky.h: ', vidSky.size().height)
     console.log('vidWater.w: ', vidWater.size().width)
     console.log('vidWater.h: ', vidWater.size().height)
+    console.log('imgVegan.w: ', imgVegan.width)
+    console.log('imgVegan.h: ', imgVegan.height)
 
     // shaders require WEBGL mode to work
     shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
@@ -83,8 +85,7 @@ function draw() {
     // videoShader
     videoShader.setUniform('tex0', imgVegan)
     videoShader.setUniform("u_resolution", [width, height])
-    //videoShader.setUniform("u_texResolution", [imgVegan.size().width, imgVegan.size().height])
-    videoShader.setUniform("u_texResolution", [216, 152])
+    videoShader.setUniform("u_texResolution", [imgVegan.width, imgVegan.height])
 
     // videoMirrorShader
     videoMirrorShader.setUniform('tex0', vidSky)
