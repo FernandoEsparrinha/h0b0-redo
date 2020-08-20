@@ -7,8 +7,6 @@ precision mediump float;
 // our texture coming from p5
 uniform sampler2D tex0;
 
-varying vec2 vTexCoord;
-
 // resolution
 uniform vec2 u_resolution;
 
