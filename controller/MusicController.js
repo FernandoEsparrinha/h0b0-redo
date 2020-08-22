@@ -5,6 +5,7 @@ let loadIndex = 0
 
 let loopMode = false
 
+
 function endCallback() {
     if (!loopMode) {
         if (this.isPlaying() && !this.isPaused()) {
@@ -34,6 +35,10 @@ function loadTracklist() {
 class MusicController {
     constructor() {
         this.trackPlaying = 0
+        fft = new p5.FFT()
+        peakDetect = new p5.PeakDetect()
+        amplitude = new p5.Amplitude(.99)
+        amplitude.setInput()
         loadTracklist()
     }
 
@@ -59,11 +64,13 @@ class MusicController {
                         tracks[tracknumber].pause()
                     } else {
                         tracks[tracknumber].loop()
+                        // amplitude.setInput(tracks[tracknumber])
                     }
 
                 } else {
                     tracks[this.trackPlaying].stop()
                     tracks[tracknumber].loop()
+                    // amplitude.setInput(tracks[tracknumber])
                     this.trackPlaying = tracknumber
                     polygon.refreshPositions()
                 }
@@ -73,10 +80,12 @@ class MusicController {
                         tracks[tracknumber].pause()
                     } else {
                         tracks[tracknumber].play()
+                        // amplitude.setInput(tracks[tracknumber])
                     }
                 } else {
                     tracks[this.trackPlaying].pause()
                     tracks[tracknumber].play()
+                    // amplitude.setInput(tracks[tracknumber])
                     this.trackPlaying = tracknumber
                     polygon.refreshPositions()
                 }

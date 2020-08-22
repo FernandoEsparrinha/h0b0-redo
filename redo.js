@@ -2,25 +2,9 @@ p5.disableFriendlyErrors = true
 
 let open = false;
 let polygon, polygonRadius
-let musicController
+let musicController, fft, peakDetect, amplitude
 
 let verticesPosition = []
-let fontMono
-
-// videos
-let vidSky, vidWater
-let vidSkySize
-
-// this variable will hold our createGraphics layer
-let shaderGraphics
-
-// copy layer for the video feedback effect
-let copyLayer
-
-// these variables will hold our shader objects
-let gradientShader
-let videoShader, videoMirrorShader, videoFeedbackShader
-
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
@@ -30,40 +14,24 @@ function preload() {
 
     imgVegan = loadImage('assets/image/soyVegano-w216-h152.png')
 
-    gradientShader      = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
-    videoShader         = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
-    videoMirrorShader   = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
+    gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
+    videoShader = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
+    videoMirrorShader = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
     videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
-    videoClampShader    = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
+    videoClampShader = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
 }
 
 function setup() {
     pixelDensity(1)
-    
+
     createCanvas(windowWidth, windowHeight)
 
     polygonRadius = windowHeight * 0.4
 
     musicController = new MusicController()
+    shaderController = new ShaderController()
+    // guiController = new GuiController()
     polygon = new Polygon(polygonRadius, 18)
-
-    // video sizes
-    console.log('vidSky.w: ', vidSky.size().width)
-    console.log('vidSky.h: ', vidSky.size().height)
-    console.log('vidWater.w: ', vidWater.size().width)
-    console.log('vidWater.h: ', vidWater.size().height)
-    console.log('imgVegan.w: ', imgVegan.width)
-    console.log('imgVegan.h: ', imgVegan.height)
-
-    // shaders require WEBGL mode to work
-    shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
-    shaderGraphics.noStroke()
-
-    // this layer will just be a copy of what we just did with the shader
-    copyLayer = createGraphics(windowWidth, windowHeight)
-
-    // sets the active shader
-    shaderGraphics.shader(gradientShader)
 }
 
 function draw() {
@@ -75,40 +43,8 @@ function draw() {
     strokeWeight(1)
     textAlign(CENTER)
 
-    // hide the video window that is automatically displayed
-    vidSky.hide()
-    vidWater.hide()
-
-    // gradientShader
-    gradientShader.setUniform("u_resolution", [width, height])
-
-    // videoShader
-    videoShader.setUniform('tex0', imgVegan)
-    videoShader.setUniform("u_resolution", [width, height])
-    videoShader.setUniform("u_texResolution", [imgVegan.width, imgVegan.height])
-
-    // videoMirrorShader
-    videoMirrorShader.setUniform('tex0', vidSky)
-
-    // videoFeedbackShader
-    videoFeedbackShader.setUniform('tex0', vidSky)
-    videoFeedbackShader.setUniform('tex1', copyLayer)
-    videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
-
-    // videoClampShader
-    videoClampShader.setUniform('tex0', vidSky)
-    videoClampShader.setUniform("u_resolution", [width, height])
-    videoClampShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)])
-
-    // rect gives us some geometry on the screen
-    shaderGraphics.rect(0, 0, windowWidth, windowHeight)
-
-    // draw the shaderlayer into the copy layer
-    copyLayer.image(shaderGraphics, 0, 0, width, height)
-
-    // displays the shader image
-    image(shaderGraphics, 0, 0, windowWidth, windowHeight)
-
+    // guiController.draw()
+    shaderController.draw()
     polygon.draw()
 
     if (!tracksLoaded) {
@@ -166,40 +102,31 @@ function keyPressed() {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
     }
+
     // 1
     else if (keyCode === 49) {
         console.log('keyPressed: 1')
-
-        // sets the active shader
-        shaderGraphics.shader(gradientShader)
+        shaderController.changeShader(1)
     }
     // 2
     else if (keyCode === 50) {
         console.log('keyPressed: 2')
-
-        // sets the active shader
-        shaderGraphics.shader(videoShader)
+        shaderController.changeShader(2)
     }
     // 3
     else if (keyCode === 51) {
         console.log('keyPressed: 3')
-
-        // sets the active shader
-        shaderGraphics.shader(videoMirrorShader)
+        shaderController.changeShader(3)
     }
     // 4
     else if (keyCode === 52) {
         console.log('keyPressed: 4')
-
-        // sets the active shader
-        shaderGraphics.shader(videoFeedbackShader)
+        shaderController.changeShader(4)
     }
     // 5
     else if (keyCode === 53) {
         console.log('keyPressed: 5')
-
-        // sets the active shader
-        shaderGraphics.shader(videoClampShader)
+        shaderController.changeShader(5)
     }
 }
 

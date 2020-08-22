@@ -13,6 +13,8 @@ varying vec2 vTexCoord;
 uniform sampler2D tex0;
 uniform sampler2D tex1;
 
+uniform float u_amplitude;
+
 uniform float u_mouseDown;
 
 vec3 rgb2hsb(vec3 c){
@@ -44,7 +46,7 @@ void main() {
   feedbackUv = uv * 2.0 - 1.0;
 
   // scale the uvs up just a tad for a feedback zoom
-  feedbackUv *= 1.05;
+  feedbackUv *= 1.0 + (u_amplitude * 0.1);
 
   // return the uvs to 0 - 1 range
   feedbackUv = feedbackUv * 0.5 + 0.5;
@@ -68,7 +70,7 @@ void main() {
     tex = texture2D(tex1, feedbackUv + vec2(angleX, angleY) * 0.01);
 
     // add some camera from the screen
-    tex.rgb += cam.rgb*0.8;
+    tex.rgb += cam.rgb*(u_amplitude*0.1);
 
     // if tex.r > 1.0, invert the texture and swizzle the color channels around
     tex.rgb = mix(tex.rgb, 1.0 -tex.gbr, step(1.0, tex.r) );

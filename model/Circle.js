@@ -17,13 +17,13 @@ class Circle {
         this.speed = 0.1
 
         // circle scale on hover with fake spring motion
-        this.targetSize  = diameter
+        this.targetSize = diameter
         this.initialSize = diameter
-        this.finalSize   = diameter * 1.2
+        this.finalSize = diameter * 1.2
         this.circleSize = diameter
         this.scaleForce = 0
         this.scaleVelocity = 0
-        this.scaleDrag     = 0.75
+        this.scaleDrag = 0.75
         this.scaleStrength = 0.1
 
         this.diameter = diameter
@@ -66,6 +66,18 @@ class Circle {
      */
     handlePlaying() {
         if (this.isPlaying()) {
+            fft.analyze()
+            peakDetect.update(fft)
+
+            var level = amplitude.getLevel()
+            this.diameter = (polygonRadius / 5) * (level * 4)
+
+            // if (peakDetect.isDetected) {
+            //     this.diameter = polygonRadius / 4
+            // } else {
+            //     this.diameter *= 0.995
+            // }
+
             stroke(0, 0, 100, 1.0)
             fill(0, 0, 100, 0.1)
         } else {
@@ -111,7 +123,7 @@ class Circle {
             }
         }
 
-        if (!this.isBeingHovered()){
+        if (!this.isBeingHovered()) {
             if (this.lerpAmount > 0.0) {
                 this.lerpAmount -= 0.04
 
