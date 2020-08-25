@@ -38,6 +38,7 @@ class Circle {
         this.calculateMovement()
 
         // circle base style is common to any state
+        strokeWeight(1)
         stroke(this.hRange, 100, 100, 1.0)
         fill(this.hRange, 100, 100, 0.1)
 
@@ -46,7 +47,6 @@ class Circle {
 
         } else {
             // After Polygon has been opened (click)
-
             this.handlePlaying()
             this.handleHovering()
 
@@ -90,6 +90,7 @@ class Circle {
      */
     handleHovering() {
         if (this.isBeingHovered()) {
+            cursor(HAND)
             if (this.lerpAmount <= 1.0) {
                 this.lerpAmount += 0.1
 

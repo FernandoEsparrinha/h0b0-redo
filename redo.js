@@ -29,52 +29,24 @@ function setup() {
     polygonRadius = windowHeight * 0.4
 
     musicController = new MusicController()
+
+    guiController = new GuiController()
     shaderController = new ShaderController()
-    // guiController = new GuiController()
     polygon = new Polygon(polygonRadius, 18)
 }
 
 function draw() {
     // DRAW SETTINGS
     clear()
+    cursor(ARROW)
     background(0)
     colorMode(HSB)
     noFill()
-    strokeWeight(1)
-    textAlign(CENTER)
+    textAlign(CENTER, CENTER)
 
-    // guiController.draw()
     shaderController.draw()
     polygon.draw()
-
-    if (!tracksLoaded) {
-        textFont(fontMono)
-        textSize(32)
-
-        stroke(0, 0, 0)
-        strokeWeight(2)
-        fill(55, 90, 100)
-        text('LOADING (' + (loadIndex + 1) + '/18)', windowWidth * 0.5, windowHeight * 0.8)
-    }
-
-    if (tracksLoaded && !open) {
-        fill(55, 90, 100)
-        text('h0b0   redo', windowWidth * 0.5, windowHeight * 0.8)
-
-        // "3D" arrow effect (static)
-        for (let w = 0; w < 10; w++) {
-            text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - w)
-        }
-    }
-
-    if (tracksLoaded && open) {
-        textAlign(LEFT)
-        fill(55, 90, 100)
-        text(loopMode ? "looping" : "album mode", windowWidth * 0.05, windowHeight * 0.95)
-        // textSize(12)
-        // text(JSON.stringify(tracks[musicController.trackPlaying], null, " "), 10, 40)
-        // textSize(32)
-    }
+    guiController.draw()
 }
 
 // This function is called when the video loads
@@ -137,12 +109,7 @@ function mouseClicked() {
             musicController.startPlaying()
             open = true
         } else {
-            for (let i = 0; i < 18; i++) {
-                let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
-                if (d < (polygon.vertices[0].diameter / 2)) {
-                    musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 18)
-                }
-            }
+            guiController.handleClicking()
         }
     }
 }
