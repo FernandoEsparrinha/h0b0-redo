@@ -5,6 +5,7 @@ let loadIndex = 0
 
 let loopMode = false
 
+let rateMin = 0.11, rateMax = 1.91, rateIncrement = 0.1
 
 function endCallback() {
     if (!loopMode) {
@@ -135,10 +136,8 @@ class MusicController {
     increaseSpeed() {
         tracks.forEach(track => {
             let rate = track.rate()
-            console.log(rate)
-            console.log(rate + 0.2)
-            if (rate < 2) {
-                track.rate(rate + 0.2)
+            if (rate < rateMax) {
+                track.rate(rate + rateIncrement)
             }
         })
     }
@@ -146,9 +145,8 @@ class MusicController {
     decreaseSpeed() {
         tracks.forEach(track => {
             let rate = track.rate()
-            console.log(rate)
-            if (rate > 0.2) {
-                track.rate(rate - 0.2)
+            if (rate > rateMin) {
+                track.rate(rate - rateIncrement)
             }
         })
     }
