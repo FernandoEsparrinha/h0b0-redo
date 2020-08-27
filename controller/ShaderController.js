@@ -38,6 +38,18 @@ class ShaderController {
         videoClampShader.setUniform("u_resolution", [width, height])
         videoClampShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)])
 
+        // videoWormsShader
+        videoWormsShader.setUniform('tex0', vidSky)
+        videoWormsShader.setUniform('tex1', this.copyLayer)
+        videoWormsShader.setUniform("u_resolution", [width, height])
+        videoWormsShader.setUniform('u_mouseDown', int(mouseIsPressed))
+
+        // videoKernelShader
+        videoKernelShader.setUniform('tex0', vidSky)
+        videoKernelShader.setUniform("u_resolution", [width, height])
+        videoKernelShader.setUniform('stepSize', [1.0/width, 1.0/height]); // the size of one pixel on the screen
+        videoKernelShader.setUniform('dist', 3.0); // how far away to sample from the current pixel - 1 is 1 pixel away
+
         // rect gives us some geometry on the screen
         this.shaderGraphics.rect(0, 0, windowWidth, windowHeight)
 
@@ -64,6 +76,12 @@ class ShaderController {
                 break;
             case 5:
                 this.shaderGraphics.shader(videoClampShader)
+                break;
+            case 6:
+                this.shaderGraphics.shader(videoWormsShader)
+                break;
+            case 7:
+                this.shaderGraphics.shader(videoKernelShader)
                 break;
             default:
                 break;
