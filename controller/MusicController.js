@@ -137,7 +137,7 @@ class MusicController {
             let rate = track.rate()
             console.log(rate)
             console.log(rate + 0.2)
-            if (rate >= 0.2 && rate < 2) {
+            if (rate < 2) {
                 track.rate(rate + 0.2)
             }
         })
@@ -147,7 +147,7 @@ class MusicController {
         tracks.forEach(track => {
             let rate = track.rate()
             console.log(rate)
-            if (rate > 0.2 && rate <= 2) {
+            if (rate > 0.2) {
                 track.rate(rate - 0.2)
             }
         })
