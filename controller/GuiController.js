@@ -43,15 +43,16 @@ class GuiController {
             // rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height)
             if (button.action == "trackName") {
                 textSize(16)
-                text(musicController.getCurrentTrackName(), button.x, button.y)
+                text(musicController.getCurrentTrackName() + "  (" + musicController.getCurrentPlaybackPosition() + ")", button.x, button.y)
                 textSize(32)
             }
 
-            // if (button.action == "trackSpeed") {
-            //     textSize(16)
-            //     text(tracks[musicController.getTrackNumberPlaying()].speed(), button.x, button.y)
-            //     textSize(32)
-            // }
+            if (button.action == "trackSpeed") {
+                textSize(16)
+                text("Playback speed: x" + musicController.getCurrentPlaybackSpeed(), button.x, button.y)
+                textSize(32)
+            }
+
             text(button.text, button.x, button.y)
         });
 
