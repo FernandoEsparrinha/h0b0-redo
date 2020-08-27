@@ -133,14 +133,39 @@ class MusicController {
     }
 
     increaseSpeed() {
-        if (tracks[this.trackPlaying].rate() > 0.2 && tracks[this.trackPlaying].rate() < 2) {
-            tracks[this.trackPlaying].rate(tracks[this.trackPlaying].rate() + 0.2)
-        }
+        tracks.forEach(track => {
+            let rate = track.rate()
+            console.log(rate)
+            console.log(rate + 0.2)
+            if (rate >= 0.2 && rate < 2) {
+                track.rate(rate + 0.2)
+            }
+        })
     }
 
     decreaseSpeed() {
-        if (tracks[this.trackPlaying].rate() > 0.2 && tracks[this.trackPlaying].rate() < 2) {
-            tracks[this.trackPlaying].rate(tracks[this.trackPlaying].rate() - 0.2)
+        tracks.forEach(track => {
+            let rate = track.rate()
+            console.log(rate)
+            if (rate > 0.2 && rate <= 2) {
+                track.rate(rate - 0.2)
+            }
+        })
+    }
+
+    getCurrentPlaybackPosition() {
+        if (open) {
+            return tracks[this.trackPlaying].currentTime()
+        } else {
+            return 0
+        }
+    }
+
+    getCurrentPlaybackSpeed() {
+        if (open) {
+            return tracks[this.trackPlaying].rate()
+        } else {
+            return 0
         }
     }
 

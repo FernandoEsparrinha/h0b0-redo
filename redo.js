@@ -11,6 +11,7 @@ function preload() {
 
     vidSky = createVideo(['assets/video/aviao-ceu-01.mp4', 'assets/video/aviao-ceu-01.webm'], videoLoaded)
     vidWater = createVideo(['assets/video/agua-01.mp4', 'assets/video/agua-01.webm'], videoLoaded)
+    vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
 
     imgVegan = loadImage('assets/image/soyVegano-w216-h152.png')
 
@@ -53,6 +54,10 @@ function draw() {
 
 // This function is called when the video loads
 function videoLoaded() {
+    vidGu.loop()
+    vidGu.volume(0)
+    console.log('vidGu: has loaded')
+
     vidSky.loop()
     vidSky.volume(0)
     console.log('vidSky: has loaded')

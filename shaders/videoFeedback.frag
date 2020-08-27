@@ -14,6 +14,9 @@ uniform sampler2D tex0;
 uniform sampler2D tex1;
 
 uniform float u_amplitude;
+uniform float u_time;
+uniform float u_playbackPosition;
+uniform float u_playbackSpeed;
 
 uniform float u_mouseDown;
 
@@ -33,6 +36,12 @@ vec3 hsb2rgb(vec3 c){
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
+mat2 rotate2d(float angle)
+{
+    return mat2(cos(angle), -sin(angle),
+                sin(angle), cos(angle));
+}
+
 void main() {
 
   vec2 uv = vTexCoord;
@@ -46,8 +55,12 @@ void main() {
   feedbackUv = uv * 2.0 - 1.0;
 
   // scale the uvs up just a tad for a feedback zoom
-  feedbackUv *= 1.0 + (u_amplitude * 0.1);
-
+  // feedbackUv *= 1.0 + (u_amplitude * 0.1);
+  feedbackUv.x *= 0.999 + (u_amplitude * 0.001);
+  feedbackUv.y *= 0.999 + (u_amplitude * 0.001);
+  
+  feedbackUv = rotate2d(sin(0.01) * 3.1415) * feedbackUv;
+  
   // return the uvs to 0 - 1 range
   feedbackUv = feedbackUv * 0.5 + 0.5;
   
@@ -63,18 +76,33 @@ void main() {
     // calculate an angle from the hue
     // we will use these to offset the texture coordinates just a little bit
     vec3 hsb = rgb2hsb(cam.rgb);
-    float angleX = cos(hsb.r * TWO_PI);
-    float angleY = sin(hsb.r * TWO_PI);
+    float angleX = sin((u_amplitude*0.1) * PI);
+    float angleY = sin((u_amplitude*0.1) * PI);
+
+    
 
     // add those angles to the tex coords and sample the feedback texture
-    tex = texture2D(tex1, feedbackUv + vec2(angleX, angleY) * 0.01);
+    tex = texture2D(tex1, feedbackUv);
+
+    // tex.r += 0.001;
+    // tex.g -= 0.002;
+    // tex.b += 0.002;
 
     // add some camera from the screen
-    tex.rgb += cam.rgb*(u_amplitude*0.1);
+    tex.rgb += cam.rgb * 0.002;
 
-    // if tex.r > 1.0, invert the texture and swizzle the color channels around
-    tex.rgb = mix(tex.rgb, 1.0 -tex.gbr, step(1.0, tex.r) );
-
+    // if tex.b > 1.0, invert the texture and swizzle the color channels around
+    if(step(1.0,tex.r) == 1.0){
+      tex.r = 0.0;
+    }
+    if(step(1.0,tex.g) == 1.0){
+      tex.g = 0.0;
+    }
+    if(step(1.0,tex.b) == 1.0){
+      tex.b = 0.0;
+    }
+    
+    // tex.rgb = mix(tex.rgb, 1.0 -tex.gbr, step(1.0, tex.b) );
   } 
   
   // render the output
