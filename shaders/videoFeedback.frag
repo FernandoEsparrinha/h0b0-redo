@@ -14,6 +14,9 @@ uniform sampler2D tex0;
 uniform sampler2D tex1;
 
 uniform float u_amplitude;
+uniform float u_time;
+uniform float u_playbackPosition;
+uniform float u_playbackSpeed;
 
 uniform float u_mouseDown;
 

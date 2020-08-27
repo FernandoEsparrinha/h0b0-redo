@@ -35,6 +35,10 @@ class ShaderController {
 
         videoFeedbackShader.setUniform('tex1', this.copyLayer)
         videoFeedbackShader.setUniform('u_amplitude', amplitude.getLevel())
+        videoFeedbackShader.setUniform('u_time', new Date().getTime())
+        videoFeedbackShader.setUniform('u_playbackPosition', musicController.getCurrentPlaybackPosition())
+        videoFeedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed())
+
         videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
 
         // videoClampShader
