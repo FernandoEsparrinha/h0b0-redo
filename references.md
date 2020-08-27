@@ -9,11 +9,6 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [p5js feedback by aferriss](https://editor.p5js.org/aferriss/sketches/ryK2RXZ7Q)
 
-### P5 Shaders
-[Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
-
-[p5js shader examples](https://github.com/aferriss)
-
 #### Feedback / Fract
 [Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
 
@@ -56,9 +51,14 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 ## Shaders
 [The Book of Shaders](https://thebookofshaders.com/)
 
+[GLSL 2D Tutorials](https://www.shadertoy.com/view/Md23DV)
+
+### P5 Shaders
+[Introduction to p5js shaders](https://itp-xstory.github.io/p5js-shaders/#/)
+
 [Porting Shadertoy Code to p5.js Shaders](https://itp-xstory.github.io/p5js-shaders/#/./docs/examples/shadertoy)
 
-[GLSL 2D Tutorials](https://www.shadertoy.com/view/Md23DV)
+[p5js shader examples](https://github.com/aferriss)
 
 ### Utils
 [correct video aspect ratio](https://www.shadertoy.com/view/XlG3DW)

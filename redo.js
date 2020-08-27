@@ -20,6 +20,8 @@ function preload() {
     videoMirrorShader = loadShader('shaders/shader.vert', 'shaders/videoMirror.frag')
     videoFeedbackShader = loadShader('shaders/shader.vert', 'shaders/videoFeedback.frag')
     videoClampShader = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
+    videoWormsShader = loadShader('shaders/shader.vert', 'shaders/videoWorms.frag')
+    videoKernelShader = loadShader('shaders/shader.vert', 'shaders/videoConvolutionKernel.frag')
 }
 
 function setup() {
@@ -104,6 +106,16 @@ function keyPressed() {
     else if (keyCode === 53) {
         console.log('keyPressed: 5')
         shaderController.changeShader(5)
+    }
+    // 6
+    else if (keyCode === 54) {
+        console.log('keyPressed: 6')
+        shaderController.changeShader(6)
+    }
+    // 6
+    else if (keyCode === 55) {
+        console.log('keyPressed: 7')
+        shaderController.changeShader(7)
     }
 }
 

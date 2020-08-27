@@ -18,12 +18,12 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 ### Music Controller
 - [x] song loop mode;
 - [x] album loop mode;
-- [ ] user controls for album / song mode;
+- [x] user controls for album / song mode;
 
 ### Circles
 - [x] on hover: animate color;
 - [x] on hover: animate circle size;
-- [ ] isPlaying: circle reacts to sound;
+- [x] isPlaying: circle reacts to sound;
 
 ### Background visuals (shaders):
 - [x] made template gradient background with GLSL;
