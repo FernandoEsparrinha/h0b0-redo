@@ -13,6 +13,7 @@ class ShaderController {
 
     draw() {
         // hide the video window that is automatically displayed
+        vidGu.hide()
         vidSky.hide()
         vidWater.hide()
 
@@ -28,7 +29,10 @@ class ShaderController {
         videoMirrorShader.setUniform('tex0', vidSky)
 
         // videoFeedbackShader
-        videoFeedbackShader.setUniform('tex0', vidSky)
+        // videoFeedbackShader.setUniform('tex0', vidGu)
+        videoFeedbackShader.setUniform('tex0', vidWater)
+        // videoFeedbackShader.setUniform('tex0', vidSky)
+
         videoFeedbackShader.setUniform('tex1', this.copyLayer)
         videoFeedbackShader.setUniform('u_amplitude', amplitude.getLevel())
         videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
