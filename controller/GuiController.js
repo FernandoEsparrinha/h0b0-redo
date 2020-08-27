@@ -1,11 +1,10 @@
 class GuiController {
     constructor() {
         this.buttons = [
-            { action: "trackName", text: "", x: windowWidth * 0.15, y: windowHeight * 0.85, width: 40, height: 40 },
-            { action: "trackSpeed", text: "", x: windowWidth * 0.15, y: windowHeight * 0.90, width: 40, height: 40 },
+            { action: "trackName", text: "", x: windowWidth * 0.01, y: windowHeight * 0.85, width: 40, height: 40 },
+            { action: "trackSpeed", text: "", x: windowWidth * 0.01, y: windowHeight * 0.90, width: 40, height: 40 },
 
             { action: "switchMode", text: "♺", x: windowWidth * 0.5, y: windowHeight * 0.80, width: 40, height: 40 },
-
             { action: "slower", text: "<<", x: windowWidth * 0.90, y: windowHeight * 0.95, width: 60, height: 40 },
             { action: "faster", text: ">>", x: windowWidth * 0.95, y: windowHeight * 0.95, width: 60, height: 40 },
 
@@ -15,6 +14,7 @@ class GuiController {
 
     draw() {
         textFont(fontMono)
+        // console.log(windowWidth)
         textSize(32)
         stroke(0, 0, 0)
         strokeWeight(2)
@@ -39,23 +39,20 @@ class GuiController {
     }
 
     drawMainGui() {
-
-        text(loopMode ? "looping" : "album mode", windowWidth * 0.10, windowHeight * 0.95)
-
+        textAlign(LEFT)
+        text(loopMode ? "looping" : "album mode", windowWidth * 0.01, windowHeight * 0.95)
         this.buttons.forEach(button => {
             // rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height)
             if (button.action == "trackName") {
-                textSize(16)
                 text(musicController.getCurrentTrackName() + "  (" + musicController.getCurrentPlaybackPosition() + ")", button.x, button.y)
-                textSize(32)
             }
 
             if (button.action == "trackSpeed") {
-                textSize(16)
+                textAlign(LEFT)
                 text("Playback speed: x" + musicController.getCurrentPlaybackSpeed(), button.x, button.y)
-                textSize(32)
             }
 
+            textAlign(CENTER, CENTER)
             text(button.text, button.x, button.y)
         });
 
