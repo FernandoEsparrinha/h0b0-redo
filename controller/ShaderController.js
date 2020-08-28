@@ -29,17 +29,16 @@ class ShaderController {
         videoMirrorShader.setUniform('tex0', vidSky)
 
         // videoFeedbackShader
-        // videoFeedbackShader.setUniform('tex0', vidGu)
-        videoFeedbackShader.setUniform('tex0', vidWater)
-        // videoFeedbackShader.setUniform('tex0', vidSky)
-
+        videoFeedbackShader.setUniform('tex0', vidGu)
+        // videoFeedbackShader.setUniform('tex0', vidWater)
         videoFeedbackShader.setUniform('tex1', this.copyLayer)
         videoFeedbackShader.setUniform('u_amplitude', amplitude.getLevel())
         videoFeedbackShader.setUniform('u_time', new Date().getTime())
         videoFeedbackShader.setUniform('u_playbackPosition', musicController.getCurrentPlaybackPosition())
         videoFeedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed())
-
         videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
+        videoFeedbackShader.setUniform('stepSize', [1.0/width, 1.0/height]); // the size of one pixel on the screen
+        videoFeedbackShader.setUniform('dist', 3.0); // how far away to sample from the current pixel - 1 is 1 pixel away
 
         // videoClampShader
         videoClampShader.setUniform('tex0', vidSky)
@@ -53,7 +52,7 @@ class ShaderController {
         videoWormsShader.setUniform('u_mouseDown', int(mouseIsPressed))
 
         // videoKernelShader
-        videoKernelShader.setUniform('tex0', vidSky)
+        videoKernelShader.setUniform('tex0', vidGu)
         videoKernelShader.setUniform("u_resolution", [width, height])
         videoKernelShader.setUniform('stepSize', [1.0/width, 1.0/height]); // the size of one pixel on the screen
         videoKernelShader.setUniform('dist', 3.0); // how far away to sample from the current pixel - 1 is 1 pixel away
