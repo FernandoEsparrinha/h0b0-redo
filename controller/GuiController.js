@@ -1,14 +1,14 @@
 class GuiController {
     constructor() {
         this.buttons = [
-            { action: "trackName", text: "", x: windowWidth * 0.01, y: windowHeight * 0.85, width: 40, height: 40 },
-            { action: "trackSpeed", text: "", x: windowWidth * 0.01, y: windowHeight * 0.90, width: 40, height: 40 },
+            { action: "trackName", text: "", x: windowWidth * 0.01, y: windowHeight * 0.95, width: 40, height: 40 },
+            { action: "trackSpeed", text: "", x: windowWidth * 0.01, y: windowHeight * 0.85, width: 40, height: 40 },
 
-            { action: "switchMode", text: "♺", x: windowWidth * 0.5, y: windowHeight * 0.80, width: 40, height: 40 },
+            { action: "switchMode", text: "♺", x: windowWidth * 0.5, y: windowHeight * 0.75, width: 40, height: 40 },
             { action: "slower", text: "<<", x: windowWidth * 0.90, y: windowHeight * 0.95, width: 60, height: 40 },
-            { action: "faster", text: ">>", x: windowWidth * 0.95, y: windowHeight * 0.95, width: 60, height: 40 },
+            { action: "faster", text: ">>", x: windowWidth * 0.95, y: windowHeight * 0.95, width: 60, height: 40 }
 
-            { action: "play", text: ">", x: windowWidth * 0.5, y: windowHeight * 0.95, width: 40, height: 40 }
+            //{ action: "play", text: ">", x: windowWidth * 0.5, y: windowHeight * 0.95, width: 40, height: 40 }
         ]
     }
 
@@ -40,7 +40,7 @@ class GuiController {
 
     drawMainGui() {
         textAlign(LEFT)
-        text(loopMode ? "looping" : "album mode", windowWidth * 0.01, windowHeight * 0.95)
+        text(loopMode ? "looping" : "album mode", windowWidth * 0.01, windowHeight * 0.90)
         this.buttons.forEach(button => {
             // rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height)
             if (button.action == "trackName") {
@@ -75,9 +75,9 @@ class GuiController {
                     case "faster":
                         musicController.increaseSpeed()
                         break;
-                    case "play":
-                        musicController.playTrack(musicController.getTrackNumberPlaying())
-                        break;
+                    // case "play":
+                    //     musicController.playTrack(musicController.getTrackNumberPlaying())
+                    //     break;
                     default:
                         console.error("Action not yet implemented")
                         break;
