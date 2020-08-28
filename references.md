@@ -127,5 +127,11 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [hueish](https://www.shadertoy.com/view/llcczf)
 
+[Feedback tunnel experiment](https://www.shadertoy.com/view/XttSRM)
+
+[Northern Lights Blazing Bright](https://www.shadertoy.com/view/wdf3Rf)
+
+[WaperVave](https://www.shadertoy.com/view/3sGSDm)
+
 ### Fluid
 [spilled](https://www.shadertoy.com/view/MsGSRd)
