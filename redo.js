@@ -29,7 +29,7 @@ function setup() {
 
     createCanvas(windowWidth, windowHeight)
 
-    polygonRadius = windowHeight * 0.4
+    polygonRadius = windowHeight * 0.32
 
     musicController = new MusicController()
 
@@ -154,5 +154,5 @@ function windowResized() {
     // era importante que o polígono se adaptasse ao canvas
     // imagino isto como sendo importante no caso do telemóvel e alguém o rodar
     // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
-    polygonRadius = windowHeight * 0.4
+    polygonRadius = windowHeight * 0.32
 }
