@@ -23,12 +23,15 @@ class Circle {
         this.circleSize = diameter
         this.scaleForce = 0
         this.scaleVelocity = 0
-        this.scaleDrag = 0.75
+        this.scaleDrag = 0.6
         this.scaleStrength = 0.1
 
         this.diameter = diameter
         this.index = index
 
+        // color
+        this.startFill = 0.2
+        this.endFill = 0.5
         this.lerpAmount = 0
         this.hRange = map(this.index * (360 / 18), 0, 360, 150, 300)
     }
@@ -40,7 +43,7 @@ class Circle {
         // circle base style is common to any state
         strokeWeight(1)
         stroke(this.hRange, 100, 100, 1.0)
-        fill(this.hRange, 100, 100, 0.1)
+        fill(this.hRange, 100, 100, this.startFill)
 
         if (!open) {
             // When Polygon is still closed
@@ -79,7 +82,7 @@ class Circle {
             // }
 
             stroke(0, 0, 100, 1.0)
-            fill(0, 0, 100, 0.1)
+            fill(0, 0, 100, this.startFill)
         } else {
             stroke(this.hRange, 100, 100, 1.0)
         }
@@ -116,11 +119,11 @@ class Circle {
                 */
             }
 
-            fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
+            fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
 
             if (this.isPlaying()) {
                 stroke(0, 0, 100, 1.0)
-                fill(0, 0, 100, lerp(0.1, 0.4, this.lerpAmount))
+                fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
             }
         }
 
@@ -141,11 +144,11 @@ class Circle {
                 this.diameter = this.circleSize
             }
 
-            fill(this.hRange, 100, 100, lerp(0.1, 0.4, this.lerpAmount))
+            fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
 
             if (this.isPlaying()) {
                 stroke(0, 0, 100, 1.0)
-                fill(0, 0, 100, lerp(0.1, 0.4, this.lerpAmount))
+                fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
             }
         }
     }

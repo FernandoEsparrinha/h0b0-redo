@@ -59,7 +59,7 @@ class MusicController {
         this.trackPlaying = 0
         fft = new p5.FFT()
         peakDetect = new p5.PeakDetect()
-        amplitude = new p5.Amplitude(.99)
+        amplitude = new p5.Amplitude()
         amplitude.setInput()
         loadTracklist()
     }
