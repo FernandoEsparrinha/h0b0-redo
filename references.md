@@ -120,6 +120,8 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [p5-canvas-crt](https://glitch.com/~p5-canvas-crt)
 
+[Procedural film grain](https://www.shadertoy.com/view/4t2fRz)
+
 ### Feedback
 [Simple Feedback Example](https://www.shadertoy.com/view/wtVXz3)
 
