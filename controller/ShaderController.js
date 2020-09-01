@@ -32,11 +32,11 @@ class ShaderController {
         videoFeedbackShader.setUniform('tex0', vidGu)
         // videoFeedbackShader.setUniform('tex0', vidWater)
         videoFeedbackShader.setUniform('tex1', this.copyLayer)
-        videoFeedbackShader.setUniform('u_amplitude', amplitude.getLevel())
         videoFeedbackShader.setUniform('u_time', new Date().getTime())
+        videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
+        videoFeedbackShader.setUniform('u_amplitude', amplitude.getLevel())
         videoFeedbackShader.setUniform('u_playbackPosition', musicController.getCurrentPlaybackPosition())
         videoFeedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed())
-        videoFeedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
         videoFeedbackShader.setUniform('stepSize', [1.0/width, 1.0/height]); // the size of one pixel on the screen
         videoFeedbackShader.setUniform('dist', 3.0); // how far away to sample from the current pixel - 1 is 1 pixel away
 
@@ -56,6 +56,13 @@ class ShaderController {
         videoKernelShader.setUniform("u_resolution", [width, height])
         videoKernelShader.setUniform('stepSize', [1.0/width, 1.0/height]); // the size of one pixel on the screen
         videoKernelShader.setUniform('dist', 3.0); // how far away to sample from the current pixel - 1 is 1 pixel away
+
+        // videoFHueishShader
+        videoFHueishShader.setUniform('tex0', imgColorNoise)
+        videoFHueishShader.setUniform('tex1', this.copyLayer)
+        videoFHueishShader.setUniform("u_resolution", [width, height])
+        videoFHueishShader.setUniform('u_time', new Date().getTime())
+        videoFHueishShader.setUniform('u_mouseDown', int(mouseIsPressed))
 
         // rect gives us some geometry on the screen
         this.shaderGraphics.rect(0, 0, windowWidth, windowHeight)
@@ -89,6 +96,9 @@ class ShaderController {
                 break;
             case 7:
                 this.shaderGraphics.shader(videoKernelShader)
+                break;
+            case 8:
+                this.shaderGraphics.shader(videoFHueishShader)
                 break;
             default:
                 break;

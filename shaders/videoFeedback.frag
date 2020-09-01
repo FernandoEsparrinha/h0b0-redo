@@ -13,11 +13,12 @@ varying vec2 vTexCoord;
 uniform sampler2D tex0;
 uniform sampler2D tex1;
 
-uniform float u_amplitude;
 uniform float u_time;
+uniform float u_mouseDown;
+
+uniform float u_amplitude;
 uniform float u_playbackPosition;
 uniform float u_playbackSpeed;
-uniform float u_mouseDown;
 
 // convolution kernel
 // 0 emboss, 1 sharpen, 2 gaussian blur, 3 edge detect

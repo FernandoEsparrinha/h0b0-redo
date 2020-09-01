@@ -14,6 +14,7 @@ function preload() {
     vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
 
     imgVegan = loadImage('assets/image/soyVegano-w216-h152.png')
+    imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     videoShader = loadShader('shaders/shader.vert', 'shaders/videoProportion.frag')
@@ -22,6 +23,7 @@ function preload() {
     videoClampShader = loadShader('shaders/shader.vert', 'shaders/videoClamp.frag')
     videoWormsShader = loadShader('shaders/shader.vert', 'shaders/videoWorms.frag')
     videoKernelShader = loadShader('shaders/shader.vert', 'shaders/videoConvolutionKernel.frag')
+    videoFHueishShader = loadShader('shaders/shader.vert', 'shaders/videoFeedbackHueish.frag')
 }
 
 function setup() {
@@ -82,6 +84,7 @@ function keyPressed() {
         musicController.playTrack(musicController.trackPlaying, true)
     }
 
+    //shaders
     // 1
     else if (keyCode === 49) {
         console.log('keyPressed: 1')
@@ -112,10 +115,15 @@ function keyPressed() {
         console.log('keyPressed: 6')
         shaderController.changeShader(6)
     }
-    // 6
+    // 7
     else if (keyCode === 55) {
         console.log('keyPressed: 7')
         shaderController.changeShader(7)
+    }
+    // 8
+    else if (keyCode === 56) {
+        console.log('keyPressed: 8')
+        shaderController.changeShader(8)
     }
 }
 
