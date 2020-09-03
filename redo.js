@@ -10,10 +10,10 @@ function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
 
     vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
-
     imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
+
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
-    videoFHueishShader = loadShader('shaders/shader.vert', 'shaders/videoFeedbackHueish.frag')
+    feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
 }
 
 function setup() {
