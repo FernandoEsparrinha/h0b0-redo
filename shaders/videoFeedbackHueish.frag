@@ -47,7 +47,7 @@ void main() {
     float yAngle = sin(fb.r * 6.28);
     
     // The amount
-    vec2 amt = texel.xy * 2.;
+    vec2 amt = texel.xy;
     
     // Sample texture
     vec4 colOut = texture2D(tex1, tc - vec2(xAngle, yAngle) * amt);
