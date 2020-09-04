@@ -9,16 +9,12 @@ precision mediump float;
 
 #define PI 3.14159265358979323846
 
-uniform vec2 u_resolution;
-uniform float u_time;
-uniform vec2 u_mouse;
+varying vec2 vTexCoord;     // texcoords from vert shader
+uniform sampler2D tex0;     // feedback shader image
 
-// our textures coming from p5
-uniform sampler2D tex0;
-
-// this is the same variable we declared in the vertex shader
-// we need to declare it here too!
-varying vec2 vTexCoord;
+uniform vec2 u_resolution;  // [width, height]
+uniform vec2 u_mouse;       // [mouseX, mouseY] (mapped to range)
+uniform float u_time;       // millis() / 1000.0)
 
 // Loosely based on postprocessing shader by inigo quilez, License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 
@@ -41,37 +37,37 @@ void main() {
     uv = curve( uv );
     vec3 oricol = texture2D(tex0, vec2(q.x,q.y) ).xyz;
     vec3 col;
-	  float x =  sin(0.3*u_time+uv.y*21.0)*sin(0.7*u_time+uv.y*29.0)*sin(0.3+0.33*u_time+uv.y*31.0)*0.0017;
+	float x =  sin(0.3*u_time+uv.y*21.0)*sin(0.7*u_time+uv.y*29.0)*sin(0.3+0.33*u_time+uv.y*31.0)*0.0017;
 
-    col.r = texture2D(tex0,vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
-    col.g = texture2D(tex0,vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
-    col.b = texture2D(tex0,vec2(x+uv.x-0.002,uv.y+0.000)).z+0.05;
-    col.r += 0.08*texture2D(tex0,0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
-    col.g += 0.05*texture2D(tex0,0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
-    col.b += 0.08*texture2D(tex0,0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
+    col.r = texture2D(tex0, vec2(x+uv.x+0.001, uv.y+0.001)).x + 0.05;
+    col.g = texture2D(tex0, vec2(x+uv.x+0.000, uv.y-0.002)).y + 0.05;
+    col.b = texture2D(tex0, vec2(x+uv.x-0.002, uv.y+0.000)).z + 0.05;
+    col.r += 0.08 * texture2D(tex0, 0.75 * vec2(x+0.025, -0.027) + vec2(uv.x+0.001, uv.y+0.001)).x;
+    col.g += 0.05 * texture2D(tex0, 0.75 * vec2(x+-0.022, -0.02) + vec2(uv.x+0.000, uv.y-0.002)).y;
+    col.b += 0.08 * texture2D(tex0, 0.75 * vec2(x+-0.02, -0.018) + vec2(uv.x-0.002, uv.y+0.000)).z;
 
-    col = clamp(col*0.6+0.4*col*col*1.0,0.0,1.0);
+    col = clamp(col * 0.6 + 0.4 * col * col * 1.0, 0.0, 1.0);
 
-    float vig = (0.0 + 1.0*16.0*uv.x*uv.y*(1.0-uv.x)*(1.0-uv.y));
-	col *= vec3(pow(vig,0.3));
+    float vig = (0.0 + 1.0 * 16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y));
+	col *= vec3(pow(vig, 0.3));
 
-    col *= vec3(0.95,1.05,0.95);
+    col *= vec3(0.95, 1.05, 0.95);
 	col *= 2.8;
 
-	float scans = clamp( 0.35+0.35*sin(3.5*u_time+uv.y*u_resolution.y*1.5), 0.0, 1.0);
+	float scans = clamp(0.35 + 0.35 * sin(3.5 * u_time + uv.y * u_resolution.y * 1.5), 0.0, 1.0);
 	
-	float s = pow(scans,1.7);
-	col = col*vec3( 0.4+0.7*s) ;
+	float s = pow(scans, 1.7);
+	col = col * vec3(0.4 + 0.7 * s) ;
 
-    col *= 1.0+0.01*sin(110.0*u_time);
+    col *= 1.0 + 0.01 * sin(110.0 * u_time);
 	if (uv.x < 0.0 || uv.x > 1.0)
 		col *= 0.0;
 	if (uv.y < 0.0 || uv.y > 1.0)
 		col *= 0.0;
 	
-	col*=1.0-0.65*vec3(clamp((mod(gl_FragCoord.x, 2.0)-1.0)*2.0,0.0,1.0));
+	col *= 1.0 - 0.65 * vec3(clamp((mod(gl_FragCoord.x, 2.0) - 1.0) * 2.0, 0.0, 1.0));
 	
-    float comp = smoothstep( 0.1, 0.9, sin(u_time) );
+    float comp = smoothstep(0.1, 0.9, sin(u_time));
  
 	// Remove the next line to stop cross-fade between original and postprocess
     // col = mix( col, oricol, comp );
