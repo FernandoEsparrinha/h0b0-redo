@@ -1,3 +1,6 @@
+// original reference
+// https://www.shadertoy.com/view/ttSXzc
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -9,9 +12,10 @@ varying vec2 vTexCoord; // texcoords from vert shader
 uniform sampler2D tex0; // image
 uniform sampler2D tex1; // feedback buffer-texture
 
-uniform vec2 u_resolution;
-uniform float u_mouseDown;
-uniform float u_time;
+uniform vec2 u_resolution;  // [width, height]
+uniform float u_mouseDown;  // mouseIsPressed
+uniform float u_mouse;      // [mouseX, mouseY] (mapped to range)
+uniform float u_time;       // millis() / 1000.0)
 
 vec3 rgb2hsv(vec3 c){
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -32,16 +36,19 @@ vec3 hsv2rgb(vec3 c){
 void main() {
     vec2 texel = 1.0 / u_resolution.xy;
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+
+    vec4 source = texture2D(tex0, uv);  // original image-video
     uv.y = 1.0 - uv.y;          // textures are loaded upside down, flip them
+
+    // wiggle wiggle wiggle
+    vec2 wiggle = sin(uv * u_mouse) * 0.05;
 
     vec2 tc = uv;               // texture coordinates
     tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
-    tc *= 1.0001;               // zoom the uvs
+    tc *= 1.01;                  // zoom the uvs
     tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
-    vec4 source = texture2D(tex0, uv);  // original image-video
-
-    vec4 fb = texture2D(tex1, tc);
+    vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer
     fb.rgb = rgb2hsv(fb.rgb);
 
     // get the xy angles from the hue
@@ -56,22 +63,22 @@ void main() {
 
     // Update hsv a little every time through the loop
     colOut.rgb = rgb2hsv(colOut.rgb);
-    colOut.r += 0.0020;
-    colOut.g += 0.0040;
-    colOut.b += 0.0030;
+    colOut.r += 0.0009;
+    colOut.g += 0.0008;
+    colOut.b += 0.0010;
     
     colOut.rgb = hsv2rgb(colOut.rgb);
 
     // if COLOR > 1.0, invert the texture and swizzle the color channels around
-    // if(step(1.0, colOut.r) == 1.0) {
-    //   colOut.r = 0.0;
-    // }
-    // if(step(1.0, colOut.g) == 1.0){
-    //   colOut.g = 0.0;
-    // }
-    // if(step(1.0, colOut.b) == 1.0){
-    //   colOut.b = 0.0;
-    // }
+    if(step(1.0, colOut.r) == 1.0) {
+      colOut.r = 0.90;
+    }
+    if(step(1.0, colOut.g) == 1.0){
+      colOut.g = 0.90;
+    }
+    if(step(1.0, colOut.b) == 1.0){
+      colOut.b = 0.90;
+    }
 
     gl_FragColor = colOut;
 

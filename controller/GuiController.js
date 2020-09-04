@@ -14,7 +14,7 @@ class GuiController {
 
     draw() {
         textFont(fontMono)
-        // console.log(windowWidth)
+        //textFont(fontH0b0)
         textSize(32)
         stroke(0, 0, 0)
         strokeWeight(2)

@@ -8,6 +8,7 @@ let verticesPosition = []
 
 function preload() {
     fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
+    //fontH0b0 = loadFont('assets/type/H0b0.otf')
 
     vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
     imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
