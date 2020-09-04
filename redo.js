@@ -15,6 +15,7 @@ function preload() {
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
+    crtShader      = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
 function setup() {
@@ -77,6 +78,11 @@ function keyPressed() {
     else if (keyCode === 50) {
         console.log('keyPressed: 2')
         shaderController.changeShader(2)
+    }
+    // 3
+    else if (keyCode === 51) {
+        console.log('keyPressed: 3')
+        shaderController.changeShader(3)
     }
 }
 

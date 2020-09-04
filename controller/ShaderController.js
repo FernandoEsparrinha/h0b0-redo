@@ -1,12 +1,18 @@
 class ShaderController {
     constructor() {
-        this.shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.shaderGraphics.noStroke()
+        // this.shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
+        // this.shaderGraphics.noStroke()
 
+        this.gradientPass   = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.feedbackPass   = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.crtPass        = createGraphics(windowWidth, windowHeight, WEBGL)
         this.feedbackBuffer = createGraphics(windowWidth, windowHeight)
 
-        // sets the active shader
-        this.shaderGraphics.shader(gradientShader)
+        noStroke()
+        this.gradientPass.noStroke()
+        this.feedbackPass.noStroke()
+        this.crtPass.noStroke()
+
     }
 
     draw() {
@@ -17,24 +23,34 @@ class ShaderController {
         vidGu.hide()
 
         // gradientShader
+        this.gradientPass.shader(gradientShader)
         gradientShader.setUniform("u_resolution", [width, height])
+        this.gradientPass.rect(0, 0, windowWidth, windowHeight)
 
         // feedbackShader
+        this.feedbackPass.shader(feedbackShader)
         feedbackShader.setUniform('tex0', imgColorNoise)
         feedbackShader.setUniform('tex1', this.feedbackBuffer)
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
         feedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
         feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
-
-        // rect gives us some geometry on the screen
-        this.shaderGraphics.rect(0, 0, windowWidth, windowHeight)
+        this.feedbackPass.rect(0, 0, windowWidth, windowHeight)
 
         // draw into the buffer
-        this.feedbackBuffer.image(this.shaderGraphics, 0, 0, width, height)
+        this.feedbackBuffer.image(this.feedbackPass, 0, 0, width, height)
+
+        // crtShader
+        this.crtPass.shader(crtShader)
+        crtShader.setUniform('tex0', this.feedbackPass)
+        crtShader.setUniform('u_resolution', [width, height])
+        crtShader.setUniform('u_time', millis() / 1000.0)
+        crtShader.setUniform('u_mouseDown', int(mouseIsPressed))
+        crtShader.setUniform('u_mouse', [this.mX, this.mY])
+        this.crtPass.rect(0, 0, windowWidth, windowHeight)
 
         // displays the shader image
-        image(this.shaderGraphics, 0, 0, windowWidth, windowHeight)
+        image(this.crtPass, 0, 0, windowWidth, windowHeight)
     }
 
     changeShader(shaderIndex) {
@@ -44,6 +60,9 @@ class ShaderController {
                 break;
             case 2:
                 this.shaderGraphics.shader(feedbackShader)
+                break;
+            case 3:
+                this.shaderGraphics.shader(crtShader)
                 break;
             default:
                 break;
