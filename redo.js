@@ -1,6 +1,7 @@
 p5.disableFriendlyErrors = true
 
-let open = false;
+let open = false
+let mobileMode = false
 let polygon, polygonRadius
 let musicController, fft, peakDetect, amplitude
 
@@ -15,15 +16,16 @@ function preload() {
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
-    crtShader      = loadShader('shaders/shader.vert', 'shaders/crt.frag')
+    crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
 function setup() {
     pixelDensity(1)
 
+    mobileMode = windowWidth < 504
     createCanvas(windowWidth, windowHeight)
 
-    polygonRadius = windowHeight * 0.32
+    polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.32
 
     musicController = new MusicController()
 

@@ -54,6 +54,7 @@ class Circle {
             this.handleHovering()
 
             // Displays (music) index number over circle
+            textSize(32)
             text(this.index, this.X, this.Y)
         }
 

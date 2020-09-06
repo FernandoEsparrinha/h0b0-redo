@@ -2,7 +2,7 @@ class Polygon {
     constructor(radius, n) {
         this.vertices = []
 
-        createVerticesPosition(n, radius)
+        createVerticesPosition(radius, n)
         for (let i = 0; i < n; i++) {
             this.vertices[i] = new Circle(verticesPosition[i], radius / 5, i)
         }
