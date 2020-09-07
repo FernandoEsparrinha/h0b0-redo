@@ -153,7 +153,14 @@ class MusicController {
 
     getCurrentPlaybackPosition() {
         if (open) {
-            return tracks[this.trackPlaying].currentTime()
+            let time = tracks[this.trackPlaying].currentTime()
+            let minutes = Math.floor(time / 60)
+            let seconds = Math.floor(time % 60)
+            let duration = tracks[this.trackPlaying].duration()
+            let minutesMusic = Math.floor(duration / 60)
+            let secondsMusic = Math.floor(duration % 60)
+            let strTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds + " / " + minutesMusic + ":" + (secondsMusic < 10 ? "0" : "") + secondsMusic
+            return strTime
         } else {
             return 0
         }
