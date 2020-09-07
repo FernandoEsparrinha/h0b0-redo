@@ -1,20 +1,54 @@
 class GuiController {
     constructor() {
         this.buttons = [
-            { action: "trackName", text: "", x: windowWidth * 0.01, y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95, width: 40, height: 40 },
-            { action: "currentMode", text: "", x: windowWidth * 0.01, y: mobileMode ? windowHeight * 0.93 : windowHeight * 0.90, width: 40, height: 40 },
-            { action: "trackSpeed", text: "", x: windowWidth * 0.01, y: mobileMode ? windowHeight * 0.91 : windowHeight * 0.85, width: 40, height: 40 },
+            { action: "trackName", text: "",
+                x: windowWidth * 0.01,
+                y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95,
+                width: 40,
+                height: 40
+            },
+            
+            { action: "currentMode", text: "",
+                x: windowWidth * 0.01,
+                y: mobileMode ? windowHeight * 0.93 : windowHeight * 0.90,
+                width: 40,
+                height: 40
+            },
 
-            { action: "switchMode", text: "♺", x: windowWidth * 0.5, y: windowHeight * 0.75, width: 40, height: 40 },
-            { action: "slower", text: "<<", x: windowWidth * 0.90, y: windowHeight * 0.95, width: 65, height: 30 },
-            { action: "faster", text: ">>", x: windowWidth * 0.95, y: windowHeight * 0.95, width: 65, height: 30 }
+            { action: "switchMode", text: "♺",
+                x: windowWidth * 0.5,
+                y: windowHeight * 0.75,
+                width: 40,
+                height: 40
+            },
 
-            //{ action: "play", text: ">", x: windowWidth * 0.5, y: windowHeight * 0.95, width: 40, height: 40 }
+            // fontVCR is monospaced so textWidth was hardcoded
+            { action: "slower", text: "◄◄",
+                x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49/2),
+                y: windowHeight * 0.95,
+                width: 49,
+                height: 30
+            },
+
+            { action: "trackSpeed", text: "",
+                x: windowWidth * 0.95 - (49 + 10) - textWidth("x1.0"),
+                y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95,
+                width: 49,
+                height: 30
+            },
+
+            { action: "faster", text: "►►",
+                x: windowWidth * 0.95,
+                y: windowHeight * 0.95,
+                width: 49,
+                height: 30
+            }
         ]
+        console.log(textWidth("x1.0"))
     }
 
     draw() {
-        textFont(fontMono)
+        textFont(fontVCR)
         //textFont(fontH0b0)
         stroke(0, 0, 0)
         strokeWeight(2)
@@ -56,7 +90,8 @@ class GuiController {
 
             if (button.action == "trackSpeed") {
                 textAlign(LEFT)
-                text("Playback speed: x" + musicController.getCurrentPlaybackSpeed(), button.x, button.y)
+                let strTrackSpeed = "x" + musicController.getCurrentPlaybackSpeed().toFixed(1)
+                text(strTrackSpeed, button.x, button.y)
             }
 
             if (button.action == "currentMode") {
