@@ -35,26 +35,6 @@ function loadTracklist() {
 
 class MusicController {
     constructor() {
-        this.trackList = [
-            "every_end",
-            "simply_live",
-            "retrogade_in_bloom",
-            "If I could try and just show you",
-            "mt. parador",
-            "oh I should just try",
-            "what_do_you_say_?",
-            "be_until_you_are",
-            "dissatisfaction",
-            "another_missed_call",
-            "sea_in_me",
-            "egyptian_night",
-            "OH YES",
-            "take off all your clothes",
-            "what_do_you_say_",
-            "once_again",
-            "another_chance",
-            "if_sorry_misbehave",
-        ]
 
         this.trackPlaying = 0
         fft = new p5.FFT()
@@ -172,6 +152,7 @@ class MusicController {
     }
 
     getCurrentTrackName() {
-        return this.trackList[this.trackPlaying]
+        return trackList[this.trackPlaying]
+    }
     }
 }
