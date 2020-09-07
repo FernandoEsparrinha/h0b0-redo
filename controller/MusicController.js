@@ -154,5 +154,19 @@ class MusicController {
     getCurrentTrackName() {
         return trackList[this.trackPlaying]
     }
+
+    logValues() {
+        if (open) {
+            fft.analyze();
+
+
+            console.log("Amplitude: " + amplitude.getLevel())
+            console.log("Energy (bass): " + fft.getEnergy("bass"))
+            console.log("Energy (lowMid): " + fft.getEnergy("lowMid"))
+            console.log("Energy (mid): " + fft.getEnergy("mid"))
+            console.log("Energy (highMid): " + fft.getEnergy("highMid"))
+            console.log("Energy (treble): " + fft.getEnergy("treble"))
+
+        }
     }
 }
