@@ -29,7 +29,6 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [x] made template gradient background with GLSL;
 - [x] imported and played video on the background;
 - [x] applied effects to imported video;
-- [ ] effect manipulation: mouseXY changes;
 - [ ] effect manipulation: audio reactivity;
 
 ### Responsiveness

@@ -44,7 +44,6 @@ class GuiController {
                 height: 30
             }
         ]
-        console.log(textWidth("x1.0"))
     }
 
     draw() {
