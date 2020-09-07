@@ -3,9 +3,9 @@ class ShaderController {
         // this.shaderGraphics = createGraphics(windowWidth, windowHeight, WEBGL)
         // this.shaderGraphics.noStroke()
 
-        this.gradientPass   = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.feedbackPass   = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.crtPass        = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.gradientPass = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.feedbackPass = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.crtPass = createGraphics(windowWidth, windowHeight, WEBGL)
         this.feedbackBuffer = createGraphics(windowWidth, windowHeight)
 
         noStroke()
@@ -35,6 +35,14 @@ class ShaderController {
         feedbackShader.setUniform('u_time', millis() / 1000.0)
         feedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
         feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
+
+        feedbackShader.setUniform('u_amplitudeValue', amplitude.getLevel())
+
+        feedbackShader.setUniform('u_zoomValue', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
+        feedbackShader.setUniform('u_colorIncrement', trackVisualConfigurations[musicController.getTrackNumberPlaying()][1])
+        feedbackShader.setUniform('u_colorTreshold', trackVisualConfigurations[musicController.getTrackNumberPlaying()][2])
+
+
         this.feedbackPass.rect(0, 0, windowWidth, windowHeight)
 
         // draw into the buffer

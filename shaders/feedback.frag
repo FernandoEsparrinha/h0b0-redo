@@ -12,6 +12,11 @@ varying vec2 vTexCoord; // texcoords from vert shader
 uniform sampler2D tex0; // image
 uniform sampler2D tex1; // feedback buffer-texture
 
+uniform float u_amplitudeValue;
+uniform float u_zoomValue;
+uniform vec3 u_colorIncrement;
+uniform vec3 u_colorTreshold;
+
 uniform vec2 u_resolution;  // [width, height]
 uniform float u_mouseDown;  // mouseIsPressed
 uniform float u_mouse;      // [mouseX, mouseY] (mapped to range)
@@ -40,12 +45,9 @@ void main() {
     vec4 source = texture2D(tex0, uv);  // original image-video
     uv.y = 1.0 - uv.y;          // textures are loaded upside down, flip them
 
-    // wiggle wiggle wiggle
-    vec2 wiggle = sin(uv * u_mouse) * 0.05;
-
     vec2 tc = uv;               // texture coordinates
     tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
-    tc *= 1.01;                  // zoom the uvs
+    tc *= u_zoomValue;                  // zoom the uvs
     tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
     vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer
@@ -63,21 +65,21 @@ void main() {
 
     // Update hsv a little every time through the loop
     colOut.rgb = rgb2hsv(colOut.rgb);
-    colOut.r += 0.0009;
-    colOut.g += 0.0008;
-    colOut.b += 0.0010;
+    colOut.r += u_colorIncrement.r;
+    colOut.g += u_colorIncrement.g;
+    colOut.b += u_colorIncrement.b;
     
     colOut.rgb = hsv2rgb(colOut.rgb);
 
     // if COLOR > 1.0, invert the texture and swizzle the color channels around
     if(step(1.0, colOut.r) == 1.0) {
-      colOut.r = 0.90;
+      colOut.r = u_colorTreshold.r;
     }
     if(step(1.0, colOut.g) == 1.0){
-      colOut.g = 0.90;
+      colOut.g = u_colorTreshold.g;
     }
     if(step(1.0, colOut.b) == 1.0){
-      colOut.b = 0.90;
+      colOut.b = u_colorTreshold.b;
     }
 
     gl_FragColor = colOut;

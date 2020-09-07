@@ -46,6 +46,7 @@ function draw() {
     shaderController.draw()
     polygon.draw()
     guiController.draw()
+    musicController.logValues()
 }
 
 // This function is called when the video loads
