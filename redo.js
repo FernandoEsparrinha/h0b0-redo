@@ -37,7 +37,11 @@ function setup() {
 function draw() {
     // DRAW SETTINGS
     clear()
-    cursor(ARROW)
+    if (!tracksLoaded) {
+        cursor(WAIT)
+    } else {
+        cursor(ARROW)
+    }
     background(0)
     colorMode(HSB)
     noFill()
