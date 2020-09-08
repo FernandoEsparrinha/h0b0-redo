@@ -35,14 +35,11 @@ class ShaderController {
         feedbackShader.setUniform('u_time', millis() / 1000.0)
         feedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
         feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
-
+        feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
         feedbackShader.setUniform('u_amplitudeValue', amplitude.getLevel())
-
         feedbackShader.setUniform('u_zoomValue', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
         feedbackShader.setUniform('u_colorIncrement', trackVisualConfigurations[musicController.getTrackNumberPlaying()][1])
         feedbackShader.setUniform('u_colorTreshold', trackVisualConfigurations[musicController.getTrackNumberPlaying()][2])
-
-
         this.feedbackPass.rect(0, 0, windowWidth, windowHeight)
 
         // draw into the buffer
@@ -50,7 +47,11 @@ class ShaderController {
 
         // crtShader
         this.crtPass.shader(crtShader)
-        crtShader.setUniform('tex0', this.feedbackPass)
+        if (!open) {
+            crtShader.setUniform('tex0', this.gradientPass)
+        } else {
+            crtShader.setUniform('tex0', this.feedbackPass)
+        }
         crtShader.setUniform('u_resolution', [width, height])
         crtShader.setUniform('u_time', millis() / 1000.0)
         crtShader.setUniform('u_mouseDown', int(mouseIsPressed))
@@ -61,19 +62,19 @@ class ShaderController {
         image(this.crtPass, 0, 0, windowWidth, windowHeight)
     }
 
-    changeShader(shaderIndex) {
-        switch (shaderIndex) {
-            case 1:
-                this.shaderGraphics.shader(gradientShader)
-                break;
-            case 2:
-                this.shaderGraphics.shader(feedbackShader)
-                break;
-            case 3:
-                this.shaderGraphics.shader(crtShader)
-                break;
-            default:
-                break;
-        }
-    }
+    // changeShader(shaderIndex) {
+    //     switch (shaderIndex) {
+    //         case 1:
+    //             this.shaderGraphics.shader(gradientShader)
+    //             break;
+    //         case 2:
+    //             this.shaderGraphics.shader(feedbackShader)
+    //             break;
+    //         case 3:
+    //             this.shaderGraphics.shader(crtShader)
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
 }

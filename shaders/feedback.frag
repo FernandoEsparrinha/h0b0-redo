@@ -17,10 +17,11 @@ uniform float u_zoomValue;
 uniform vec3 u_colorIncrement;
 uniform vec3 u_colorTreshold;
 
-uniform vec2 u_resolution;  // [width, height]
-uniform float u_mouseDown;  // mouseIsPressed
-uniform float u_mouse;      // [mouseX, mouseY] (mapped to range)
-uniform float u_time;       // millis() / 1000.0)
+uniform vec2 u_resolution;      // [width, height]
+uniform float u_time;           // millis() / 1000.0)
+uniform float u_mouseDown;      // mouseIsPressed
+uniform float u_mouse;          // [mouseX, mouseY] (mapped to range)
+uniform float u_playbackSpeed;  // musicController.getCurrentPlaybackSpeed().toFixed(1) (0.1, 2.0)
 
 vec3 rgb2hsv(vec3 c){
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -53,8 +54,8 @@ void main() {
     fb.rgb = rgb2hsv(fb.rgb);
 
     // get the xy angles from the hue
-    float xAngle = cos(fb.r * TWO_PI);
-    float yAngle = sin(fb.r * TWO_PI);
+    float xAngle = cos(fb.r * TWO_PI * u_playbackSpeed);
+    float yAngle = sin(fb.r * TWO_PI * u_playbackSpeed);
 
     // The amount
     vec2 amt = texel.xy * 2.;

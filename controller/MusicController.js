@@ -166,7 +166,6 @@ class MusicController {
         if (open) {
             fft.analyze();
 
-
             console.log("Amplitude: " + amplitude.getLevel())
             console.log("Energy (bass): " + fft.getEnergy("bass"))
             console.log("Energy (lowMid): " + fft.getEnergy("lowMid"))

@@ -22,9 +22,9 @@ class GuiController {
                 height: 40
             },
 
-            // fontVCR is monospaced so textWidth was hardcoded
+            // fontVCR is monospaced so textWidth is hardcoded
             { action: "slower", text: "◄◄",
-                x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49/2),
+                x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
                 y: windowHeight * 0.95,
                 width: 49,
                 height: 30

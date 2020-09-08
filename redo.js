@@ -13,10 +13,11 @@ function preload() {
 
     vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
     imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
+    imgMiraTecnica = loadImage('assets/image/miraTecnica.jpg')
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
-    crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
+    crtShader      = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
 function setup() {
@@ -71,22 +72,22 @@ function keyPressed() {
         musicController.playTrack(musicController.trackPlaying, true)
     }
 
-    //shaders
-    // 1
-    else if (keyCode === 49) {
-        console.log('keyPressed: 1')
-        shaderController.changeShader(1)
-    }
-    // 2
-    else if (keyCode === 50) {
-        console.log('keyPressed: 2')
-        shaderController.changeShader(2)
-    }
-    // 3
-    else if (keyCode === 51) {
-        console.log('keyPressed: 3')
-        shaderController.changeShader(3)
-    }
+    // //shaders
+    // // 1
+    // else if (keyCode === 49) {
+    //     console.log('keyPressed: 1')
+    //     shaderController.changeShader(1)
+    // }
+    // // 2
+    // else if (keyCode === 50) {
+    //     console.log('keyPressed: 2')
+    //     shaderController.changeShader(2)
+    // }
+    // // 3
+    // else if (keyCode === 51) {
+    //     console.log('keyPressed: 3')
+    //     shaderController.changeShader(3)
+    // }
 }
 
 function mouseClicked() {
