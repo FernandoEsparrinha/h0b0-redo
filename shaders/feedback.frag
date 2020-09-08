@@ -42,12 +42,11 @@ void main() {
     vec2 texel = 1.0 / u_resolution.xy;
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
 
-    vec4 source = texture2D(tex0, uv);  // original image-video
     uv.y = 1.0 - uv.y;          // textures are loaded upside down, flip them
 
     vec2 tc = uv;               // texture coordinates
     tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
-    tc *= u_zoomValue;                  // zoom the uvs
+    tc *= u_zoomValue;          // zoom the uvs
     tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
     vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer

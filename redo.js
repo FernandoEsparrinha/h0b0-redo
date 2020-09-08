@@ -8,7 +8,7 @@ let musicController, fft, peakDetect, amplitude
 let verticesPosition = []
 
 function preload() {
-    fontMono = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
+    fontVCR = loadFont('assets/type/VCR_OSD_MONO_1.001.ttf')
     //fontH0b0 = loadFont('assets/type/H0b0.otf')
 
     vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
