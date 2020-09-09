@@ -33,7 +33,7 @@ class ShaderController {
         feedbackShader.setUniform('tex1', this.feedbackBuffer)
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
-        feedbackShader.setUniform('u_mouseDown', int(mouseIsPressed))
+        feedbackShader.setUniform('u_mouseDown', int(keyIsDown(82)))
         feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
         feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
         feedbackShader.setUniform('u_amplitudeValue', amplitude.getLevel())
