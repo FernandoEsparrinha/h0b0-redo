@@ -15,7 +15,7 @@ class GuiController {
                 height: 40
             },
 
-            { action: "switchMode", text: "♺",
+            { action: "switchMode", text: "∞",
                 x: windowWidth * 0.5,
                 y: windowHeight * 0.75,
                 width: 40,
@@ -23,7 +23,7 @@ class GuiController {
             },
 
             // fontVCR is monospaced so textWidth is hardcoded
-            { action: "slower", text: "◄◄",
+            { action: "slower", text: "⏪",
                 x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
                 y: windowHeight * 0.95,
                 width: 49,
@@ -37,7 +37,7 @@ class GuiController {
                 height: 30
             },
 
-            { action: "faster", text: "►►",
+            { action: "faster", text: "⏩",
                 x: windowWidth * 0.95,
                 y: windowHeight * 0.95,
                 width: 49,

@@ -33,7 +33,7 @@ class Circle {
         this.startFill = 0.2
         this.endFill = 0.5
         this.lerpAmount = 0
-        this.hRange = map(this.index * (360 / 18), 0, 360, 150, 300)
+        this.hRange = map(this.index * (360 / 18), 0, 360, 0, 360)
     }
 
     draw() {
