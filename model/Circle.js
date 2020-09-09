@@ -23,15 +23,15 @@ class Circle {
         this.circleSize = diameter
         this.scaleForce = 0
         this.scaleVelocity = 0
-        this.scaleDrag = 0.6
-        this.scaleStrength = 0.1
+        this.scaleDrag = 0.5
+        this.scaleStrength = 0.5
 
         this.diameter = diameter
         this.index = index
 
         // color
-        this.startFill = 0.2
-        this.endFill = 0.5
+        this.startFill = 0.3
+        this.endFill = 0.6
         this.lerpAmount = 0
         this.hRange = map(this.index * (360 / 18), 0, 360, 0, 360)
     }
