@@ -37,7 +37,7 @@ class ShaderController {
         feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
         feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
         feedbackShader.setUniform('u_amplitudeValue', amplitude.getLevel())
-        feedbackShader.setUniform('u_zoomValue', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
+        feedbackShader.setUniform('u_zoom', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
         feedbackShader.setUniform('u_colorIncrement', trackVisualConfigurations[musicController.getTrackNumberPlaying()][1])
         feedbackShader.setUniform('u_colorTreshold', trackVisualConfigurations[musicController.getTrackNumberPlaying()][2])
         this.feedbackPass.rect(0, 0, windowWidth, windowHeight)
