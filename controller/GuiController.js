@@ -2,24 +2,24 @@ class GuiController {
     constructor() {
         this.buttons = [
             { action: "trackName", text: "",
-                x: windowWidth * 0.01,
+                x: windowWidth * 0.02,
                 y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95,
                 width: 40,
                 height: 40
             },
             
-            { action: "currentMode", text: "",
-                x: windowWidth * 0.01,
-                y: mobileMode ? windowHeight * 0.93 : windowHeight * 0.90,
-                width: 40,
-                height: 40
-            },
+            // { action: "currentMode", text: "",
+            //     x: windowWidth * 0.02,
+            //     y: mobileMode ? windowHeight * 0.93 : windowHeight * 0.90,
+            //     width: 40,
+            //     height: 40
+            // },
 
             { action: "switchMode", text: "∞",
-                x: windowWidth * 0.5,
-                y: windowHeight * 0.75,
-                width: 40,
-                height: 40
+                x: windowWidth * 0.95 - (49 + 10 + 49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
+                y: windowHeight * 0.95,
+                width: 49,
+                height: 30,
             },
 
             // fontVCR is monospaced so textWidth is hardcoded
@@ -27,7 +27,7 @@ class GuiController {
                 x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
                 y: windowHeight * 0.95,
                 width: 49,
-                height: 30
+                height: 30,
             },
 
             { action: "trackSpeed", text: "",
@@ -41,7 +41,7 @@ class GuiController {
                 x: windowWidth * 0.95,
                 y: windowHeight * 0.95,
                 width: 49,
-                height: 30
+                height: 30,
             }
         ]
     }
@@ -70,7 +70,7 @@ class GuiController {
         if (mobileMode) {
             textSize(12)
         } else {
-            textSize(32)
+            textSize(24)
         }
 
         if (tracksLoaded && open) {
@@ -93,22 +93,25 @@ class GuiController {
                 text(strTrackSpeed, button.x, button.y)
             }
 
-            if (button.action == "currentMode") {
-                textAlign(LEFT)
-                text(loopMode ? "looping" : "album mode", button.x, button.y)
-            }
+            // if (button.action == "currentMode") {
+            //     textAlign(LEFT)
+            //     text(loopMode ? "looping" : "album mode", button.x, button.y)
+            // }
 
-            if (button.action == "slower" || button.action == "faster") {
+            if (button.action == "slower" || button.action == "faster" || button.action == "switchMode") {
                 push()
-                // the next if checks if the mouse is hovering
-                if (mouseX > button.x - (button.width / 2) && mouseX < button.x + (button.width / 2) && mouseY > button.y - (button.height / 2) && mouseY < button.y + (button.height / 2)) {
+                // check if the mouse is hovering
+                if (mouseX > button.x - (button.width / 2) 
+                && mouseX < button.x + (button.width / 2) 
+                && mouseY > button.y - (button.height / 2) 
+                && mouseY < button.y + (button.height / 2)) {
                     fill(55, 90, 100)
                     cursor(HAND)
                 } else {
-                    noFill()
+                    noFill()                   
                 }
 
-                //changes effects for the rectangle in the slower and faster buttons
+                // hover behaviour for the rectangle in the slower, faster and switchMode buttons
                 strokeWeight(1)
                 stroke(55, 90, 100)
                 rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height, 5)
@@ -116,11 +119,24 @@ class GuiController {
                 textSize(20)
             }
 
+            if (button.action == "switchMode") {
+                push()
+                if (loopMode) {
+                    fill(55, 90, 100)
+                } else {
+                    noFill()
+                }
+                strokeWeight(1)
+                stroke(55, 90, 100)
+                rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height, 5)
+                pop()
+            }
+
             textAlign(CENTER, CENTER)
             text(button.text, button.x, button.y)
-        });
+        })
 
-        // next comments print current song information for debugging purposes
+        // print current song information for debugging purposes
         // textSize(12)
         // text(JSON.stringify(tracks[musicController.trackPlaying], null, " "), 10, 40)
         // textSize(32)
