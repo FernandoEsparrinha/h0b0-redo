@@ -73,8 +73,7 @@ class Circle {
             fft.analyze()
             peakDetect.update(fft)
 
-            var level = amplitude.getLevel()
-            this.diameter = (polygonRadius / 5) * (level * 4)
+            this.diameter = (polygonRadius / 5)
 
             // if (peakDetect.isDetected) {
             //     this.diameter = polygonRadius / 4
