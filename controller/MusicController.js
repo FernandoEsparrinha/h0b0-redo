@@ -67,13 +67,11 @@ class MusicController {
                         tracks[tracknumber].pause()
                     } else {
                         tracks[tracknumber].loop()
-                        // amplitude.setInput(tracks[tracknumber])
                     }
 
                 } else {
                     tracks[this.trackPlaying].stop()
                     tracks[tracknumber].loop()
-                    // amplitude.setInput(tracks[tracknumber])
                     this.trackPlaying = tracknumber
                     polygon.refreshPositions()
                 }
@@ -83,12 +81,12 @@ class MusicController {
                         tracks[tracknumber].pause()
                     } else {
                         tracks[tracknumber].play()
-                        // amplitude.setInput(tracks[tracknumber])
                     }
                 } else {
                     tracks[this.trackPlaying].pause()
+                    tracks[this.trackPlaying].stop()
                     tracks[tracknumber].play()
-                    // amplitude.setInput(tracks[tracknumber])
+
                     this.trackPlaying = tracknumber
                     polygon.refreshPositions()
                 }
