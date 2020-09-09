@@ -13,7 +13,7 @@ uniform sampler2D tex0; // image
 uniform sampler2D tex1; // feedback buffer-texture
 
 uniform float u_amplitudeValue;
-uniform float u_zoomValue;
+uniform vec2 u_zoom;
 uniform vec3 u_colorIncrement;
 uniform vec3 u_colorTreshold;
 
@@ -47,7 +47,8 @@ void main() {
 
     vec2 tc = uv;               // texture coordinates
     tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
-    tc *= u_zoomValue;          // zoom the uvs
+    tc.x *= u_zoom.x;           // zoom uv.x
+    tc.y *= u_zoom.y;           // zoom uv.y
     tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
     vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer
