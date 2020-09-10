@@ -16,6 +16,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 ### Background visuals (shaders):
 - [] merge UI and background FX;
 - [] resolve crt<->button position discrepancy;
+- [] control feedback with musical energy (hue rotation);
 - [] generate noise instead of using a static image;
 - [] adapt feedback intensity for each song;
 - [] prevent fullscreen "colour cycling";

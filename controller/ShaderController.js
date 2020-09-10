@@ -5,14 +5,13 @@ class ShaderController {
 
         this.gradientPass = createGraphics(windowWidth, windowHeight, WEBGL)
         this.feedbackPass = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.crtPass = createGraphics(windowWidth, windowHeight, WEBGL)
         this.feedbackBuffer = createGraphics(windowWidth, windowHeight)
+        this.crtPass = createGraphics(windowWidth, windowHeight, WEBGL)
 
         noStroke()
         this.gradientPass.noStroke()
         this.feedbackPass.noStroke()
         this.crtPass.noStroke()
-
     }
 
     draw() {
@@ -20,7 +19,7 @@ class ShaderController {
         this.mY = map(mouseY, 0, height, 0, 100)
 
         // hide the video window that is automatically displayed
-        vidGu.hide()
+        // vidGu.hide()
 
         // gradientShader
         this.gradientPass.shader(gradientShader)
@@ -33,13 +32,12 @@ class ShaderController {
         feedbackShader.setUniform('tex1', this.feedbackBuffer)
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
-        feedbackShader.setUniform('u_mouseDown', int(keyIsDown(82)))
-        feedbackShader.setUniform('u_mouse', [this.mX, this.mY])
+        feedbackShader.setUniform('u_keyDown', int(keyIsDown(82)))
         feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
-        feedbackShader.setUniform('u_amplitudeValue', amplitude.getLevel())
         feedbackShader.setUniform('u_zoom', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
-        feedbackShader.setUniform('u_colorIncrement', trackVisualConfigurations[musicController.getTrackNumberPlaying()][1])
-        feedbackShader.setUniform('u_colorTreshold', trackVisualConfigurations[musicController.getTrackNumberPlaying()][2])
+        feedbackShader.setUniform('u_rotation', trackVisualConfigurations[musicController.getTrackNumberPlaying()][1])
+        feedbackShader.setUniform('u_colorIncrement', trackVisualConfigurations[musicController.getTrackNumberPlaying()][2])
+        feedbackShader.setUniform('u_colorTreshold', trackVisualConfigurations[musicController.getTrackNumberPlaying()][3])
         this.feedbackPass.rect(0, 0, windowWidth, windowHeight)
 
         // draw into the buffer
@@ -49,6 +47,7 @@ class ShaderController {
         this.crtPass.shader(crtShader)
         if (!open) {
             crtShader.setUniform('tex0', this.gradientPass)
+            // crtShader.setUniform('tex0', imgMiraTecnica)
         } else {
             crtShader.setUniform('tex0', this.feedbackPass)
         }

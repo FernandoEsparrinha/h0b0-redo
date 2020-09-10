@@ -12,18 +12,17 @@ varying vec2 vTexCoord; // texcoords from vert shader
 uniform sampler2D tex0; // image
 uniform sampler2D tex1; // feedback buffer-texture
 
-uniform float u_amplitudeValue;
 uniform vec2 u_zoom;
+uniform float u_rotation;
 uniform vec3 u_colorIncrement;
 uniform vec3 u_colorTreshold;
 
 uniform vec2 u_resolution;      // [width, height]
 uniform float u_time;           // millis() / 1000.0)
-uniform float u_mouseDown;      // mouseIsPressed
-uniform float u_mouse;          // [mouseX, mouseY] (mapped to range)
+uniform float u_keyDown;        // pressed "r" key
 uniform float u_playbackSpeed;  // musicController.getCurrentPlaybackSpeed().toFixed(1) (0.1, 2.0)
 
-vec3 rgb2hsv(vec3 c){
+vec3 rgb2hsv(vec3 c) {
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
     vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
     vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
@@ -33,10 +32,16 @@ vec3 rgb2hsv(vec3 c){
     return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
 }
 
-vec3 hsv2rgb(vec3 c){
+vec3 hsv2rgb(vec3 c) {
     vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
     vec3 p = abs(clamp(fract(c.xxx + K.xyz), 0.0, 0.999) * 6.0 - K.www);
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+// 2d rotation function
+mat2 rotate2D(float angle) {
+  return mat2(cos(angle), sin(angle),
+              -sin(angle), cos(angle));
 }
 
 void main() {
@@ -49,6 +54,7 @@ void main() {
     tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
     tc.x *= u_zoom.x;           // zoom uv.x
     tc.y *= u_zoom.y;           // zoom uv.y
+    tc *= rotate2D(abs(u_time) * u_rotation);  // rotate
     tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
     vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer
@@ -90,7 +96,7 @@ void main() {
         gl_FragColor = texture2D(tex0, uv);
     }
     
-    if(u_mouseDown > 0.0) {
+    if(u_keyDown > 0.0) {
         gl_FragColor = texture2D(tex0, uv);
     }
 }

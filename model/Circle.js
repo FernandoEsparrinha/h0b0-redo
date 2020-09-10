@@ -41,7 +41,7 @@ class Circle {
         this.calculateMovement()
 
         // circle base style is common to any state
-        strokeWeight(1)
+        strokeWeight(1.3)
         stroke(this.hRange, 100, 100, 1.0)
         fill(this.hRange, 100, 100, this.startFill)
 

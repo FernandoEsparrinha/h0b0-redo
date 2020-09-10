@@ -9,9 +9,9 @@ let verticesPosition = []
 
 function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
-    //fontH0b0 = loadFont('assets/type/H0b0.otf')
+    // fontH0b0 = loadFont('assets/type/H0b0.otf')
 
-    vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
+    // vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
     imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
     imgMiraTecnica = loadImage('assets/image/miraTecnica.jpg')
 
@@ -24,6 +24,7 @@ function setup() {
     pixelDensity(1)
 
     mobileMode = windowWidth < 504
+    
     createCanvas(windowWidth, windowHeight)
 
     polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.32
@@ -55,11 +56,11 @@ function draw() {
 }
 
 // This function is called when the video loads
-function videoLoaded() {
-    vidGu.loop()
-    vidGu.volume(0)
-    console.log('vidGu: has loaded')
-}
+// function videoLoaded() {
+//     vidGu.loop()
+//     vidGu.volume(0)
+//     console.log('vidGu: has loaded')
+// }
 
 function keyPressed() {
     // left

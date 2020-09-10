@@ -13,7 +13,6 @@ varying vec2 vTexCoord;     // texcoords from vert shader
 uniform sampler2D tex0;     // feedback shader image
 
 uniform vec2 u_resolution;  // [width, height]
-uniform vec2 u_mouse;       // [mouseX, mouseY] (mapped to range)
 uniform float u_time;       // millis() / 1000.0)
 
 // Loosely based on postprocessing shader by inigo quilez, License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -41,6 +40,7 @@ void main() {
 	float x = sin(0.30 * u_time + uv.y * 21.0)
             * sin(0.70 * u_time + uv.y * 29.0)
             * sin(0.33 * u_time + uv.y * 31.0 + 0.3)
+            * sin(tan(0.08 * u_time + uv.y * 2.0))
             * 0.0017;                                   // overall intensity of the effect
 
     // colors
@@ -69,13 +69,15 @@ void main() {
     col *= vec3(0.95, 1.05, 0.95);
 	col *= 2.8;
 
-    // horizontal scanlines with vertical scrolling
-	float scans = clamp(0.35 + 0.35 * sin(3.5 * u_time + uv.y * u_resolution.y * 1.5), 0.0, 1.0);
+    // flashing horizontal scanlines with vertical scrolling
+	float scans = clamp(0.40 + 0.05 * sin(3.5 * u_time + uv.y * u_resolution.y), 0.0, 1.0);
+    // float scans = clamp(0.35 + 0.35 * sin(3.5 * u_time + uv.y * u_resolution.y * 1.5), 0.0, 1.0);
 	float s = pow(scans, 1.7);
-	col = col * vec3(0.4 + 0.7 * s);
+    col = col * vec3(0.3 + s);
+	// col = col * vec3(0.4 + 0.7 * s);
 
     // flashing effect
-    col *= 1.0 + 0.01 * sin(110.0 * u_time);
+    col *= 1.0 + 0.01 * sin(120.0 * u_time);
 
     // black borders outside curvature
 	if (uv.x < 0.0 || uv.x > 1.0)

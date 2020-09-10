@@ -77,6 +77,15 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 [Procedural film grain](https://www.shadertoy.com/view/4t2fRz)
 
+### Compositing
+[Compositing](https://www.shadertoy.com/view/Xlsyzf)
+
+[Photoshop Blends](https://www.shadertoy.com/view/XdS3RW)
+
+[Compositing Digital Images](https://www.shadertoy.com/view/4tscRf)
+
+[GLSL Programming/Unity/Screen Overlays](https://en.wikibooks.org/wiki/GLSL_Programming/Unity/Screen_Overlays)
+
 ### Feedback
 [Webcam Feedback Loop](https://glitch.com/~webcam-feedback-loop)
 
