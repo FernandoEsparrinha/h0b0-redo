@@ -171,11 +171,11 @@ class MusicController {
             fft.analyze();
 
             this.amp        = amplitude.getLevel().toFixed(2)
-            this.bass       = fft.getEnergy("bass").toFixed(2)
-            this.lowMid     = fft.getEnergy("lowMid").toFixed(2)
-            this.mid        = fft.getEnergy("mid").toFixed(2)
-            this.highMid    = fft.getEnergy("highMid").toFixed(2)
-            this.treble     = fft.getEnergy("treble").toFixed(2)
+            this.bass       = fft.getEnergy("bass").toFixed(0)
+            this.lowMid     = fft.getEnergy("lowMid").toFixed(0)
+            this.mid        = fft.getEnergy("mid").toFixed(0)
+            this.highMid    = fft.getEnergy("highMid").toFixed(0)
+            this.treble     = fft.getEnergy("treble").toFixed(0)
 
             // amp
             if (this.amp < this.minAmp && this.amp > 0) {
@@ -225,14 +225,16 @@ class MusicController {
                 this.maxTreble = this.treble
             }
 
-            fill('pink')
-            textAlign(LEFT)
-            text("Amplitude: " + this.amp + ' / ' + this.minAmp + ' / ' + this.maxAmp, 20, 20)
-            text("Energy (bass): " + this.bass + ' / ' + this.minBass + ' / ' + this.maxBass, 20, 60)
-            text("Energy (lowMid): " + this.lowMid + ' / ' + this.minLowMid + ' / ' + this.maxLowMid, 20, 100)
-            text("Energy (mid): " + this.mid + ' / ' + this.minMid + ' / ' + this.maxMid, 20, 140)
-            text("Energy (highMid): " + this.highMid + ' / ' + this.minHighMid + ' / ' + this.maxHighMid, 20, 180)
-            text("Energy (treble): " + this.treble + ' / ' + this.minTreble + ' / ' + this.maxTreble, 20, 220)
+            if (this.menu) {
+                fill('pink')
+                textAlign(LEFT)
+                text("Amplitude: " + this.amp + ' / ' + this.minAmp + ' / ' + this.maxAmp, 20, 20)
+                text("Energy (bass): " + this.bass + ' / ' + this.minBass + ' / ' + this.maxBass, 20, 50)
+                text("Energy (lowMid): " + this.lowMid + ' / ' + this.minLowMid + ' / ' + this.maxLowMid, 20, 80)
+                text("Energy (mid): " + this.mid + ' / ' + this.minMid + ' / ' + this.maxMid, 20, 110)
+                text("Energy (highMid): " + this.highMid + ' / ' + this.minHighMid + ' / ' + this.maxHighMid, 20, 140)
+                text("Energy (treble): " + this.treble + ' / ' + this.minTreble + ' / ' + this.maxTreble, 20, 170)
+            }
         }
     }
 }

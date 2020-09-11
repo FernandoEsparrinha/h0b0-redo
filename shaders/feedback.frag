@@ -17,6 +17,10 @@ uniform float u_rotation;
 uniform vec3 u_colorIncrement;
 uniform vec3 u_colorTreshold;
 
+uniform float u_bass;
+uniform float u_lowMid;
+uniform float u_treble;
+
 uniform vec2 u_resolution;      // [width, height]
 uniform float u_time;           // millis() / 1000.0)
 uniform float u_keyDown;        // pressed "r" key
@@ -89,9 +93,12 @@ void main() {
       colOut.b = u_colorTreshold.b;
     }
 
+    // Screen Flashing
+    // colOut *= 1.0 + 0.1 * sin(120.0 * u_highMid);
+
     gl_FragColor = colOut;
 
-    // Seed the buffer with noise
+    // Seed the buffer with the texture
     if(u_time < 1.0) {
         gl_FragColor = texture2D(tex0, uv);
     }
