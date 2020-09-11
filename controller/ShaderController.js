@@ -53,8 +53,6 @@ class ShaderController {
         }
         crtShader.setUniform('u_resolution', [width, height])
         crtShader.setUniform('u_time', millis() / 1000.0)
-        crtShader.setUniform('u_mouseDown', int(mouseIsPressed))
-        crtShader.setUniform('u_mouse', [this.mX, this.mY])
         this.crtPass.rect(0, 0, windowWidth, windowHeight)
 
         // displays the shader image
