@@ -11,7 +11,6 @@ function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
     // fontH0b0 = loadFont('assets/type/H0b0.otf')
 
-    // vidGu = createVideo(['assets/video/sky.mov'], videoLoaded)
     imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
     imgMiraTecnica = loadImage('assets/image/miraTecnica.jpg')
 
@@ -55,13 +54,6 @@ function draw() {
     musicController.logValues()
 }
 
-// This function is called when the video loads
-// function videoLoaded() {
-//     vidGu.loop()
-//     vidGu.volume(0)
-//     console.log('vidGu: has loaded')
-// }
-
 function keyPressed() {
     // left
     if (keyCode === 37) {
@@ -75,6 +67,10 @@ function keyPressed() {
     else if (keyCode === 38) {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
+    }
+    // m (menu)
+    else if (keyCode === 77) {
+        musicController.menu = !musicController.menu
     }
 }
 

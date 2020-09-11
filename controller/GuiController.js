@@ -7,13 +7,6 @@ class GuiController {
                 width: 40,
                 height: 40
             },
-            
-            // { action: "currentMode", text: "",
-            //     x: windowWidth * 0.02,
-            //     y: mobileMode ? windowHeight * 0.93 : windowHeight * 0.90,
-            //     width: 40,
-            //     height: 40
-            // },
 
             { action: "switchMode", text: "∞",
                 x: windowWidth * 0.95 - (49 + 10 + 49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
@@ -93,11 +86,6 @@ class GuiController {
                 text(strTrackSpeed, button.x, button.y)
             }
 
-            // if (button.action == "currentMode") {
-            //     textAlign(LEFT)
-            //     text(loopMode ? "looping" : "album mode", button.x, button.y)
-            // }
-
             if (button.action == "slower" || button.action == "faster" || button.action == "switchMode") {
                 push()
                 // check if the mouse is hovering
@@ -162,7 +150,6 @@ class GuiController {
                 }
             }
         })
-
 
         for (let i = 0; i < 18; i++) {
             let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
