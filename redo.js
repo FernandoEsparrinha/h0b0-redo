@@ -5,6 +5,8 @@ let mobileMode = false
 let polygon, polygonRadius
 let musicController, fft, peakDetect, amplitude
 
+let canvasPass
+
 let verticesPosition = []
 
 function preload() {
@@ -16,6 +18,8 @@ function preload() {
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
+    compositeShader = loadShader('shaders/shader.vert', 'shaders/composite.frag')
+    alphaShader = loadShader('shaders/shader.vert', 'shaders/alpha.frag')
     crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
@@ -24,7 +28,7 @@ function setup() {
 
     mobileMode = windowWidth < 504
     
-    createCanvas(windowWidth, windowHeight)
+    canvasPass = createCanvas(windowWidth, windowHeight)
 
     polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.32
 
