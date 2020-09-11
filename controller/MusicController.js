@@ -90,7 +90,13 @@ class MusicController {
                     }
                 } else {
                     tracks[this.trackPlaying].pause()
-                    tracks[this.trackPlaying].stop()
+
+                    try {
+                        tracks[this.trackPlaying].stop()
+                    } catch (error) {
+                        console.error(error);
+                    }
+
                     tracks[tracknumber].play()
 
                     this.trackPlaying = tracknumber
