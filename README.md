@@ -18,22 +18,22 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] resolve crt<->button position discrepancy;
 - [ ] control feedback with musical energy (hue rotation);
 - [ ] generate noise instead of using a static image;
-- [ ] adapt feedback intensity for each song;
+- [ ] finetune feedback behaviour for each song;
 - [ ] prevent fullscreen "colour cycling";
 
 ### Responsiveness
 - [ ] adapt to canvas/screen resize (e.g. device rotation);
 
 ### Mobile
-- [ ] issue: MusicController not working;
+- [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
 - [ ] layout: break UI into two lines (song name and time / loop and speed controls);
 - [ ] layout: rework polygon size and position;
 
 ## Technical
 ### Web:
-- [x] deploy for preview (github page);
-- [ ] download music to cache to have a faster loading when refreshed;
+- [x] deploy for preview ([github page](https://fernandoesparrinha.github.io/h0b0-redo/));
+- [ ] download music to cache (faster loading if page is refreshed, save data);
 
 [h0b0's website](hobo.me) is currently hosted on [Cargo](https://cargo.site/).
   - can the project be hosted there?
