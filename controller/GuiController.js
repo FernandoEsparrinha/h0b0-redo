@@ -48,7 +48,7 @@ class GuiController {
 
         if (!tracksLoaded) {
             textSize(32)
-            text('LOADING (' + (loadIndex + 1) + '/18)', windowWidth * 0.5, windowHeight * 0.8)
+            text('LOADING (' + (loadIndex + 1) + '/17)', windowWidth * 0.5, windowHeight * 0.8)
         }
 
         if (tracksLoaded && !open) {
@@ -151,10 +151,10 @@ class GuiController {
             }
         })
 
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 17; i++) {
             let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
             if (d < (polygon.vertices[0].diameter / 2)) {
-                musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 18)
+                musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 17)
             }
         }
     }

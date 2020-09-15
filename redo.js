@@ -36,7 +36,7 @@ function setup() {
 
     guiController = new GuiController()
     shaderController = new ShaderController()
-    polygon = new Polygon(polygonRadius, 18)
+    polygon = new Polygon(polygonRadius, 17)
 }
 
 function draw() {

@@ -9,16 +9,16 @@ class Polygon {
     }
 
     draw() {
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 17; i++) {
             this.vertices[i].draw()
         }
     }
 
     refreshPositions() {
         let x = 0;
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 17; i++) {
             if ((i - musicController.getTrackNumberPlaying()) < 0) {
-                x = 18 + (i - musicController.getTrackNumberPlaying())
+                x = 17 + (i - musicController.getTrackNumberPlaying())
             } else {
                 x = (i - musicController.getTrackNumberPlaying())
             }
