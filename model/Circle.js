@@ -72,15 +72,6 @@ class Circle {
         if (this.isPlaying()) {
             fft.analyze()
             peakDetect.update(fft)
-
-            this.diameter = (polygonRadius / 5)
-
-            // if (peakDetect.isDetected) {
-            //     this.diameter = polygonRadius / 4
-            // } else {
-            //     this.diameter *= 0.995
-            // }
-
             stroke(0, 0, 100, 1.0)
             fill(0, 0, 100, this.startFill)
         } else {
@@ -125,9 +116,7 @@ class Circle {
                 stroke(0, 0, 100, 1.0)
                 fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
             }
-        }
-
-        if (!this.isBeingHovered()) {
+        } else {
             if (this.lerpAmount > 0.0) {
                 this.lerpAmount -= 0.04
 
