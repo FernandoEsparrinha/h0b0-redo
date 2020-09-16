@@ -1,6 +1,6 @@
 let loopButton, slowButton, fastButton
 let trackName, trackTime, trackSpeed
-let gui
+let gui, controls, display
 
 class GuiController2 {
     constructor() {
@@ -33,16 +33,26 @@ class GuiController2 {
         trackTime.id('trackTime')
 
         gui = document.getElementById('gui')
+        controls = document.getElementById('controls')
+        display  = document.getElementById('display')
 
-        loopButton.parent(gui)
-        slowButton.parent(gui)
-        fastButton.parent(gui)
-        trackSpeed.parent(gui)
-        trackName.parent(gui)
-        trackTime.parent(gui)
+        loopButton.parent(controls)
+        slowButton.parent(controls)
+        fastButton.parent(controls)
+        trackSpeed.parent(controls)
+        trackName.parent(display)
+        trackTime.parent(display)
     }
 
     draw() {
+        this.drawLoadGui()
+
+        if (tracksLoaded && open) {
+            this.drawMainGui()
+        }
+    }
+
+    drawLoadGui() {
         textFont(fontVCR)
         //textFont(fontH0b0)
         stroke(0, 0, 0)
@@ -62,10 +72,6 @@ class GuiController2 {
             for (let w = 0; w < 10; w++) {
                 text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - w)
             }
-        }
-
-        if (tracksLoaded && open) {
-            this.drawMainGui()
         }
     }
 

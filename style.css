@@ -35,7 +35,6 @@ body {
 }
 
 canvas {
-    /* display: block; */
     z-index: -1;
 }
 
