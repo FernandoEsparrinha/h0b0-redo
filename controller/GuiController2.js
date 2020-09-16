@@ -1,5 +1,6 @@
 let loopButton, slowButton, fastButton
 let trackName, trackTime, trackSpeed
+let gui
 
 class GuiController2 {
     constructor() {
@@ -30,6 +31,15 @@ class GuiController2 {
         trackSpeed.id('trackSpeed')
         trackName.id('trackName')
         trackTime.id('trackTime')
+
+        gui = document.getElementById('gui')
+
+        loopButton.parent(gui)
+        slowButton.parent(gui)
+        fastButton.parent(gui)
+        trackSpeed.parent(gui)
+        trackName.parent(gui)
+        trackTime.parent(gui)
     }
 
     draw() {
