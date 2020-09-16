@@ -77,7 +77,7 @@ class GuiController {
 
             if (button.action == "trackName") {
                 textAlign(LEFT)
-                text(musicController.getCurrentTrackName() + "  (" + musicController.getCurrentPlaybackPosition() + ")", button.x, button.y)
+                text(trackList[musicController.trackPlaying] + " (" + musicController.getCurrentPlaybackPosition() + ")", button.x, button.y)
             }
 
             if (button.action == "trackSpeed") {

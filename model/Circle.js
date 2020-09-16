@@ -45,10 +45,7 @@ class Circle {
         stroke(this.hRange, 100, 100, 1.0)
         fill(this.hRange, 100, 100, this.startFill)
 
-        if (!open) {
-            // When Polygon is still closed
-
-        } else {
+        if (open) {
             // After Polygon has been opened (click)
             this.handlePlaying()
             this.handleHovering()
