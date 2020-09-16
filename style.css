@@ -1,0 +1,58 @@
+/*
+----------------------------------------------------- */
+:root {
+    --button-bg: transparent;
+    --button-bg-hover: hsl(55, 100%, 55%);
+    --text-color: hsl(55, 100%, 55%);
+}
+
+
+/* Box-sizing reset
+----------------------------------------------------- */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Base styles
+----------------------------------------------------- */
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+    font-size: 2rem;
+}
+
+canvas {
+    /* display: block; */
+    z-index: -1;
+}
+
+/* GUI
+----------------------------------------------------- */
+.controller {
+    color: var(--text-color);
+    text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.toggle, .button {
+    background-color: var(--button-bg);
+}
+
+.toggle:hover, .button:hover {
+    background-color: var(--button-bg-hover);
+}

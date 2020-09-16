@@ -29,12 +29,13 @@ function setup() {
     mobileMode = windowWidth < 504
     
     canvasPass = createCanvas(windowWidth, windowHeight)
+    canvasPass.id('visuals')
 
     polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.32
 
     musicController = new MusicController()
 
-    guiController = new GuiController()
+    guiController = new GuiController2()
     shaderController = new ShaderController()
     polygon = new Polygon(polygonRadius, 17)
 }
@@ -90,22 +91,6 @@ function mousePressed() {
     }
 }
 
-function doubleClicked() {
-    if (tracksLoaded) {
-        if (open) {
-            // bottom circle is the only one that can be active
-            // we can compare only with that array position
-            let d = dist(mouseX, mouseY, verticesPosition[0][0], verticesPosition[0][1])
-            if (d < (polygon.vertices[0].diameter / 2)) {
-                console.log('doubleClicked: inside playing circle')
-                loopMode = !loopMode
-            }
-            else {
-                console.log('doubleClicked: outside playing circle')
-            }
-        }
-    }
-}
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight)
@@ -113,5 +98,4 @@ function windowResized() {
     // era importante que o polígono se adaptasse ao canvas
     // imagino isto como sendo importante no caso do telemóvel e alguém o rodar
     // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
-    polygonRadius = windowHeight * 0.32
 }

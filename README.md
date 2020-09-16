@@ -11,7 +11,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 
 ## Development
 ### Circles
-- [ ] issue: active circle scales on hover but jumps back to 0 immediatly after;
+- [x] issue: active circle scales on hover but jumps back to 0 immediatly after;
 
 ### Background visuals (shaders):
 - [ ] merge UI and background FX;
@@ -25,6 +25,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] adapt to canvas/screen resize (e.g. device rotation);
 
 ### Mobile
+- [ ] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
 - [ ] layout: break UI into two lines (song name and time / loop and speed controls);
