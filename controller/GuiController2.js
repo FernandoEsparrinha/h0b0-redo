@@ -13,22 +13,22 @@ class GuiController2 {
 
         loopButton.class('controller')
         slowButton.class('controller')
-        fastButton.class('controller')
         trackSpeed.class('controller')
+        fastButton.class('controller')
         trackName.class('controller')
         trackTime.class('controller')
 
         loopButton.addClass('toggle')
         slowButton.addClass('button')
-        fastButton.addClass('button')
         trackSpeed.addClass('display')
+        fastButton.addClass('button')
         trackName.addClass('display')
         trackTime.addClass('display')
         
         loopButton.id('loopButton')
         slowButton.id('slowButton')
-        fastButton.id('fastButton')
         trackSpeed.id('trackSpeed')
+        fastButton.id('fastButton')
         trackName.id('trackName')
         trackTime.id('trackTime')
 
@@ -88,9 +88,11 @@ class GuiController2 {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
-            loopButton.style('background-color', 'hsla(55, 100%, 55%, 1.0)')
+            loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
+            
         } else {
-            loopButton.style('background-color', 'transparent')
+            loopButton.style('background-color: transparent')
+            
         }
         console.log(loopMode)
     }

@@ -3,15 +3,6 @@
 /* YELLOW   hsla(55, 100%, 55%, 1.0) */
 /* BLUE     hsla(235, 100%, 55%, 1.0)*/
 
-/* :root {
-    --button-bg:        hsl(55, 100%, 64%);
-    --button-bg-hover:  hsla(55, 100%, 55%, 1.0);
-    --button-depth:     hsla(235, 100%, 55%, 1.0);
-    --button-bg-border: hsl(0, 0%, 100%);
-    --text-color:       hsla(55, 100%, 55%, 1.0);
-    --text-stroke-color:hsl(0, 0%, 0%);
-} */
-
 :root {
     --button-bg:        transparent;
     --button-bg-hover:  hsla(55, 100%, 55%, 1.0);
@@ -20,6 +11,18 @@
     --text-color:       hsla(55, 100%, 55%, 1.0);
     --text-stroke-color:hsl(0, 0%, 0%);
 }
+
+/* VHS font
+----------------------------------------------------- */
+@font-face {
+    font-family: 'VCRMONO';
+    src: url('/assets/type/VCR_OSD_MONO_EDIT.woff') format('woff'),
+         url('/assets/type/VCR_OSD_MONO_EDIT.woff2') format('woff2'),
+         url('/assets/type/VCR_OSD_MONO_EDIT.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /* Box-sizing reset
 ----------------------------------------------------- */
@@ -37,7 +40,8 @@ html {
 html {
     overflow: hidden;
     height: 100%;
-    font-family: Consolas, monaco, monospace;
+    /* font-family: Consolas, monaco, monospace; */
+    font-family: VCRMONO;
 }
 
 body {
@@ -45,11 +49,11 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     word-spacing: .02em;
 }
 
-canvas {
+#visuals {
     z-index: -1;
 }
 
@@ -57,13 +61,16 @@ canvas {
 ----------------------------------------------------- */
 #gui {
     position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     z-index: 0;
     width: 100%;
 
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.2rem;
 
     color: var(--text-color);
     text-shadow:
@@ -73,46 +80,67 @@ canvas {
         1px 1px 0 var(--text-stroke-color);
 }
 
+#display {
+    /* visibility: hidden; */
+    display: flex;
+    flex: auto;
+
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-right: 0.2rem;
+}
+
 #controls {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex: initial;
+
     gap: 1rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0;
+    padding-left: 0.2rem;
 }
 
+#loopButton { order: 1; }
+
+#slowButton { order: 2; }
+
+#trackSpeed { order: 3; }
+
+#fastButton { order: 4; }
+
+/* Buttons
+----------------------------------------------------- */
+
 .toggle, .button {
-    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
-                background 150ms cubic-bezier(0, 0, 0.58, 1);
-    
-    cursor: pointer;
-    position: relative;
     display: inline-block;
-    outline: none;
-    border: 0;
     vertical-align: middle;
+    
+    width: 2.75rem;
+    height: 2.75rem;
+        
     text-decoration: none;
     font-size: inherit;
     font-family: inherit;
-    text-transform: uppercase;
-    padding: 0.75rem 1rem 0.75rem 1rem;
-
-    width: 1fr;
-
     color: var(--text-color);
-    text-shadow:
-        -1px -1px 0 var(--text-stroke-color),  
-        1px -1px 0 var(--text-stroke-color),
-        -1px 1px 0 var(--text-stroke-color),
-        1px 1px 0 var(--text-stroke-color);
+    text-shadow: -1px -1px 0 var(--text-stroke-color),
+                  1px -1px 0 var(--text-stroke-color),
+                 -1px 1px 0 var(--text-stroke-color),
+                  1px 1px 0 var(--text-stroke-color);
     
     background-color: var(--button-bg);
-    border-radius: 0.75rem;
-    border: 0.125rem solid var(--button-bg-border);   
-    
+    border: 0.125rem solid var(--button-bg-border);  
+    border-radius: 0.6rem;
+
+    cursor: pointer;
+
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+                background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
 .toggle:hover, .button:hover {
@@ -121,10 +149,64 @@ canvas {
 }
 
 .toggle:active, .button:active {
-    /* background: var(--button-bg-hover); */
     transform: translate(0rem, 0.5rem);
 }
 
-#display {
-    display: inline-flex;
+/* Fluid Content & Media Queries
+----------------------------------------------------- */
+/* calc(minContentSize + (maxContentSize - minContentSize) * ((100vw - minScreenSize) / (maxScreenSize - minScreenSize)) */
+
+/*min-width: 320px*/
+@media screen and (min-width: 20rem) {
+    #gui {
+        padding-bottom: calc(0.2rem + 0.2 * ((100vw - 20rem) / 20));
+    }
+    
+    #display {
+        /* visibility: hidden; */
+        font-size: 1.2rem;
+        padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
+    }
+
+    #controls {
+        padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
+        padding-right: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
+    }
+
+    #loopButton {
+        font-size: 1.0rem;
+    }
+
+    #slowButton {
+        font-size: 1.6rem;
+    }
+
+    #trackSpeed {
+        font-size: 1.2rem;
+    }
+
+    #fastButton {
+        font-size: 1.6rem;
+    }
+}
+
+/*min-width: 640px*/
+/*above this width, sizes are static*/
+@media screen and (min-width: 40rem) {
+    #gui {
+        flex-direction: row;
+        padding-bottom: 0.4rem;
+    }
+
+    #display {
+        /* visibility: visible; */
+        justify-content: left;
+        font-size: 1.2rem;
+        padding-left: 1rem;
+    }
+    
+    #controls {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
