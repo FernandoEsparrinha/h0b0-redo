@@ -24,6 +24,7 @@ function preload() {
 }
 
 function setup() {
+    console.log('displayDensity: ' + displayDensity())
     pixelDensity(1)
 
     mobileMode = windowWidth < 504

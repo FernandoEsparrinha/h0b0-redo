@@ -16,9 +16,9 @@
 ----------------------------------------------------- */
 @font-face {
     font-family: 'VCRMONO';
-    src: url('/assets/type/VCR_OSD_MONO_EDIT.woff') format('woff'),
-         url('/assets/type/VCR_OSD_MONO_EDIT.woff2') format('woff2'),
-         url('/assets/type/VCR_OSD_MONO_EDIT.ttf') format('truetype');
+    src: url('h0b0-redo/assets/type/VCR_OSD_MONO_EDIT.woff') format('woff'),
+         url('h0b0-redo/assets/type/VCR_OSD_MONO_EDIT.woff2') format('woff2'),
+         url('h0b0-redo/assets/type/VCR_OSD_MONO_EDIT.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
