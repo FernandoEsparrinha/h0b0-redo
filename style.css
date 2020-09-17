@@ -1,11 +1,25 @@
-/*
+/* Variables
 ----------------------------------------------------- */
-:root {
-    --button-bg: transparent;
-    --button-bg-hover: hsl(55, 100%, 55%);
-    --text-color: hsl(55, 100%, 55%);
-}
+/* YELLOW   hsla(55, 100%, 55%, 1.0) */
+/* BLUE     hsla(235, 100%, 55%, 1.0)*/
 
+/* :root {
+    --button-bg:        hsl(55, 100%, 64%);
+    --button-bg-hover:  hsla(55, 100%, 55%, 1.0);
+    --button-depth:     hsla(235, 100%, 55%, 1.0);
+    --button-bg-border: hsl(0, 0%, 100%);
+    --text-color:       hsla(55, 100%, 55%, 1.0);
+    --text-stroke-color:hsl(0, 0%, 0%);
+} */
+
+:root {
+    --button-bg:        transparent;
+    --button-bg-hover:  hsla(55, 100%, 55%, 1.0);
+    --button-depth:     transparent;
+    --button-bg-border: hsla(55, 100%, 55%, 1.0);
+    --text-color:       hsla(55, 100%, 55%, 1.0);
+    --text-stroke-color:hsl(0, 0%, 0%);
+}
 
 /* Box-sizing reset
 ----------------------------------------------------- */
@@ -23,6 +37,7 @@ html {
 html {
     overflow: hidden;
     height: 100%;
+    font-family: Consolas, monaco, monospace;
 }
 
 body {
@@ -40,22 +55,76 @@ canvas {
 
 /* GUI
 ----------------------------------------------------- */
-.gui {
+#gui {
+    position: absolute;
     z-index: 0;
     width: 100%;
 
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+
     color: var(--text-color);
     text-shadow:
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+        -1px -1px 0 var(--text-stroke-color),  
+        1px -1px 0 var(--text-stroke-color),
+        -1px 1px 0 var(--text-stroke-color),
+        1px 1px 0 var(--text-stroke-color);
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
 }
 
 .toggle, .button {
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+                background 150ms cubic-bezier(0, 0, 0.58, 1);
+    
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+
+    width: 1fr;
+
+    color: var(--text-color);
+    text-shadow:
+        -1px -1px 0 var(--text-stroke-color),  
+        1px -1px 0 var(--text-stroke-color),
+        -1px 1px 0 var(--text-stroke-color),
+        1px 1px 0 var(--text-stroke-color);
+    
     background-color: var(--button-bg);
+    border-radius: 0.75rem;
+    border: 0.125rem solid var(--button-bg-border);   
+    
 }
 
 .toggle:hover, .button:hover {
-    background-color: var(--button-bg-hover);
+    background: var(--button-bg-hover);
+    transform: translate(0, 0.125rem);
+}
+
+.toggle:active, .button:active {
+    /* background: var(--button-bg-hover); */
+    transform: translate(0rem, 0.5rem);
+}
+
+#display {
+    display: inline-flex;
 }

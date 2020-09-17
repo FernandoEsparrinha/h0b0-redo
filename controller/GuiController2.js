@@ -4,12 +4,12 @@ let gui, controls, display
 
 class GuiController2 {
     constructor() {
-        loopButton = createButton("∞")
-        slowButton = createButton("⏪")
-        fastButton = createButton("⏩")
-        trackSpeed = createP("trackSpeed")
-        trackName = createP("trackName")
-        trackTime = createP("trackTime")
+        loopButton = createButton('∞')
+        slowButton = createButton('⏪')
+        trackSpeed = createP('trackSpeed')
+        fastButton = createButton('⏩')
+        trackName = createP('trackName')
+        trackTime = createP('trackTime')
 
         loopButton.class('controller')
         slowButton.class('controller')
@@ -32,9 +32,9 @@ class GuiController2 {
         trackName.id('trackName')
         trackTime.id('trackTime')
 
-        gui = document.getElementById('gui')
-        controls = document.getElementById('controls')
-        display  = document.getElementById('display')
+        gui = select('#gui')
+        controls = select('#controls')
+        display  = select('#display')
 
         loopButton.parent(controls)
         slowButton.parent(controls)
@@ -48,7 +48,10 @@ class GuiController2 {
         this.drawLoadGui()
 
         if (tracksLoaded && open) {
+            gui.style('visibility', 'visible')
             this.drawMainGui()
+        } else {
+            gui.style('visibility', 'hidden')
         }
     }
 
@@ -76,14 +79,19 @@ class GuiController2 {
     }
 
     drawMainGui() {
+        trackSpeed.html('x' + musicController.getCurrentPlaybackSpeed().toFixed(1))
         trackName.html(trackList[musicController.trackPlaying])
-        trackTime.html("(" + musicController.getCurrentPlaybackPosition() + ")")
-        trackSpeed.html("x" + musicController.getCurrentPlaybackSpeed().toFixed(1))
+        trackTime.html('(' + musicController.getCurrentPlaybackPosition() + ')')
     }
 
     switchMode() {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
+        if (loopMode) {
+            loopButton.style('background-color', 'hsla(55, 100%, 55%, 1.0)')
+        } else {
+            loopButton.style('background-color', 'transparent')
+        }
         console.log(loopMode)
     }
 
