@@ -40,7 +40,7 @@ void main() {
 	float x = sin(0.30 * u_time + uv.y * 21.0)
             * sin(0.70 * u_time + uv.y * 29.0)
             * sin(0.33 * u_time + uv.y * 31.0 + 0.3)
-            * tan(0.08 * u_time + uv.y * 2.0)
+            * tan(0.02 * u_time + uv.y * 2.0)
             * 0.0017;                                   // overall intensity of the effect
 
     // colors

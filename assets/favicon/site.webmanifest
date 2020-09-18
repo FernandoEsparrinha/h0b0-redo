@@ -1,0 +1,19 @@
+{
+    "name": "h0b0 \ud835\udcfb\ud835\udcee\ud835\udced\ud835\udcf8",
+    "short_name": "h0b0 \ud835\udcfb\ud835\udcee\ud835\udced\ud835\udcf8",
+    "icons": [
+        {
+            "src": "/assets/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ec4c75",
+    "background_color": "#ec4c75",
+    "display": "standalone"
+}
