@@ -15,3 +15,8 @@ function createVerticesPosition(radius, n) {
         index++
     }
 }
+
+function enableNoSleep() {
+    noSleep.enable();
+    document.removeEventListener('touchstart', enableNoSleep, false);
+}

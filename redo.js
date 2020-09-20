@@ -5,6 +5,8 @@ let mobileMode = false
 let polygon, polygonRadius
 let musicController, fft, peakDetect, amplitude
 
+let noSleep
+
 let canvasPass
 
 let verticesPosition = []
@@ -27,8 +29,11 @@ function setup() {
     console.log('displayDensity: ' + displayDensity())
     pixelDensity(1)
 
+    noSleep = new NoSleep()
+    document.addEventListener('touchstart', enableNoSleep, false)
+
     mobileMode = windowWidth < 504
-    
+
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
 
