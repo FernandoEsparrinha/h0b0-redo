@@ -163,7 +163,7 @@ body {
     }
     
     #display {
-        /* visibility: hidden; */
+        visibility: hidden;
         font-size: 1.2rem;
         padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
     }
@@ -199,7 +199,7 @@ body {
     }
 
     #display {
-        /* visibility: visible; */
+        visibility: visible;
         justify-content: left;
         font-size: 1.2rem;
         padding-left: 1rem;

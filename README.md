@@ -10,13 +10,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 [h0b0_another_missed_call](https://youtu.be/5mxBF0tPP5g)
 
 ## Development
-### Circles
-- [x] issue: active circle scales on hover but jumps back to 0 immediatly after;
-
 ### Background visuals (shaders):
-- [ ] merge UI and background FX;
-- [ ] resolve crt<->button position discrepancy;
-- [ ] control feedback with musical energy (hue rotation);
 - [ ] generate noise instead of using a static image;
 - [ ] finetune feedback behaviour for each song;
 - [ ] prevent fullscreen "colour cycling";
@@ -28,7 +22,8 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
-- [x] layout: break UI into two lines (song name and time / loop and speed controls);
+- [ ] issu: resolve conflict between showing #display div on wide screens and not showing it during loading;
+- [ ] layout: iOS Safari displays buttons differently;
 - [ ] layout: rework polygon size and position;
 
 ## Technical
