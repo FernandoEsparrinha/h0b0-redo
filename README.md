@@ -22,7 +22,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
-- [ ] issu: resolve conflict between showing #display div on wide screens and not showing it during loading;
+- [ ] issue: resolve conflict between showing #display div on wide screens and not showing it during loading;
 - [ ] layout: iOS Safari displays buttons differently;
 - [ ] layout: rework polygon size and position;
 
