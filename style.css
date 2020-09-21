@@ -38,6 +38,7 @@ html {
 ----------------------------------------------------- */
 
 html {
+    -webkit-text-size-adjust: none;
     overflow: hidden;
     height: 100%;
     /* font-family: Consolas, monaco, monospace; */
@@ -81,7 +82,7 @@ body {
 }
 
 #display {
-    /* visibility: hidden; */
+    display: -webkit-flex;
     display: flex;
     flex: auto;
 
@@ -94,6 +95,7 @@ body {
 }
 
 #controls {
+    display: -webkit-flex;
     display: flex;
     flex: initial;
 
