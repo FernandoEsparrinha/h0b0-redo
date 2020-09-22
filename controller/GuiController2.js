@@ -98,18 +98,6 @@ class GuiController2 {
         console.log(loopMode)
     }
 
-    slower() {
-        musicController.decreaseSpeed()
-    }
-
-    faster() {
-        musicController.increaseSpeed()
-    }
-
-    normal() {
-        musicController.resetSpeed()
-    }
-
     handleClicking() {
         for (let i = 0; i < 17; i++) {
             let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
@@ -118,9 +106,9 @@ class GuiController2 {
             }
         }
 
-        loopButton.mousePressed(this.switchMode)
-        slowButton.mousePressed(this.slower)
-        trackSpeed.mousePressed(this.normal)
-        fastButton.mousePressed(this.faster)
+        loopButton.mousePressed(this.switchMode())
+        slowButton.mousePressed(musicController.decreaseSpeed())
+        trackSpeed.mousePressed(musicController.resetSpeed())
+        fastButton.mousePressed(musicController.increaseSpeed())
     }
 }
