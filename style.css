@@ -198,10 +198,16 @@ body {
         padding: 0;
     }
 
-    #slowButton, #fastButton {
+    #slowButton {
         font-size: 1.6rem;
         padding: 0;
         margin: 0px 16px;
+    }
+
+    #fastButton {
+        font-size: 1.6rem;
+        padding: 0;
+        margin-left: 16px;
     }
 
     #trackSpeed {
