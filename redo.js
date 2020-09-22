@@ -32,7 +32,7 @@ function setup() {
     noSleep = new NoSleep()
     document.addEventListener('touchstart', enableNoSleep, false)
 
-    mobileMode = windowWidth < 504
+    mobileMode = windowWidth < 640
 
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
@@ -90,7 +90,9 @@ function mousePressed() {
         if (!open) {
             polygon.refreshPositions()
             musicController.startPlaying()
-            display.style('visibility', 'visible')
+            if (!mobileMode) {
+                display.style('visibility', 'visible')
+            }
             open = true
         } else {
             guiController.handleClicking()
