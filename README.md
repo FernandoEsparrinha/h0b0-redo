@@ -16,9 +16,10 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] prevent fullscreen "colour cycling";
 
 ### Responsiveness
-- [ ] adapt to canvas/screen resize (e.g. device rotation);
+- [ ] screen rotation refreshes webpage;
 
 ### Mobile
+- [ ] issue: shaders not working in webapp landscape mode;
 - [ ] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
