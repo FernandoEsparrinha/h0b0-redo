@@ -194,23 +194,20 @@ body {
     }
 
     #loopButton {
-        /* font-size: 1.0rem; */
-        font-size: 16px;
+        font-size: 1.0rem;
+        padding: 0;
     }
 
-    #slowButton {
-        /* font-size: 1.6rem; */
-        font-size: 25.6px;
+    #slowButton, #fastButton {
+        font-size: 1.6rem;
+        padding: 0;
+        margin: 0px 16px;
     }
 
     #trackSpeed {
-        /* font-size: 1.2rem; */
-        font-size: 19.2px;
+        font-size: 1.2rem;
     }
 
-    #fastButton {
-        font-size: 25.6px;
-    }
 }
 
 /*min-width: 640px*/
