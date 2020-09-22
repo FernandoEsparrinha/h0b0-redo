@@ -50,10 +50,8 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    /* font-size: 1rem; */
-    font-size: 16px;
-    /* word-spacing: .02em; */
-    word-spacing: 3.2px;
+    font-size: 1rem;
+    word-spacing: .02em;
 }
 
 #visuals {
@@ -73,8 +71,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    /* padding-bottom: 0.2rem; */
-    padding-bottom: 3.2px;
+    padding-bottom: 0.2rem;
 
     color: var(--text-color);
     text-shadow:
@@ -85,34 +82,30 @@ body {
 }
 
 #display {
-    display: -webkit-flex;
+    display: -webkit-inline-flex;
     display: flex;
     flex: auto;
 
-    /* gap: 1rem; */
-    gap: 16px;
+    gap: 1rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     margin: 0;
-    /* padding-right: 0.2rem; */
-    padding-right: 3.2px;
+    padding-right: 0.2rem;
 }
 
 #controls {
-    display: -webkit-flex;
+    display: -webkit-inline-flex;
     display: flex;
     flex: initial;
-
-    /* gap: 1rem; */
-    gap: 16px;
+    
+    gap: 1rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0;
-    /* padding-left: 0.2rem; */
-    padding-left: 3.2px;
+    padding-left: 0.2rem;
 }
 
 #loopButton { order: 1; }
@@ -130,10 +123,8 @@ body {
     display: inline-block;
     vertical-align: middle;
     
-    /* width: 2.75rem; */
-    /* height: 2.75rem; */
-    width: 44px;
-    height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
         
     text-decoration: none;
     font-size: inherit;
@@ -145,10 +136,8 @@ body {
                   1px 1px 0 var(--text-stroke-color);
     
     background-color: var(--button-bg);
-    /* border: 0.125rem solid var(--button-bg-border); */
-    border: 2px solid var(--button-bg-border);
-    /* border-radius: 0.6rem; */
-    border-radius: 9.6px;
+    border: 0.125rem solid var(--button-bg-border);
+    border-radius: 0.6rem;
 
     cursor: pointer;
 
@@ -158,13 +147,11 @@ body {
 
 .toggle:hover, .button:hover {
     background: var(--button-bg-hover);
-    /* transform: translate(0, 0.125rem); */
-    transform: translate(0, 2px);
+    transform: translate(0, 0.125rem);
 }
 
 .toggle:active, .button:active {
-    /* transform: translate(0rem, 0.5rem); */
-    transform: translate(0px, 8px);
+    transform: translate(0rem, 0.5rem);
 }
 
 /* Fluid Content & Media Queries
@@ -172,69 +159,57 @@ body {
 /* calc(minContentSize + (maxContentSize - minContentSize) * ((100vw - minScreenSize) / (maxScreenSize - minScreenSize)) */
 
 /*min-width: 320px*/
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 20rem) {
     #gui {
-        /* padding-bottom: calc(0.2rem + 0.2 * ((100vw - 20rem) / 20)); */
-        padding-bottom: calc(3.2px + 3.2 * ((100vw - 320px) / 320));
+        padding-bottom: calc(0.2rem + 0.2 * ((100vw - 20rem) / 20));
     }
     
     #display {
         visibility: hidden;
-        /* font-size: 1.2rem; */
-        /* padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20)); */
-        font-size: 19.2px;
-        padding-left: calc(3.2px + 12.8 * ((100vw - 320px) / 320));
+        font-size: 1.2rem;
+        padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
     }
 
     #controls {
-        /* padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20)); */
-        /* padding-right: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20)); */
-        padding-left: calc(3.2px + 12.8 * ((100vw - 320px) / 320));
-        padding-right: calc(3.2px + 12.8 * ((100vw - 320px) / 320));
+        padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
+        padding-right: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
     }
 
     #loopButton {
-        /* font-size: 1.0rem; */
-        font-size: 16px;
+        font-size: 1.0rem;
     }
 
     #slowButton {
-        /* font-size: 1.6rem; */
-        font-size: 25.6px;
+        font-size: 1.6rem;
     }
 
     #trackSpeed {
-        /* font-size: 1.2rem; */
-        font-size: 19.2px;
+        font-size: 1.2rem;
     }
 
     #fastButton {
-        font-size: 25.6px;
+        font-size: 1.6rem;
     }
 }
 
 /*min-width: 640px*/
 /*above this width, sizes are static*/
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 40rem) {
     #gui {
         flex-direction: row;
-        /* padding-bottom: 0.4rem; */
-        padding-bottom: 6.4px;
+        padding-bottom: 0.4rem;
     }
 
     #display {
         visibility: visible;
         justify-content: left;
-        /* font-size: 1.2rem; */
-        /* padding-left: 1rem; */
-        font-size: 19.2px;
-        padding-left: 16px;
+        font-size: 1.2rem;
+        padding-left: 1rem;
+
     }
     
     #controls {
-        /* padding-left: 1rem; */
-        /* padding-right: 1rem; */
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
