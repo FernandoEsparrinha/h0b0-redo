@@ -24,7 +24,7 @@ class GuiController2 {
         fastButton.addClass('button')
         trackName.addClass('display')
         trackTime.addClass('display')
-        
+
         loopButton.id('loopButton')
         slowButton.id('slowButton')
         trackSpeed.id('trackSpeed')
@@ -34,7 +34,7 @@ class GuiController2 {
 
         gui = select('#gui')
         controls = select('#controls')
-        display  = select('#display')
+        display = select('#display')
 
         loopButton.parent(controls)
         slowButton.parent(controls)
@@ -89,10 +89,10 @@ class GuiController2 {
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
             loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
-            
+
         } else {
             loopButton.style('background-color: transparent')
-            
+
         }
         console.log(loopMode)
     }

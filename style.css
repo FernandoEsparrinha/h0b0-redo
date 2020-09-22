@@ -88,6 +88,7 @@ body {
     display: -webkit-flex;
     display: flex;
     flex: auto;
+    visibility: hidden;
 
     /* gap: 1rem; */
     gap: 16px;
@@ -226,7 +227,7 @@ body {
     }
 
     #display {
-        visibility: visible;
+        visibility: hidden;
         justify-content: left;
         /* font-size: 1.2rem; */
         /* padding-left: 1rem; */
