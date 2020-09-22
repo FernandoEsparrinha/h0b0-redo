@@ -18,7 +18,7 @@ class GuiController2 {
 
         trackSpeed = createP('trackSpeed')
         trackSpeed.class('controller')
-        trackSpeed.addClass('display')
+        trackSpeed.addClass('button')
         trackSpeed.id('trackSpeed')
         trackSpeed.parent(controls)
 
@@ -80,7 +80,7 @@ class GuiController2 {
     }
 
     drawMainGui() {
-        // trackSpeed.html('x' + musicController.getCurrentPlaybackSpeed().toFixed(1))
+        trackSpeed.html('x' + musicController.getCurrentPlaybackSpeed().toFixed(1))
         trackName.html(trackList[musicController.trackPlaying])
         trackTime.html('(' + musicController.getCurrentPlaybackPosition() + ')')
     }
