@@ -26,6 +26,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] issue: resolve conflict between showing #display div on wide screens and not showing it during loading;
 - [ ] layout: iOS Safari displays buttons differently;
 - [ ] layout: rework polygon size and position;
+- [ ] implement: hide GUI after specified time, show with mouseMoved() or mousePressed(), restart counting after specified time;
 
 ## Technical
 ### Web:
