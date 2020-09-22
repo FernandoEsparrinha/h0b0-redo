@@ -85,6 +85,7 @@ body {
     display: -webkit-inline-flex;
     display: flex;
     flex: auto;
+    visibility: hidden;
 
     gap: 1rem;
     text-align: center;
@@ -177,19 +178,25 @@ body {
 
     #loopButton {
         font-size: 1.0rem;
+        padding: 0;
     }
 
     #slowButton {
         font-size: 1.6rem;
+        padding: 0;
+        margin: 0px 16px;
+    }
+
+    #fastButton {
+        font-size: 1.6rem;
+        padding: 0;
+        margin-left: 16px;
     }
 
     #trackSpeed {
         font-size: 1.2rem;
     }
 
-    #fastButton {
-        font-size: 1.6rem;
-    }
 }
 
 /*min-width: 640px*/
@@ -201,7 +208,7 @@ body {
     }
 
     #display {
-        visibility: visible;
+        visibility: hidden;
         justify-content: left;
         font-size: 1.2rem;
         padding-left: 1rem;

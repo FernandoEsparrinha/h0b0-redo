@@ -90,6 +90,7 @@ function mousePressed() {
         if (!open) {
             polygon.refreshPositions()
             musicController.startPlaying()
+            display.style('visibility', 'visible')
             open = true
         } else {
             guiController.handleClicking()
