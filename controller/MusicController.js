@@ -141,13 +141,11 @@ class MusicController {
         })
     }
 
-    resetSpeed(){
-        tracks.forEach(track => {
-            let rate = track.rate()
-            rate = 1.0
-            track.rate(rate)
-        })
-    }
+    // resetSpeed(){
+    //     tracks.forEach(track => {
+    //         track.rate(1.0)
+    //     })
+    // }
 
     getCurrentPlaybackPosition() {
         if (open) {

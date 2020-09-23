@@ -5,44 +5,43 @@ let gui, controls, display
 class GuiController2 {
     constructor() {
         loopButton = createButton('∞')
-        loopButton.class('controller')
-        loopButton.addClass('toggle')
-        loopButton.id('loopButton')
-        loopButton.parent(controls)
-
         slowButton = createButton('⏪')
-        slowButton.class('controller')
-        slowButton.addClass('button')
-        slowButton.id('slowButton')
-        slowButton.parent(controls)
-
         trackSpeed = createP('trackSpeed')
-        trackSpeed.class('controller')
-        trackSpeed.addClass('button')
-        trackSpeed.id('trackSpeed')
-        trackSpeed.parent(controls)
-
         fastButton = createButton('⏩')
-        fastButton.class('controller')
-        fastButton.addClass('button')
-        fastButton.id('fastButton') 
-        fastButton.parent(controls) 
-
         trackName = createP('trackName')
-        trackName.class('controller')
-        trackName.addClass('display')
-        trackName.id('trackName')
-        trackName.parent(display)
-
         trackTime = createP('trackTime')
+
+        loopButton.class('controller')
+        slowButton.class('controller')
+        trackSpeed.class('controller')
+        fastButton.class('controller')
+        trackName.class('controller')
         trackTime.class('controller')
+
+        loopButton.addClass('toggle')
+        slowButton.addClass('button')
+        trackSpeed.addClass('display')
+        fastButton.addClass('button')
+        trackName.addClass('display')
         trackTime.addClass('display')
+
+        loopButton.id('loopButton')
+        slowButton.id('slowButton')
+        trackSpeed.id('trackSpeed')
+        fastButton.id('fastButton')
+        trackName.id('trackName')
         trackTime.id('trackTime')
+
+        loopButton.parent(controls)
+        slowButton.parent(controls)
+        trackSpeed.parent(controls)
+        fastButton.parent(controls)
+        trackName.parent(display)
         trackTime.parent(display)
-        
-        gui      = select('#gui')
+
+        gui = select('#gui')
         controls = select('#controls')
-        display  = select('#display')
+        display = select('#display')
     }
 
     draw() {
@@ -90,10 +89,8 @@ class GuiController2 {
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
             loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
-
         } else {
             loopButton.style('background-color: transparent')
-
         }
         console.log(loopMode)
     }
@@ -108,7 +105,7 @@ class GuiController2 {
 
         loopButton.mousePressed(this.switchMode())
         slowButton.mousePressed(musicController.decreaseSpeed())
-        trackSpeed.mousePressed(musicController.resetSpeed())
+        // trackSpeed.mousePressed(musicController.resetSpeed())
         fastButton.mousePressed(musicController.increaseSpeed())
     }
 }
