@@ -29,9 +29,6 @@ function setup() {
     console.log('displayDensity: ' + displayDensity())
     pixelDensity(1)
 
-    // div
-    // display = select('#display')
-
     noSleep = new NoSleep()
     document.addEventListener('touchstart', enableNoSleep, false)
 
@@ -93,9 +90,9 @@ function mousePressed() {
         if (!open) {
             polygon.refreshPositions()
             musicController.startPlaying()
-            // if (!mobileMode) {
-            //     display.style('visibility', 'visible')
-            // }
+            if (!mobileMode) {
+                display.style('visibility', 'visible')
+            }
             open = true
         } else {
             guiController.handleClicking()

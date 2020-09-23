@@ -24,7 +24,7 @@ class GuiController2 {
         fastButton.addClass('button')
         trackName.addClass('display')
         trackTime.addClass('display')
-
+        
         loopButton.id('loopButton')
         slowButton.id('slowButton')
         trackSpeed.id('trackSpeed')
@@ -32,16 +32,16 @@ class GuiController2 {
         trackName.id('trackName')
         trackTime.id('trackTime')
 
+        gui = select('#gui')
+        controls = select('#controls')
+        display  = select('#display')
+
         loopButton.parent(controls)
         slowButton.parent(controls)
         trackSpeed.parent(controls)
         fastButton.parent(controls)
         trackName.parent(display)
         trackTime.parent(display)
-
-        gui = select('#gui')
-        controls = select('#controls')
-        display = select('#display')
     }
 
     draw() {
@@ -89,10 +89,24 @@ class GuiController2 {
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
             loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
+            
         } else {
             loopButton.style('background-color: transparent')
+            
         }
         console.log(loopMode)
+    }
+
+    slower() {
+        musicController.decreaseSpeed()
+    }
+
+    normal() {
+        musicController.resetSpeed()
+    }
+
+    faster() {
+        musicController.increaseSpeed()
     }
 
     handleClicking() {
@@ -103,9 +117,9 @@ class GuiController2 {
             }
         }
 
-        loopButton.mousePressed(this.switchMode())
-        slowButton.mousePressed(musicController.decreaseSpeed())
-        // trackSpeed.mousePressed(musicController.resetSpeed())
-        fastButton.mousePressed(musicController.increaseSpeed())
+        loopButton.mousePressed(this.switchMode)
+        slowButton.mousePressed(this.slower)
+        trackSpeed.mousePressed(this.normal)
+        fastButton.mousePressed(this.faster)
     }
 }
