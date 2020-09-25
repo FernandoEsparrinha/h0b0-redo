@@ -46,7 +46,7 @@ class GuiController2 {
 
     draw() {
         // Check how many frames passed since gui showed up
-        if (frameCount > lastTimeActivated + 100) {
+        if (millis() > lastTimeActivated + 10000) {
             active = false
         }
 
@@ -138,6 +138,6 @@ class GuiController2 {
 
     activateGui() {
         active = true
-        lastTimeActivated = frameCount
+        lastTimeActivated = millis()
     }
 }
