@@ -5,6 +5,9 @@ let mobileMode = false
 let polygon, polygonRadius
 let musicController, fft, peakDetect, amplitude
 
+let active = true
+let lastTimeActivated
+
 let noSleep
 
 let canvasPass
@@ -66,6 +69,7 @@ function draw() {
 }
 
 function keyPressed() {
+    guiController.activateGui()
     // left
     if (keyCode === 37) {
         musicController.previous()
@@ -86,18 +90,20 @@ function keyPressed() {
 }
 
 function mousePressed() {
+    guiController.activateGui()
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
             musicController.startPlaying()
-            if (!mobileMode) {
-                display.style('visibility', 'visible')
-            }
             open = true
         } else {
             guiController.handleClicking()
         }
     }
+}
+
+function mouseMoved() {
+    guiController.activateGui()
 }
 
 

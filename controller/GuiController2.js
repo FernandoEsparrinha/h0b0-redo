@@ -24,7 +24,7 @@ class GuiController2 {
         fastButton.addClass('button')
         trackName.addClass('display')
         trackTime.addClass('display')
-        
+
         loopButton.id('loopButton')
         slowButton.id('slowButton')
         trackSpeed.id('trackSpeed')
@@ -34,7 +34,7 @@ class GuiController2 {
 
         gui = select('#gui')
         controls = select('#controls')
-        display  = select('#display')
+        display = select('#display')
 
         loopButton.parent(controls)
         slowButton.parent(controls)
@@ -45,10 +45,23 @@ class GuiController2 {
     }
 
     draw() {
+        // Check how many frames passed since gui showed up
+        if (frameCount > lastTimeActivated + 100) {
+            active = false
+        }
+
         this.drawLoadGui()
 
         if (tracksLoaded && open) {
-            gui.style('visibility', 'visible')
+            if (active) {
+                gui.style('visibility', 'visible')
+                if (!mobileMode) {
+                    display.style('visibility', 'visible')
+                }
+            } else {
+                gui.style('visibility', 'hidden')
+                display.style('visibility', 'hidden')
+            }
             this.drawMainGui()
         } else {
             gui.style('visibility', 'hidden')
@@ -89,10 +102,10 @@ class GuiController2 {
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
             loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
-            
+
         } else {
             loopButton.style('background-color: transparent')
-            
+
         }
         console.log(loopMode)
     }
@@ -121,5 +134,10 @@ class GuiController2 {
         slowButton.mousePressed(this.slower)
         trackSpeed.mousePressed(this.normal)
         fastButton.mousePressed(this.faster)
+    }
+
+    activateGui() {
+        active = true
+        lastTimeActivated = frameCount
     }
 }
