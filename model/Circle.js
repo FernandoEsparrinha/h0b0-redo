@@ -33,7 +33,10 @@ class Circle {
         this.startFill = 0.3
         this.endFill = 0.6
         this.lerpAmount = 0
-        this.hRange = map(this.index * (360 / 17), 0, 360, 0, 360)
+        this.hRange = map(this.index * (360 / 17), 0, 360, 160, 360)
+
+        // show/hide circles
+        this.lerpGui = 0
     }
 
     draw() {
@@ -45,14 +48,24 @@ class Circle {
         stroke(this.hRange, 100, 100, 1.0)
         fill(this.hRange, 100, 100, this.startFill)
 
+
         if (open) {
             // After Polygon has been opened (click)
-            this.handlePlaying()
             this.handleHovering()
 
-            // Displays (music) index number over circle
-            textSize(32)
-            text(this.index, this.X, this.Y)
+            if (activeGui) {
+                // Displays (music) index number over circle
+                if (!mobileMode) {
+                    textSize(32)
+                } else {
+                    textSize(24)
+                }
+                text(this.index, this.X, this.Y)
+
+            } else {
+                stroke(0, 0, 0, 0)
+                fill(0, 0, 0, 0)
+            }
         }
 
         // Só desenha o circulo depois da musica correspondente ter sido carregada
@@ -60,20 +73,6 @@ class Circle {
             circle(this.X, this.Y, this.diameter)
         }
         pop()
-    }
-
-    /**
-     * Animates the playing circle
-     */
-    handlePlaying() {
-        if (this.isPlaying()) {
-            fft.analyze()
-            peakDetect.update(fft)
-            stroke(0, 0, 100, 1.0)
-            fill(0, 0, 100, this.startFill)
-        } else {
-            stroke(this.hRange, 100, 100, 1.0)
-        }
     }
 
     /**

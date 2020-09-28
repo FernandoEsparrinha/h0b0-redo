@@ -78,6 +78,8 @@ body {
         1px -1px 0 var(--text-stroke-color),
         -1px 1px 0 var(--text-stroke-color),
         1px 1px 0 var(--text-stroke-color);
+
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
 #display {

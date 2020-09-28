@@ -4,15 +4,11 @@ let open = false
 let mobileMode = false
 let polygon, polygonRadius
 let musicController, fft, peakDetect, amplitude
-
-let active = true
-let lastTimeActivated
+let verticesPosition = []
+let canvasPass
 
 let noSleep
 
-let canvasPass
-
-let verticesPosition = []
 
 function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
@@ -23,8 +19,6 @@ function preload() {
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
-    compositeShader = loadShader('shaders/shader.vert', 'shaders/composite.frag')
-    alphaShader = loadShader('shaders/shader.vert', 'shaders/alpha.frag')
     crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
@@ -44,7 +38,7 @@ function setup() {
 
     musicController = new MusicController()
 
-    guiController = new GuiController2()
+    guiController = new GuiController()
     shaderController = new ShaderController()
     polygon = new Polygon(polygonRadius, 17)
 }
@@ -69,7 +63,9 @@ function draw() {
 }
 
 function keyPressed() {
+    // any key
     guiController.activateGui()
+
     // left
     if (keyCode === 37) {
         musicController.previous()
@@ -91,6 +87,7 @@ function keyPressed() {
 
 function mousePressed() {
     guiController.activateGui()
+    
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
