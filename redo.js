@@ -3,7 +3,7 @@ p5.disableFriendlyErrors = true
 let open = false
 let mobileMode = false
 let polygon, polygonRadius
-let musicController, fft, peakDetect, amplitude
+let musicController
 let verticesPosition = []
 let canvasPass
 
@@ -59,7 +59,6 @@ function draw() {
     shaderController.draw()
     polygon.draw()
     guiController.draw()
-    musicController.logValues()
 }
 
 function keyPressed() {
@@ -78,10 +77,6 @@ function keyPressed() {
     else if (keyCode === 38) {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
-    }
-    // m (menu)
-    else if (keyCode === 77) {
-        musicController.menu = !musicController.menu
     }
 }
 
@@ -105,9 +100,7 @@ function mouseMoved() {
 
 
 function windowResized() {
+    console.log("size / w: " + windowWidth + " h: " + windowHeight)
+    console.log("center / w: " + windowWidth * 0.5 + " h: " + windowHeight * 0.5)
     resizeCanvas(windowWidth, windowHeight)
-
-    // era importante que o polígono se adaptasse ao canvas
-    // imagino isto como sendo importante no caso do telemóvel e alguém o rodar
-    // não está é a funcionar deste modo, apesar do polygonRadius actualizar os valores
 }

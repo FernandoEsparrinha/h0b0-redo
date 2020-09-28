@@ -12,10 +12,6 @@ class ShaderController {
     }
 
     draw() {
-        this.mX = map(mouseX, 0, width, 0, 100)
-        this.mY = map(mouseY, 0, height, 0, 100)
-
-
         // gradientShader
         this.gradientPass.shader(gradientShader)
         gradientShader.setUniform("u_resolution", [width, height])
@@ -33,10 +29,6 @@ class ShaderController {
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
         feedbackShader.setUniform('u_keyDown', int(keyIsDown(82)))
-
-        feedbackShader.setUniform('u_bass', map(musicController.bass, 130, 255, 0., 1.))
-        feedbackShader.setUniform('u_lowMid', map(musicController.lowMid, 130, 255, 0., 1.))
-        feedbackShader.setUniform('u_treble', map(musicController.treble, 40, 120, 0., 1.))
 
         feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
         feedbackShader.setUniform('u_zoom', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])
