@@ -23,10 +23,10 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [ ] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
-- [ ] issue: resolve conflict between showing #display div on wide screens and not showing it during loading;
-- [ ] layout: iOS Safari displays buttons differently;
+- [x] issue: resolve conflict between showing #display div on wide screens and not showing it during loading;
+- [x] layout: iOS Safari displays buttons differently;
 - [ ] layout: rework polygon size and position;
-- [ ] implement: hide GUI after specified time, show with mouseMoved() or mousePressed(), restart counting after specified time;
+- [x] implement: hide GUI after specified time, show with mouseMoved() or mousePressed();
 
 ## Technical
 ### Web:
