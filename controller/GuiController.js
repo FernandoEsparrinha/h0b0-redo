@@ -1,45 +1,79 @@
+let loopButton, slowButton, fastButton
+let trackName, trackTime, trackSpeed
+let gui, controls, display
+let activeGui = true, lastTimeActivated
+
 class GuiController {
     constructor() {
-        this.buttons = [
-            { action: "trackName", text: "",
-                x: windowWidth * 0.02,
-                y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95,
-                width: 40,
-                height: 40
-            },
+        loopButton = createButton('∞')
+        slowButton = createButton('⏪')
+        trackSpeed = createP('trackSpeed')
+        fastButton = createButton('⏩')
+        trackName = createP('trackName')
+        trackTime = createP('trackTime')
 
-            { action: "switchMode", text: "∞",
-                x: windowWidth * 0.95 - (49 + 10 + 49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
-                y: windowHeight * 0.95,
-                width: 49,
-                height: 30,
-            },
+        loopButton.class('controller')
+        slowButton.class('controller')
+        trackSpeed.class('controller')
+        fastButton.class('controller')
+        trackName.class('controller')
+        trackTime.class('controller')
 
-            // fontVCR is monospaced so textWidth is hardcoded
-            { action: "slower", text: "⏪",
-                x: windowWidth * 0.95 - (49 + 10 + textWidth("x1.0") + 10 + 49 * 0.5),
-                y: windowHeight * 0.95,
-                width: 49,
-                height: 30,
-            },
+        loopButton.addClass('toggle')
+        slowButton.addClass('button')
+        trackSpeed.addClass('display')
+        fastButton.addClass('button')
+        trackName.addClass('display')
+        trackTime.addClass('display')
 
-            { action: "trackSpeed", text: "",
-                x: windowWidth * 0.95 - (49 + 10) - textWidth("x1.0"),
-                y: mobileMode ? windowHeight * 0.95 : windowHeight * 0.95,
-                width: 49,
-                height: 30
-            },
+        loopButton.id('loopButton')
+        slowButton.id('slowButton')
+        trackSpeed.id('trackSpeed')
+        fastButton.id('fastButton')
+        trackName.id('trackName')
+        trackTime.id('trackTime')
 
-            { action: "faster", text: "⏩",
-                x: windowWidth * 0.95,
-                y: windowHeight * 0.95,
-                width: 49,
-                height: 30,
-            }
-        ]
+        gui = select('#gui')
+        controls = select('#controls')
+        display = select('#display')
+
+        loopButton.parent(controls)
+        slowButton.parent(controls)
+        trackSpeed.parent(controls)
+        fastButton.parent(controls)
+        trackName.parent(display)
+        trackTime.parent(display)
     }
 
     draw() {
+        // Check how many milliseconds passed since gui showed up
+        if (millis() > lastTimeActivated + 10000) {
+            activeGui = false
+        }
+
+        this.drawLoadGui()
+
+        if (tracksLoaded && open) {
+            if (activeGui) {
+                gui.style('visibility', 'visible')
+                gui.style('transform: translate(0rem, 0rem);')
+
+                if (!mobileMode) {
+                    display.style('visibility', 'visible')
+                }
+
+            } else {
+                gui.style('transform: translate(0rem, 4rem);')
+            }
+
+            this.drawMainGui()
+            
+        } else {
+            gui.style('visibility', 'hidden')
+        }
+    }
+
+    drawLoadGui() {
         textFont(fontVCR)
         //textFont(fontH0b0)
         stroke(0, 0, 0)
@@ -60,102 +94,55 @@ class GuiController {
                 text('     ↑     ', windowWidth * 0.5, windowHeight * 0.8 - w)
             }
         }
-        if (mobileMode) {
-            textSize(12)
-        } else {
-            textSize(24)
-        }
-
-        if (tracksLoaded && open) {
-            this.drawMainGui()
-        }
     }
 
     drawMainGui() {
+        trackSpeed.html('x' + musicController.getCurrentPlaybackSpeed().toFixed(1))
+        trackName.html(trackList[musicController.trackPlaying])
+        trackTime.html('(' + musicController.getCurrentPlaybackPosition() + ')')
+    }
 
-        this.buttons.forEach(button => {
+    switchMode() {
+        loopMode = !loopMode
+        musicController.playTrack(musicController.trackPlaying, true)
+        if (loopMode) {
+            loopButton.style('background-color: hsla(55, 100%, 55%, 1.0)')
 
-            if (button.action == "trackName") {
-                textAlign(LEFT)
-                text(trackList[musicController.trackPlaying] + " (" + musicController.getCurrentPlaybackPosition() + ")", button.x, button.y)
-            }
+        } else {
+            loopButton.style('background-color: transparent')
 
-            if (button.action == "trackSpeed") {
-                textAlign(LEFT)
-                let strTrackSpeed = "x" + musicController.getCurrentPlaybackSpeed().toFixed(1)
-                text(strTrackSpeed, button.x, button.y)
-            }
+        }
+        console.log(loopMode)
+    }
 
-            if (button.action == "slower" || button.action == "faster" || button.action == "switchMode") {
-                push()
-                // check if the mouse is hovering
-                if (mouseX > button.x - (button.width / 2) 
-                && mouseX < button.x + (button.width / 2) 
-                && mouseY > button.y - (button.height / 2) 
-                && mouseY < button.y + (button.height / 2)) {
-                    fill(55, 90, 100)
-                    cursor(HAND)
-                } else {
-                    noFill()                   
-                }
+    slower() {
+        musicController.decreaseSpeed()
+    }
 
-                // hover behaviour for the rectangle in the slower, faster and switchMode buttons
-                strokeWeight(1)
-                stroke(55, 90, 100)
-                rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height, 5)
-                pop()
-                textSize(20)
-            }
+    normal() {
+        musicController.resetSpeed()
+    }
 
-            if (button.action == "switchMode") {
-                push()
-                if (loopMode) {
-                    fill(55, 90, 100)
-                } else {
-                    noFill()
-                }
-                strokeWeight(1)
-                stroke(55, 90, 100)
-                rect(button.x - (button.width / 2), button.y - (button.height / 2), button.width, button.height, 5)
-                pop()
-            }
-
-            textAlign(CENTER, CENTER)
-            text(button.text, button.x, button.y)
-        })
-
-        // print current song information for debugging purposes
-        // textSize(12)
-        // text(JSON.stringify(tracks[musicController.trackPlaying], null, " "), 10, 40)
-        // textSize(32)
+    faster() {
+        musicController.increaseSpeed()
     }
 
     handleClicking() {
-        this.buttons.forEach(button => {
-            if (mouseX > button.x - (button.width / 2) && mouseX < button.x + (button.width / 2) && mouseY > button.y - (button.height / 2) && mouseY < button.y + (button.height / 2)) {
-                switch (button.action) {
-                    case "switchMode":
-                        loopMode = !loopMode
-                        musicController.playTrack(musicController.trackPlaying, true)
-                        break;
-                    case "slower":
-                        musicController.decreaseSpeed()
-                        break;
-                    case "faster":
-                        musicController.increaseSpeed()
-                        break;
-                    default:
-                        console.error("Action not yet implemented")
-                        break;
-                }
-            }
-        })
-
         for (let i = 0; i < 17; i++) {
             let d = dist(mouseX, mouseY, verticesPosition[i][0], verticesPosition[i][1])
             if (d < (polygon.vertices[0].diameter / 2)) {
                 musicController.playTrack((i + musicController.getTrackNumberPlaying()) % 17)
             }
         }
+
+        loopButton.mousePressed(this.switchMode)
+        slowButton.mousePressed(this.slower)
+        trackSpeed.mousePressed(this.normal)
+        fastButton.mousePressed(this.faster)
+    }
+
+    activateGui() {
+        activeGui = true
+        lastTimeActivated = millis()
     }
 }
