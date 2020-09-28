@@ -2,16 +2,12 @@ class ShaderController {
     constructor() {
         this.gradientPass = createGraphics(windowWidth, windowHeight, WEBGL)
         this.feedbackPass = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.feedbackBuffer = createGraphics(windowWidth, windowHeight)
-        this.compositePass = createGraphics(windowWidth, windowHeight, WEBGL)
-        this.alphaPass = createGraphics(windowWidth, windowHeight, WEBGL)
+        this.feedbackBuffer = createGraphics(windowWidth, windowHeight)        
         this.crtPass = createGraphics(windowWidth, windowHeight, WEBGL)
 
         noStroke()
         this.gradientPass.noStroke()
         this.feedbackPass.noStroke()
-        this.compositePass.noStroke()
-        this.alphaPass.noStroke()
         this.crtPass.noStroke()
     }
 
@@ -29,7 +25,11 @@ class ShaderController {
         // feedbackShader
         this.feedbackPass.shader(feedbackShader)
         feedbackShader.setUniform('tex0', imgColorNoise)
-        feedbackShader.setUniform('tex1', this.feedbackBuffer)
+        if (open) {
+            feedbackShader.setUniform('tex1', this.feedbackBuffer)
+        } else {
+            feedbackShader.setUniform('tex1', imgColorNoise)
+        }
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
         feedbackShader.setUniform('u_keyDown', int(keyIsDown(82)))
@@ -47,25 +47,6 @@ class ShaderController {
 
         // draw into the buffer
         this.feedbackBuffer.image(this.feedbackPass, 0, 0, width, height)
-
-
-        // compositeShader
-        // this.compositePass.shader(compositeShader)
-        // compositeShader.setUniform('tex0', this.feedbackPass)
-        // compositeShader.setUniform('tex1', canvasPass)
-        // compositeShader.setUniform('tex0_res', [width, height])
-        // compositeShader.setUniform('tex1_res', [width, height])
-        // compositeShader.setUniform("u_resolution", [width, height])
-        // this.compositePass.rect(0, 0, windowWidth, windowHeight)
-
-
-        // alphaShader
-        // this.alphaPass.shader(alphaShader)
-        // alphaShader.setUniform('tex0', this.feedbackPass)
-        // alphaShader.setUniform('tex1', canvasPass)
-        // alphaShader.setUniform("u_resolution", [width, height])
-        // alphaShader.setUniform('u_time', millis() / 1000.0)
-        // this.alphaPass.rect(0, 0, windowWidth, windowHeight)
 
 
         // crtShader
