@@ -18,6 +18,7 @@ function preload() {
     imgMiraTecnica = loadImage('assets/image/miraTecnica.jpg')
 
     gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
+    noiseShader = loadShader('shaders/shader.vert', 'shaders/noise.frag')
     feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
     crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
@@ -34,7 +35,7 @@ function setup() {
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
 
-    polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.32
+    polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.375
 
     musicController = new MusicController()
 

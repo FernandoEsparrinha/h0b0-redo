@@ -13,7 +13,7 @@ varying vec2 vTexCoord;     // texcoords from vert shader
 uniform sampler2D tex0;     // feedback shader image
 
 uniform vec2 u_resolution;  // [width, height]
-uniform float u_time;       // millis() / 1000.0)
+uniform float u_time;       // millis() / 1000.0
 
 // Loosely based on postprocessing shader by inigo quilez, License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 

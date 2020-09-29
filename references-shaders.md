@@ -103,3 +103,26 @@ Inspiration, references and tutorials for the _h0b0 redo_ **web album experience
 
 ### Fluid
 [spilled](https://www.shadertoy.com/view/MsGSRd)
+
+### Noise
+[Integer Hash - II](https://www.shadertoy.com/view/XlXcW4)
+
+[Noise - simplex - 2D](https://www.shadertoy.com/view/Msf3WH)
+
+[Noise - value - 2D](https://www.shadertoy.com/view/lsf3WH)
+
+[Noise - gradient - 2D](https://www.shadertoy.com/view/XdXGW8)
+
+[Noise - Gradient - 2D - Deriv](https://www.shadertoy.com/view/XdXBRH)
+
+[Cheap Fractal Noise](https://www.shadertoy.com/view/XtsXRn)
+
+[Simplex Noise Demo](https://www.shadertoy.com/view/MslBzf)
+
+[OpenSimplex2 Fractal Warp V3](https://www.shadertoy.com/view/WtsBR4)
+
+[Disc-Vector Output Noise](https://www.shadertoy.com/view/wlcXzB)
+
+[Northern Lights Running Wild](https://www.shadertoy.com/view/tsjcRK)
+
+[Northern Lights Blazing Bright](https://www.shadertoy.com/view/wdf3Rf)

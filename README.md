@@ -11,7 +11,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 
 ## Development
 ### Background visuals (shaders):
-- [ ] generate noise instead of using a static image;
+- [x] generate noise instead of using a static image;
 - [ ] finetune feedback behaviour for each song;
 - [ ] prevent fullscreen "colour cycling";
 
@@ -20,13 +20,10 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 
 ### Mobile
 - [ ] issue: shaders not working in webapp landscape mode;
-- [ ] issue: screen shuts down after a while;
+- [x] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
-- [x] issue: resolve conflict between showing #display div on wide screens and not showing it during loading;
-- [x] layout: iOS Safari displays buttons differently;
 - [ ] layout: rework polygon size and position;
-- [x] implement: hide GUI after specified time, show with mouseMoved() or mousePressed();
 
 ## Technical
 ### Web:

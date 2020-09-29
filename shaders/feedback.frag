@@ -18,12 +18,8 @@ uniform float u_rotation;
 uniform vec3 u_colorIncrement;
 uniform vec3 u_colorTreshold;
 
-uniform float u_bass;
-uniform float u_lowMid;
-uniform float u_treble;
-
 uniform vec2 u_resolution;      // [width, height]
-uniform float u_time;           // millis() / 1000.0)
+uniform float u_time;           // millis() / 1000.0
 uniform float u_keyDown;        // pressed "r" key
 uniform float u_playbackSpeed;  // musicController.getCurrentPlaybackSpeed().toFixed(1) (0.1, 2.0)
 
