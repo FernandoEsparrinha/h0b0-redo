@@ -1,3 +1,5 @@
+let randomVal
+
 class ShaderController {
     constructor() {
         this.gradientPass = createGraphics(windowWidth, windowHeight, WEBGL)
@@ -11,6 +13,9 @@ class ShaderController {
         this.noisePass.noStroke()
         this.feedbackPass.noStroke()
         this.crtPass.noStroke()
+
+        randomVal = random(0, 100)
+        //console.log(randomVal)
     }
 
     draw() {
@@ -24,7 +29,7 @@ class ShaderController {
         this.noisePass.shader(noiseShader)
         noiseShader.setUniform("u_resolution", [width, height])
         noiseShader.setUniform('u_time', millis() / 1000.0)
-        noiseShader.setUniform('u_seed', random(0, 100))
+        noiseShader.setUniform('u_seed', randomVal)
         this.noisePass.rect(0, 0, windowWidth, windowHeight)
 
 
@@ -56,7 +61,8 @@ class ShaderController {
         if (!open) {
             // crtShader.setUniform('tex0', imgMiraTecnica)
             // crtShader.setUniform('tex0', this.feedbackPass)
-            crtShader.setUniform('tex0', this.gradientPass)
+            // crtShader.setUniform('tex0', this.gradientPass)
+            crtShader.setUniform('tex0', this.noisePass)
         } else {
             crtShader.setUniform('tex0', this.feedbackPass)
         }
