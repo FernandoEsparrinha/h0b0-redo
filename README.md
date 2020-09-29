@@ -23,6 +23,7 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 - [x] issue: screen shuts down after a while;
 - [ ] issue: MusicController stop() not working;
 - [ ] issue: speed buttons stay highlighted on click;
+- [ ] issue: volume bar doesn't go away when volume is changed with buttons;
 - [ ] layout: rework polygon size and position;
 
 ## Technical

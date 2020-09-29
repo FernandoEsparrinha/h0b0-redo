@@ -9,7 +9,7 @@ function createVerticesPosition(radius, n) {
     let index = 0
     for (let a = (TWO_PI + (PI / 2)); a >= (PI / 2); a -= angle) {
         let sx = (windowWidth / 2) + cos(a) * radius
-        let sy = (windowHeight / (mobileMode ? 3 : 2)) + sin(a) * radius
+        let sy = (windowHeight / (mobileMode ? 4 : 2)) + sin(a) * radius
 
         verticesPosition[index] = [sx, sy]
         index++

@@ -35,7 +35,7 @@ function setup() {
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
 
-    polygonRadius = mobileMode ? windowHeight * 0.50 : windowHeight * 0.375
+    polygonRadius = mobileMode ? windowHeight * 0.52 : windowHeight * 0.375
 
     musicController = new MusicController()
 

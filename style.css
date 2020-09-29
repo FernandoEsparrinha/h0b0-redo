@@ -37,7 +37,8 @@ html {
 ----------------------------------------------------- */
 
 html {
-    -webkit-text-size-adjust: none;
+    /* -webkit-text-size-adjust: none; */
+    background: black;
     overflow: hidden;
     height: 100%;
     /* font-family: Consolas, monaco, monospace; */
@@ -51,10 +52,18 @@ body {
     padding: 0;
     font-size: 1rem;
     word-spacing: .02em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #visuals {
     z-index: -1;
+    max-width: 1440px;
+    max-height: 1080px;
+    /* max-width: 960px;
+    max-height: 720px; */
 }
 
 /* GUI
@@ -83,7 +92,7 @@ body {
 }
 
 #display {
-    display: -webkit-inline-flex;
+    /* display: -webkit-inline-flex; */
     display: flex;
     flex: auto;
 
@@ -96,7 +105,7 @@ body {
 }
 
 #controls {
-    display: -webkit-inline-flex;
+    /* display: -webkit-inline-flex; */
     display: flex;
     flex: initial;
     
