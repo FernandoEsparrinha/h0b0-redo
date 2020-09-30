@@ -62,8 +62,10 @@ void main() {
   fb.rgb = rgb2hsv(fb.rgb);
 
   // get the xy angles from the hue
-  float xAngle = cos(fb.r * TWO_PI * u_playbackSpeed);
-  float yAngle = sin(fb.r * TWO_PI * u_playbackSpeed);
+  float xAngle = cos( 1.0 - pow( abs(fb.r * TWO_PI * u_playbackSpeed), 3.0));
+  // float xAngle *= cos(fb.r * TWO_PI * u_playbackSpeed);
+  float yAngle = sin( 1.0 - pow( abs(fb.r * TWO_PI * u_playbackSpeed), 1.5));
+  // float yAngle = sin(fb.r * TWO_PI * u_playbackSpeed);
 
   // The amount
   vec2 amt = texel.xy * 2.;
@@ -92,11 +94,12 @@ void main() {
 
   gl_FragColor = colOut;
 
-  // Seed the buffer with the texture
-  if(u_time < 1.0) {
+  // Seed the buffer with the texture for the first two seconds
+  if(u_time < 2.0) {
       gl_FragColor = texture2D(tex0, uv);
   }
   
+  // Seed the buffer with the texture if key is pressed
   if(u_keyDown > 0.0) {
       gl_FragColor = texture2D(tex0, uv);
   }
