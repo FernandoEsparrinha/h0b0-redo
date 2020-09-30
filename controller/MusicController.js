@@ -98,7 +98,7 @@ class MusicController {
     }
 
     next() {
-        if (this.trackPlaying == tracks.length-1) {
+        if (this.trackPlaying == tracks.length - 1) {
             this.playTrack(0)
         } else {
             this.playTrack(musicController.trackPlaying + 1)
@@ -107,7 +107,7 @@ class MusicController {
 
     previous() {
         if (this.trackPlaying == 0) {
-            this.playTrack(tracks.length-1)
+            this.playTrack(tracks.length - 1)
         } else {
             this.playTrack(this.trackPlaying - 1)
         }
@@ -131,7 +131,7 @@ class MusicController {
         })
     }
 
-    resetSpeed(){
+    resetSpeed() {
         tracks.forEach(track => {
             track.rate(1.0)
         })
@@ -140,12 +140,12 @@ class MusicController {
     getCurrentPlaybackPosition() {
         if (open) {
             let time
-            if(tracks[this.trackPlaying].isPaused()){
+            if (tracks[this.trackPlaying].isPaused()) {
                 time = tracks[this.trackPlaying].pauseTime
             } else {
                 time = tracks[this.trackPlaying].currentTime()
             }
-            
+
             let minutes = Math.floor(time / 60)
             let seconds = Math.floor(time % 60)
             let duration = tracks[this.trackPlaying].duration()

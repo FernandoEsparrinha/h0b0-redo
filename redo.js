@@ -83,7 +83,7 @@ function keyPressed() {
 
 function mousePressed() {
     guiController.activateGui()
-    
+
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
@@ -96,12 +96,21 @@ function mousePressed() {
 }
 
 function mouseMoved() {
-    guiController.activateGui()
+    if (tracksLoaded) {
+        if (open) {
+            guiController.activateGui()
+        }
+    }
 }
 
 
 function windowResized() {
-    console.log("size / w: " + windowWidth + " h: " + windowHeight)
-    console.log("center / w: " + windowWidth * 0.5 + " h: " + windowHeight * 0.5)
+    mobileMode = windowWidth < 640
+    polygonRadius = mobileMode ? windowHeight * 0.52 : windowHeight * 0.375
+    polygon = new Polygon(polygonRadius, 17)
+    if (open) {
+        polygon.refreshPositions()
+    }
+
     resizeCanvas(windowWidth, windowHeight)
 }
