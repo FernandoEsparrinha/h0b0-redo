@@ -27,6 +27,8 @@ function setup() {
     console.log('displayDensity: ' + displayDensity())
     pixelDensity(1)
 
+    frameRate(30)
+
     noSleep = new NoSleep()
     document.addEventListener('touchstart', enableNoSleep, false)
 
