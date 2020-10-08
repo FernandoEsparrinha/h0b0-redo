@@ -12,15 +12,10 @@ let noSleep
 
 function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
-    // fontH0b0 = loadFont('assets/type/H0b0.otf')
 
-    imgColorNoise = loadImage('assets/image/rgbNoiseCloud-w2048-h2048.png')
-    imgMiraTecnica = loadImage('assets/image/miraTecnica.jpg')
-
-    gradientShader = loadShader('shaders/shader.vert', 'shaders/gradient.frag')
-    noiseShader = loadShader('shaders/shader.vert', 'shaders/noise.frag')
-    feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
-    crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
+    noiseShader     = loadShader('shaders/shader.vert', 'shaders/noise.frag')
+    feedbackShader  = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
+    crtShader       = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
 function setup() {
