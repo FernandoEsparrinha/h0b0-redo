@@ -83,7 +83,20 @@ function keyPressed() {
     }
 }
 
+// mobile chrome touch double click fix
+// var released = true;
+
+// function mouseReleased(){
+//     released = true;
+//     return false;
+// }
+
 function mousePressed() {
+    // if(!released){
+    //     return;
+    // }
+    // released = false;
+
     guiController.activateGui()
 
     if (tracksLoaded) {
@@ -96,6 +109,7 @@ function mousePressed() {
         }
     }
 }
+
 
 function mouseMoved() {
     if (tracksLoaded) {
