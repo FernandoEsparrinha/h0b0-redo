@@ -1,8 +1,8 @@
 /**
- * Cria os arrays com as posicoes dos vertices de um poligono com n lados
+ * Create an array with the vertex positions of a n-sided polygon
  * 
- * @param {Number} n Numero de lados do poligono 
- * @param {Number} radius Raio do poligono 
+ * @param {Number} n Number of sides of the polygon
+ * @param {Number} radius Radius of the polygon 
  */
 function createVerticesPosition(radius, n) {
     let angle = TWO_PI / n

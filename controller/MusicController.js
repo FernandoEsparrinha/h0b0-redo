@@ -16,7 +16,7 @@ function endCallback() {
 }
 
 /**
- * Carrega todas as musicas do album, atualizando o loadIndex conforme vai carregando
+ * Load all the songs and update loadIndex as loading happens.
  */
 function loadTracklist() {
     loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded);
@@ -151,7 +151,9 @@ class MusicController {
             let duration = tracks[this.trackPlaying].duration()
             let minutesMusic = Math.floor(duration / 60)
             let secondsMusic = Math.floor(duration % 60)
-            let strTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds + " / " + minutesMusic + ":" + (secondsMusic < 10 ? "0" : "") + secondsMusic
+            let strTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+                        + " / "
+                        + minutesMusic + ":" + (secondsMusic < 10 ? "0" : "") + secondsMusic
             return strTime
         } else {
             return 0

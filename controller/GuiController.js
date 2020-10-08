@@ -75,7 +75,6 @@ class GuiController {
 
     drawLoadGui() {
         textFont(fontVCR)
-        //textFont(fontH0b0)
         stroke(0, 0, 0)
         strokeWeight(2)
         fill(55, 90, 100)
@@ -112,7 +111,6 @@ class GuiController {
             loopButton.style('background-color: transparent')
 
         }
-        console.log(loopMode)
     }
 
     slower() {

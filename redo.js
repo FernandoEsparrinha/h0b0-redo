@@ -73,24 +73,12 @@ function keyPressed() {
     }
     // up
     else if (keyCode === 38) {
-        loopMode = !loopMode
-        musicController.playTrack(musicController.trackPlaying, true)
+        guiController.switchMode()
     }
 }
 
-// mobile chrome touch double click fix
-// var released = true;
-
-// function mouseReleased(){
-//     released = true;
-//     return false;
-// }
 
 function mousePressed() {
-    // if(!released){
-    //     return;
-    // }
-    // released = false;
 
     guiController.activateGui()
 

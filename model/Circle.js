@@ -58,7 +58,7 @@ class Circle {
                 if (!mobileMode) {
                     textSize(32)
                 } else {
-                    textSize(24)
+                    textSize(18)
                 }
                 text(this.index, this.X, this.Y)
 
@@ -68,7 +68,7 @@ class Circle {
             }
         }
 
-        // Só desenha o circulo depois da musica correspondente ter sido carregada
+        // Draw a circle after the corresponding music has been loaded
         if (loadIndex >= this.index) {
             circle(this.X, this.Y, this.diameter)
         }
@@ -117,15 +117,12 @@ class Circle {
                 this.lerpAmount -= 0.04
 
                 // fake spring motion on !hover scaling
-                // set target to base size
                 this.targetSize = this.initialSize
-                // calculate spring motion
                 this.scaleForce = this.targetSize - this.circleSize;
                 this.scaleForce *= this.scaleStrength
                 this.scaleVelocity *= this.scaleDrag
                 this.scaleVelocity += this.scaleForce
                 this.circleSize += this.scaleVelocity
-                // output result to diameter
                 this.diameter = this.circleSize
             }
 
@@ -153,7 +150,7 @@ class Circle {
     }
 
     /**
-     * Altera o target do circulo, comecando o seu movimento em direcao a esse ponto
+     * Change circle target, start movement towards that point
      * 
      * @param {[x,y]} position Proxima posicao do circulo 
      */
@@ -162,7 +159,7 @@ class Circle {
     }
 
     /**
-     * Calcula a proxima posicao do circulo conforme os valores do target, spring e speed
+     * Calculate the circle's next poisition, based on the values of target, spring and speed
      */
     calculateMovement() {
         this.pos.set(this.X, this.Y);
