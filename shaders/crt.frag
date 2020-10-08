@@ -4,7 +4,7 @@
 // ported from shadertoy 'MattiasCRT' by Mattias: https://www.shadertoy.com/view/Ms23DR
 
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 #define PI 3.14159265358979323846

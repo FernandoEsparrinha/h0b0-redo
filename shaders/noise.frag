@@ -1,8 +1,8 @@
-// originally obtained from
+// original obtained from
 // https://www.shadertoy.com/view/wdf3Rf
 
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 uniform vec2 u_resolution;
