@@ -19,7 +19,10 @@ function preload() {
 }
 
 function setup() {
-    console.log('displayDensity: ' + displayDensity())
+    console.log("h0b0 redo project developed by \n"
+                + "fernando esparrinha / https://github.com/FernandoEsparrinha"
+                + "girlflux / https://girlflux.xyz"
+                + "gatos gatos gatos gatos gatos")
     pixelDensity(1)
 
     frameRate(30)

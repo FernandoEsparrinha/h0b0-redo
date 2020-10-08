@@ -47,31 +47,43 @@ class Circle {
         strokeWeight(1.3)
         stroke(this.hRange, 100, 100, 1.0)
         fill(this.hRange, 100, 100, this.startFill)
-
-
+        
+        // text size for track index number
+        if (!mobileMode) {
+            textSize(32)
+        } else {
+            textSize(24)
+        }
+        
         if (open) {
+            if (activeGui) {
+                // fade in
+                if (this.lerpGui <= 1.0) {
+                    this.lerpGui += 0.1              
+                }
+                fill(this.hRange, 100, 100, lerp(0, this.startFill, this.lerpGui))
+                stroke(this.hRange, 100, 100, lerp(0.0, 1.0, this.lerpGui))
+            } else {
+                // fade out
+                if (this.lerpGui >= 0.0) {
+                    this.lerpGui -= 0.16
+                }
+                fill(this.hRange, 100, 100, lerp(0, this.startFill, this.lerpGui))
+                stroke(this.hRange, 100, 100, lerp(0.0, 1.0, this.lerpGui))
+            }
+            
             // After Polygon has been opened (click)
             this.handleHovering()
-
-            if (activeGui) {
-                // Displays (music) index number over circle
-                if (!mobileMode) {
-                    textSize(32)
-                } else {
-                    textSize(18)
-                }
-                text(this.index, this.X, this.Y)
-
-            } else {
-                stroke(0, 0, 0, 0)
-                fill(0, 0, 0, 0)
-            }
+            
+            // display track index number over circle
+            text(this.index, this.X, this.Y)
         }
-
+        
         // Draw a circle after the corresponding music has been loaded
         if (loadIndex >= this.index) {
             circle(this.X, this.Y, this.diameter)
         }
+
         pop()
     }
 
@@ -79,23 +91,19 @@ class Circle {
      * Animates hovering action
      */
     handleHovering() {
-        if (this.isBeingHovered()) {
-            cursor(HAND)
-            if (this.lerpAmount <= 1.0) {
-                this.lerpAmount += 0.1
-
+        if (activeGui) {
+            if (this.isBeingHovered()) {
+                cursor(HAND)
+                
                 // fake spring motion on hover scaling
-                // set target to expanded size
-                this.targetSize = this.finalSize
-                // calculate spring motion
-                this.scaleForce = this.targetSize - this.circleSize;
+                this.targetSize = this.finalSize                        // set target to expanded size
+                this.scaleForce = this.targetSize - this.circleSize     // calculate spring motion
                 this.scaleForce *= this.scaleStrength
                 this.scaleVelocity *= this.scaleDrag
                 this.scaleVelocity += this.scaleForce
                 this.circleSize += this.scaleVelocity
-                // output result to diameter
-                this.diameter = this.circleSize
-
+                this.diameter = this.circleSize                         // output result to diameter
+    
                 /*
                 // fake spring motion
                 // the force is the amount of pulling done
@@ -104,18 +112,19 @@ class Circle {
                 // velocity and force work together
                 // for every frame the velocity affects our spring
                 */
-            }
-
-            fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
-
-            if (this.isPlaying()) {
-                stroke(0, 0, 100, 1.0)
-                fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
-            }
-        } else {
-            if (this.lerpAmount > 0.0) {
-                this.lerpAmount -= 0.04
-
+    
+                if (this.lerpAmount <= 1.0) {
+                    this.lerpAmount += 0.1
+                }
+    
+                fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
+    
+                if (this.isPlaying()) {
+                    stroke(0, 0, 100, 1.0)
+                    fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
+                }
+    
+            } else {
                 // fake spring motion on !hover scaling
                 this.targetSize = this.initialSize
                 this.scaleForce = this.targetSize - this.circleSize;
@@ -124,13 +133,17 @@ class Circle {
                 this.scaleVelocity += this.scaleForce
                 this.circleSize += this.scaleVelocity
                 this.diameter = this.circleSize
-            }
-
-            fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
-
-            if (this.isPlaying()) {
-                stroke(0, 0, 100, 1.0)
-                fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
+    
+                if (this.lerpAmount > 0.0) {
+                    this.lerpAmount -= 0.04
+                }
+    
+                fill(this.hRange, 100, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
+    
+                if (this.isPlaying()) {
+                    stroke(0, 0, 100, 1.0)
+                    fill(0, 0, 100, lerp(this.startFill, this.endFill, this.lerpAmount))
+                }
             }
         }
     }

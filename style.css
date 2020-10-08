@@ -37,11 +37,9 @@ html {
 ----------------------------------------------------- */
 
 html {
-    /* -webkit-text-size-adjust: none; */
     background: black;
     overflow: hidden;
     height: 100%;
-    /* font-family: Consolas, monaco, monospace; */
     font-family: VCRMONO;
 }
 
