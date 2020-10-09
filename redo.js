@@ -19,12 +19,36 @@ function preload() {
 }
 
 function setup() {
-    console.log("h0b0 redo project developed by \n"
-                + "fernando esparrinha / https://github.com/FernandoEsparrinha"
-                + "girlflux / https://girlflux.xyz"
-                + "gatos gatos gatos gatos gatos")
-    pixelDensity(1)
+    console.log(
+          "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░░█▄█░█▀█░██▄░█▀█░░░█▀▄▒██▀░█▀▄░▄▀▄░░░\n"
+        + "░░▒█▒█░█▄█▒█▄█░█▄█░░░█▀▄░█▄▄▒█▄▀░▀▄▀░░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░░░░░░▄█░█▀█░░░░▄▀░░▀█░█▀█░▀█░█▀█░░░░░\n"
+        + "░░░░░░░░█░█▄█░▒▄▀░░░░█▄░█▄█░█▄░█▄█░░░░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░▒▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒░░\n"
+        + "░░▒▓                               ▓▒░░\n"
+        + "░░▒▓                               ▓▒░░\n"
+        + "░░▒▓      FERNANDO ESPARRINHA      ▓▒░░\n"
+        + "░░▒▓ github.com/FernandoEsparrinha ▓▒░░\n"
+        + "░░▒▓                               ▓▒░░\n"
+        + "░░▒▓           GIRLFLUX            ▓▒░░\n"
+        + "░░▒▓         girlflux.xyz          ▓▒░░\n"
+        + "░░▒▓                               ▓▒░░\n"
+        + "░░▒▓             /\\_/\\             ▓▒░░\n"
+        + "░░▒▓            ( o.o )            ▓▒░░\n"
+        + "░░▒▓             > ^ <             ▓▒░░\n"
+        + "░░▒▓                               ▓▒░░\n"
+        + "░░▒▓       h0b0.bandcamp.com       ▓▒░░\n"
+        + "░░▒▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓▒░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+    )
 
+    pixelDensity(1)
     frameRate(30)
 
     noSleep = new NoSleep()
@@ -48,10 +72,19 @@ function draw() {
     // DRAW SETTINGS
     clear()
     if (!tracksLoaded) {
-        cursor(WAIT)
+        cursor('wait')
     } else {
-        cursor(ARROW)
+        cursor('pointer')
     }
+
+    if (open) {
+        if (activeGui) {
+            cursor('default')
+        } else {
+            cursor('none')
+        }
+    }
+
     background(0)
     colorMode(HSB)
     noFill()
@@ -82,9 +115,9 @@ function keyPressed() {
 
 
 function mousePressed() {
-
+    
     guiController.activateGui()
-
+    
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
