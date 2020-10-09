@@ -1,7 +1,8 @@
 let loopButton, slowButton, fastButton
 let trackName, trackTime, trackSpeed
 let gui, controls, display
-let activeGui = true, lastTimeActivated
+let activeGui = true, timeGuiActivated
+let activeDisplay = true, timeTrackChanged
 
 class GuiController {
     constructor() {
@@ -47,8 +48,12 @@ class GuiController {
 
     draw() {
         // Check how many milliseconds passed since gui showed up
-        if (millis() > lastTimeActivated + 10000) {
+        if (millis() > timeGuiActivated + 10000) {
             activeGui = false
+        }
+
+        if (millis() > timeTrackChanged + 3000) {
+            activeDisplay = false
         }
 
         this.drawLoadGui()
@@ -65,6 +70,12 @@ class GuiController {
             } else {
                 gui.style('transform: translate(0rem, 4rem);')
             }
+
+            // if (!activeGui && activeDisplay) {
+            //     display.style('transform: translate(0rem, 0rem)')
+            // } else {
+            //     display.style('transform: translate(0rem, 4rem)')
+            // }
 
             this.drawMainGui()
             
@@ -141,6 +152,11 @@ class GuiController {
 
     activateGui() {
         activeGui = true
-        lastTimeActivated = millis()
+        timeGuiActivated = millis()
+    }
+
+    activateDisplay() {
+        activeDisplay = true
+        timeTrackChanged = millis()
     }
 }
