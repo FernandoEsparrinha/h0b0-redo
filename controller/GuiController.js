@@ -2,7 +2,7 @@ let loopButton, slowButton, fastButton
 let trackName, trackTime, trackSpeed
 let gui, controls, display
 let activeGui = true, timeGuiActivated
-let activeDisplay = true, timeTrackChanged
+let activeDisplay = false, timeTrackChanged
 
 class GuiController {
     constructor() {
@@ -61,21 +61,23 @@ class GuiController {
         if (tracksLoaded && open) {
             if (activeGui) {
                 gui.style('visibility', 'visible')
-                gui.style('transform: translate(0rem, 0rem);')
+                controls.style('transform: translate(0rem, 0rem);')
+                display.style('transform: translate(0rem, 0rem);')
 
                 if (!mobileMode) {
                     display.style('visibility', 'visible')
                 }
 
             } else {
-                gui.style('transform: translate(0rem, 4rem);')
+                controls.style('transform: translate(0rem, 4rem);')
+                
+                if (activeDisplay) {
+                    display.style('transform: translate(0rem, 0rem)')
+                } else {
+                    display.style('transform: translate(0rem, 4rem)')
+                }
             }
 
-            // if (!activeGui && activeDisplay) {
-            //     display.style('transform: translate(0rem, 0rem)')
-            // } else {
-            //     display.style('transform: translate(0rem, 4rem)')
-            // }
 
             this.drawMainGui()
             

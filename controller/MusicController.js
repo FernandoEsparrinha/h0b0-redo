@@ -11,6 +11,7 @@ function endCallback() {
     if (!loopMode) {
         if (this.isPlaying() && !this.isPaused()) {
             musicController.next()
+            guiController.activateDisplay()
         }
     }
 }
