@@ -12,8 +12,8 @@ Official album content available [here](https://drive.google.com/drive/folders/1
 ## Development
 ### Background visuals (shaders):
 - [x] generate noise instead of using a static image;
-- [ ] finetune feedback behaviour for each song;
-- [ ] prevent fullscreen "colour cycling";
+- [x] finetune feedback behaviour for each song;
+- [x] prevent fullscreen "colour cycling";
 
 ### Responsiveness
 - [ ] screen rotation refreshes webpage;
