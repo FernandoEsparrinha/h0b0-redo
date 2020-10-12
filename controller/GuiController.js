@@ -52,7 +52,7 @@ class GuiController {
             activeGui = false
         }
 
-        if (millis() > timeTrackChanged + 3000) {
+        if (millis() > timeTrackChanged + 4000) {
             activeDisplay = false
         }
 
