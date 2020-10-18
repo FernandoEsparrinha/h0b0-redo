@@ -39,3 +39,6 @@ let trackVisualConfigurations = [
     /*15*/ [[1.004, 1.000], [0.],       [0.0030, 0.0022, 0.0012], [0.70, 0.80, 0.90]],
     /*16*/ [[0.990, 1.000], [-0.00001], [0.0015, 0.0019, 0.0021], [0.90, 0.85, 0.80]],
 ]
+
+var isChrome = !!window.chrome && !/Edge/.test(navigator.userAgent)
+var isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
