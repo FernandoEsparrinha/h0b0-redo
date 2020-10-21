@@ -1,5 +1,6 @@
 p5.disableFriendlyErrors = true
 
+let numCircles = 17
 let open = false
 let mobileMode = false
 let polygon, polygonRadius, circleDiameter
@@ -69,7 +70,7 @@ function setup() {
 
     guiController = new GuiController()
     shaderController = new ShaderController()
-    polygon = new Polygon(polygonRadius, circleDiameter, 17)
+    polygon = new Polygon(polygonRadius, circleDiameter, numCircles)
 }
 
 function draw() {
@@ -162,7 +163,7 @@ function mouseMoved() {
 function windowResized() {
     mobileMode = windowWidth < 640
     polygonRadius = mobileMode ? windowHeight * 0.52 : windowHeight * 0.375
-    polygon = new Polygon(polygonRadius, circleDiameter, 17)
+    polygon = new Polygon(polygonRadius, circleDiameter, numCircles)
     if (open) {
         polygon.refreshPositions()
     }

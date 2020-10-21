@@ -33,7 +33,7 @@ class Circle {
         this.startFill = 0.3
         this.endFill = 0.6
         this.lerpAmount = 0
-        this.hRange = map(this.index * (360 / 17), 0, 360, 160, 360)
+        this.hRange = map(this.index * (360 / numCircles), 0, 360, 160, 360)
 
         // show/hide circles
         this.lerpGui = 0

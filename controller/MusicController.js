@@ -1,5 +1,5 @@
 let tracksLoaded = false
-let tracksAmount = 17
+let tracksAmount = numCircles
 let tracks = []
 let loadIndex = 0
 
