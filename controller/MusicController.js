@@ -1,5 +1,4 @@
 let tracksLoaded = false
-let tracksAmount = numCircles
 let tracks = []
 let loadIndex = 0
 
@@ -26,7 +25,7 @@ function loadTracklist() {
         track.onended(endCallback)
         tracks.push(track)
         loadIndex++
-        if (loadIndex == tracksAmount) {
+        if (loadIndex == numCircles) {
             tracksLoaded = true;
         } else {
             loadSound('assets/redo/' + loadIndex + '.mp3', trackLoaded)
