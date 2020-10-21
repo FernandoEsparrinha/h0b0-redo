@@ -8,7 +8,7 @@ class Circle {
         this.Y = windowHeight / 2
 
         this.pos = new p5.Vector(0, 0)
-        this.target = new p5.Vector(lerp(windowWidth / 2, this.originalX, 0.15), lerp(windowHeight / 2, this.originalY, 0.15))
+        this.target = new p5.Vector(lerp(windowWidth / 2, this.originalX, 0.2), lerp(windowHeight / 2, this.originalY, 0.2))
 
         this.vel = new p5.Vector(0, 0)
         this.velX = 0
@@ -50,9 +50,9 @@ class Circle {
         
         // text size for track index number
         if (!mobileMode) {
-            textSize(32)
+            textSize(28)
         } else {
-            textSize(24)
+            textSize(22)
         }
         
         if (open) {

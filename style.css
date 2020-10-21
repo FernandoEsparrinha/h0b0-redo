@@ -48,7 +48,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.0rem;
     word-spacing: .02em;
 
     display: flex;
@@ -182,7 +182,7 @@ body {
     
     #display {
         visibility: hidden;
-        font-size: 1.2rem;
+        font-size: 1.0rem;
         padding-left: calc(0.2rem + 0.8 * ((100vw - 20rem) / 20));
     }
 

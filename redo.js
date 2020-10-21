@@ -2,7 +2,7 @@ p5.disableFriendlyErrors = true
 
 let open = false
 let mobileMode = false
-let polygon, polygonRadius
+let polygon, polygonRadius, circleDiameter
 let musicController
 let verticesPosition = []
 let canvasPass
@@ -42,7 +42,10 @@ function setup() {
         + "░░▒▓                ( o.o )                ▓▒░░\n"
         + "░░▒▓                 > ^ <                 ▓▒░░\n"
         + "░░▒▓                                       ▓▒░░\n"
+        + "░░▒▓            https://h0b0.me            ▓▒░░\n"
+        + "░░▒▓                                       ▓▒░░\n"
         + "░░▒▓       https://h0b0.bandcamp.com       ▓▒░░\n"
+        + "░░▒▓                                       ▓▒░░\n"
         + "░░▒▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓▒░░\n"
         + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
         + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
@@ -59,13 +62,14 @@ function setup() {
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
 
-    polygonRadius = mobileMode ? windowHeight * 0.52 : windowHeight * 0.375
+    polygonRadius  = mobileMode ? windowHeight * 0.40 : windowHeight * 0.36
+    circleDiameter = mobileMode ? windowHeight * 0.10 : polygonRadius * 0.25
 
     musicController = new MusicController()
 
     guiController = new GuiController()
     shaderController = new ShaderController()
-    polygon = new Polygon(polygonRadius, 17)
+    polygon = new Polygon(polygonRadius, circleDiameter, 17)
 }
 
 function draw() {
@@ -158,7 +162,7 @@ function mouseMoved() {
 function windowResized() {
     mobileMode = windowWidth < 640
     polygonRadius = mobileMode ? windowHeight * 0.52 : windowHeight * 0.375
-    polygon = new Polygon(polygonRadius, 17)
+    polygon = new Polygon(polygonRadius, circleDiameter, 17)
     if (open) {
         polygon.refreshPositions()
     }

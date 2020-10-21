@@ -69,12 +69,12 @@ class GuiController {
                 }
 
             } else {
-                controls.style('transform: translate(0rem, 4rem);')
+                controls.style('transform: translate(0rem, 6rem);')
                 
                 if (activeDisplay) {
                     display.style('transform: translate(0rem, 0rem)')
                 } else {
-                    display.style('transform: translate(0rem, 4rem)')
+                    display.style('transform: translate(0rem, 6rem)')
                 }
             }
 
@@ -93,12 +93,12 @@ class GuiController {
         fill(55, 90, 100)
 
         if (!tracksLoaded) {
-            textSize(32)
+            textSize(28)
             text('LOADING (' + (loadIndex + 1) + '/17)', windowWidth * 0.5, windowHeight * 0.8)
         }
 
         if (tracksLoaded && !open) {
-            textSize(32)
+            textSize(28)
             text('h0b0   redo', windowWidth * 0.5, windowHeight * 0.8)
 
             // "3D" arrow effect (static)
