@@ -120,6 +120,22 @@ function keyPressed() {
 
 
 function mousePressed() {
+    if(!isSafari && !isiOS){
+        guiController.activateGui()
+        
+        if (tracksLoaded) {
+            if (!open) {
+                polygon.refreshPositions()
+                musicController.startPlaying()
+                open = true
+            } else {
+                guiController.handleClicking()
+            }
+        }
+    }
+}
+
+function touchStarted(){
     guiController.activateGui()
     
     if (tracksLoaded) {
@@ -131,22 +147,7 @@ function mousePressed() {
             guiController.handleClicking()
         }
     }
-}
-
-function touchStarted(){
-    if(isSafari){
-        guiController.activateGui()
     
-        if (tracksLoaded) {
-            if (!open) {
-                polygon.refreshPositions()
-                musicController.startPlaying()
-                open = true
-            } else {
-                guiController.handleClicking()
-            }
-        }
-    }
 }
 
 

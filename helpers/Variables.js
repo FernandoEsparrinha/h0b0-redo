@@ -40,5 +40,8 @@ let trackVisualConfigurations = [
     /*16*/ [[0.990, 1.000], [-0.00001], [0.0015, 0.0019, 0.0021], [0.90, 0.85, 0.80]],
 ]
 
-var isChrome = !!window.chrome && !/Edge/.test(navigator.userAgent)
-var isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+//var isChrome = !!window.chrome && !/Edge/.test(navigator.userAgent)
+
+var userAgent = window.navigator.userAgent.toLowerCase()
+var isSafari = /safari/.test( userAgent )
+var isiOS = /iphone|ipod|ipad/.test( userAgent )
