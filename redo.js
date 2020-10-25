@@ -120,7 +120,7 @@ function keyPressed() {
 
 
 function mousePressed() {
-    if(!isSafari && !isiOS){
+    if(!(isSafari && isiOS)){
         guiController.activateGui()
         
         if (tracksLoaded) {
