@@ -97,6 +97,14 @@ class MusicController {
         console.groupEnd()
     }
 
+    togglePlay() {
+        if (tracks[this.trackPlaying].isPlaying()) {
+            tracks[this.trackPlaying].pause()
+        } else {
+            tracks[this.trackPlaying].play()
+        }
+    }
+
     next() {
         if (this.trackPlaying == tracks.length - 1) {
             this.playTrack(0)
