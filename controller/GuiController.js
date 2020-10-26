@@ -78,7 +78,6 @@ class GuiController {
                 }
             }
 
-
             this.drawMainGui()
             
         } else {

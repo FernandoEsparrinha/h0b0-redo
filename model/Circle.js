@@ -165,14 +165,14 @@ class Circle {
     /**
      * Change circle target, start movement towards that point
      * 
-     * @param {[x,y]} position Proxima posicao do circulo 
+     * @param {[x,y]} position Next circle position
      */
     setPosition(position) {
         this.target.set(position[0], position[1])
     }
 
     /**
-     * Calculate the circle's next poisition, based on the values of target, spring and speed
+     * Calculate the circle's next position, based on the values of target, spring and speed
      */
     calculateMovement() {
         this.pos.set(this.X, this.Y);

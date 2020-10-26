@@ -34,7 +34,7 @@ class ShaderController {
         }
         feedbackShader.setUniform('u_resolution', [width, height])
         feedbackShader.setUniform('u_time', millis() / 1000.0)
-        feedbackShader.setUniform('u_keyDown', int(keyIsDown(82)))
+        feedbackShader.setUniform('u_keyDown', int(keyIsDown(82)))  // if r key is pressed
 
         feedbackShader.setUniform('u_playbackSpeed', musicController.getCurrentPlaybackSpeed().toFixed(1))
         feedbackShader.setUniform('u_zoom', trackVisualConfigurations[musicController.getTrackNumberPlaying()][0])

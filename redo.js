@@ -104,17 +104,31 @@ function keyPressed() {
     // any key
     guiController.activateGui()
 
-    // left
-    if (keyCode === 37) {
-        musicController.previous()
-    }
-    // right
-    else if (keyCode === 39) {
-        musicController.next()
-    }
-    // up
-    else if (keyCode === 38) {
-        guiController.switchMode()
+    if (open) {
+        // spacebar
+        if (keyCode === 32) {
+            musicController.togglePlay()
+        }
+        // left
+        else if (keyCode === 37) {
+            musicController.previous()
+        }
+        // right
+        else if (keyCode === 39) {
+            musicController.next()
+        }
+        // up
+        else if (keyCode === 38) {
+            musicController.increaseSpeed()
+        }
+        // down
+        else if (keyCode === 40) {
+            musicController.decreaseSpeed()
+        }
+        // l 
+        else if (keyCode === 76 || 108) {
+            guiController.switchMode()
+        }
     }
 }
 
