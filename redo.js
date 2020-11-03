@@ -133,6 +133,10 @@ function keyPressed() {
         else if (keyCode === 71) {
             guiController.activateGui()
         }
+        // c
+        else if (keyCode === 67) {
+            shaderController.crtMode()
+        }
     }
 }
 

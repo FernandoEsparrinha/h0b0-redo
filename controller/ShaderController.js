@@ -1,4 +1,5 @@
 let randomVal
+let crtDisplay = true
 
 class ShaderController {
     constructor() {
@@ -13,6 +14,10 @@ class ShaderController {
         this.crtPass.noStroke()
 
         randomVal = random(0, 100)
+    }
+
+    crtMode() {
+        crtDisplay = !crtDisplay
     }
 
     draw() {
@@ -60,6 +65,10 @@ class ShaderController {
 
 
         // displays the shader image
-        image(this.crtPass, 0, 0, windowWidth, windowHeight)
+        if (crtDisplay) {
+            image(this.crtPass, 0, 0, windowWidth, windowHeight)
+        } else {
+            image(this.feedbackPass, 0, 0, windowWidth, windowHeight)
+        }
     }
 }
