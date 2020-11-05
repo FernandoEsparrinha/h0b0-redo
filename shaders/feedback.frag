@@ -1,4 +1,5 @@
-// original obtained from
+// original by aferriss, 2019-08-23
+// obtained and ported from
 // https://www.shadertoy.com/view/ttSXzc
 
 #ifdef GL_ES
@@ -55,7 +56,7 @@ void main() {
   tc = tc * 2.0 - 1.0;        // move the uv space between -1 and 1
   tc.x *= u_zoom.x;           // zoom uv.x
   tc.y *= u_zoom.y;           // zoom uv.y
-  tc *= rotate2D(abs(u_time) * u_rotation);  // rotate
+  tc *= rotate2D(abs(u_time) * u_rotation * u_playbackSpeed);  // rotate
   tc = tc * 0.5 + 0.5;        // return the uvs to 0 - 1 range
 
   vec4 fb = texture2D(tex1, tc);  // texture containing feedback buffer
