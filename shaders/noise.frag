@@ -1,4 +1,5 @@
-// original obtained from
+// original by TEttinger, 2019-01-09
+// obtained and ported from
 // https://www.shadertoy.com/view/wdf3Rf
 
 #ifdef GL_ES
