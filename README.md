@@ -43,7 +43,7 @@ You can learn more about shaders in p5js in this [guide](https://itp-xstory.gith
 ### Issues
 #### Mobile
 - [ ] issue: MusicController stop() not working;
-- [ ] issue: shaders not working in webapp landscape mode;
+- [ ] issue: webapp not working in landscape mode;
 - [ ] issue: speed buttons stay highlighted on click;
 
 #### Desktop
