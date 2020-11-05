@@ -1,10 +1,8 @@
 # ♪ h0b0 𝓻𝓮𝓭𝓸 ♫
 
-Welcome to the repository for the online audiovisual experience of *h0b0*'s 𝓻𝓮𝓭𝓸 album. This project is inspired by the underlying circularity of the album's concept. As 𝓻𝓮𝓭𝓸 implies, this circle is ever present — *a loop*.
+Welcome to the repository for the online audiovisual experience of *h0b0*'s 𝓻𝓮𝓭𝓸 album. This project is inspired by the underlying circularity of the album's concept. As 𝓻𝓮𝓭𝓸 implies, this circle is ever present — *a loop*. Each song is a circle by itself, loopable, infinite. Join these pieces and compose the larger circle, the album.
 
-Each song is a circle by itself, loopable, infinite. Join these pieces and compose the larger circle, the album.
-
-### [Enjoy.](https://redo.h0b0.me)
+### [Enjoy the experience here.](https://redo.h0b0.me)
 
 ---
 
@@ -23,15 +21,17 @@ You can also listen to it in the usual platforms:
 
 ### Development
 
-This project was developed using [p5.js](https://p5js.org/), a JavaScript library for creative coding. If you would like to learn more, we suggest you look at the official p5.js website and references, along with [The Coding Train](https://thecodingtrain.com/)'s tutorials and content.
+This project was developed using [p5.js](https://p5js.org/), a JavaScript library for creative coding. If you would like to learn more, we suggest you look at the official [p5.js website](https://p5js.org/) and references, along with [The Coding Train](https://thecodingtrain.com/)'s tutorials and content.
 
-The project can be decomposed into two layers, **interface** and **visuals**.
+We can decompose the project into two layers. The **interface** and the **visuals**.
 
 #### Interface
-The interface gives the user the controls and information on the musical component. The circles allow the tracks to be changed. Below that you have the display relating to the track name, time, loop status, and playback speed.
+The interface gives the user the controls and information on the musical component. The circles allow the tracks to be changed. Below that, you have the display. There you can see the track name, time, loop status, and playback speed.
 
 #### Visuals
-The background images could be regarded as a separate layer, although still related to the music component. These visualisations are done through the use of glsl shaders. You can learn more about [shaders in p5js guide](https://itp-xstory.github.io/p5js-shaders/#/) by Casey Conchinha and Louise Lessél. Aferriss' great for learning [p5js Shader Examples](https://github.com/aferriss/p5jsShaderExamples). And for even more examples and inspiration you can also check [Shadertoy](https://www.shadertoy.com/).
+The background images can be regarded as a separate layer, although still related to the musical component. These visualisations are done through the use of **glsl shaders**.
+
+You can learn more about shaders in p5js in this [guide](https://itp-xstory.github.io/p5js-shaders/#/) by *Casey Conchinha* and *Louise Lessél*. *Aferriss* has a great collection of heavily commented [p5js Shader Examples](https://github.com/aferriss/p5jsShaderExamples). And for even more examples and inspiration you can check [Shadertoy](https://www.shadertoy.com/).
 
 In this project the following shaders were ported and modified:
 - [Northern Lights Blazing Bright](https://www.shadertoy.com/view/wdf3Rf) by *TEttinger*, 2019-01-09
