@@ -117,10 +117,10 @@ class GuiController {
         loopMode = !loopMode
         musicController.playTrack(musicController.trackPlaying, true)
         if (loopMode) {
-            loopButton.style('background: var(--button-bg-active);')
+            loopButton.addClass('loopMode')
         }
         else {
-            loopButton.style('background: transparent;')
+            loopButton.removeClass('loopMode')
         }
     }
 

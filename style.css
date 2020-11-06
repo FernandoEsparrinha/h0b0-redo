@@ -166,6 +166,10 @@ body {
     transform: translate(0rem, 0.35rem);
 }
 
+.loopMode, .loopMode:hover {
+    background: var(--button-bg-active);
+}
+
 /* Fluid Content & Media Queries
 ----------------------------------------------------- */
 /* calc(minContentSize + (maxContentSize - minContentSize) * ((100vw - minScreenSize) / (maxScreenSize - minScreenSize)) */
