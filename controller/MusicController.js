@@ -51,11 +51,7 @@ class MusicController {
 
     playTrack(tracknumber, changeLoopMode = false) {
         if (changeLoopMode) {
-            if (loopMode) {
-                tracks[tracknumber].setLoop(true)
-            } else {
-                tracks[tracknumber].setLoop(false)
-            }
+            this.setEveryLoop(loopMode)
         } else {
             if (loopMode) {
                 if (tracknumber == this.trackPlaying) {
@@ -139,6 +135,16 @@ class MusicController {
         })
     }
 
+    /**
+     * Calls setLoop of every song in the tracklist  
+     * @param {boolean} bool loopMode
+     */
+    setEveryLoop(bool) {
+        tracks.forEach(track => {
+            track.setLoop(bool)
+        })
+    }
+
     resetSpeed() {
         tracks.forEach(track => {
             track.rate(1.0)
@@ -160,8 +166,8 @@ class MusicController {
             let minutesMusic = Math.floor(duration / 60)
             let secondsMusic = Math.floor(duration % 60)
             let strTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds
-                        + " / "
-                        + minutesMusic + ":" + (secondsMusic < 10 ? "0" : "") + secondsMusic
+                + " / "
+                + minutesMusic + ":" + (secondsMusic < 10 ? "0" : "") + secondsMusic
             return strTime
         } else {
             return 0
