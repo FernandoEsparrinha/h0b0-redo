@@ -100,9 +100,8 @@ function draw() {
     guiController.draw()
 }
 
+
 function keyPressed() {
-    // any key
-    // guiController.activateGui()
 
     if (open) {
         // spacebar
@@ -112,22 +111,27 @@ function keyPressed() {
         // left
         else if (keyCode === 37) {
             musicController.previous()
+            guiController.activateGui()
         }
         // right
         else if (keyCode === 39) {
             musicController.next()
+            guiController.activateGui()
         }
         // up
         else if (keyCode === 38) {
             musicController.increaseSpeed()
+            guiController.activateGui()
         }
         // down
         else if (keyCode === 40) {
             musicController.decreaseSpeed()
+            guiController.activateGui()
         }
         // l 
         else if (keyCode === 76) {
             guiController.switchMode()
+            guiController.activateGui()
         }
         // g
         else if (keyCode === 71) {
@@ -157,6 +161,7 @@ function mousePressed() {
     }
 }
 
+
 function touchStarted(){
     guiController.activateGui()
     
@@ -173,14 +178,13 @@ function touchStarted(){
 }
 
 
-
-// function mouseMoved() {
-//     if (tracksLoaded) {
-//         if (open) {
-//             guiController.activateGui()
-//         }
-//     }
-// }
+function mouseMoved() {
+    if (tracksLoaded) {
+        if (open) {
+            guiController.activateGui()
+        }
+    }
+}
 
 
 function windowResized() {
