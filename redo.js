@@ -121,12 +121,10 @@ function keyPressed() {
         // up
         else if (keyCode === 38) {
             musicController.increaseSpeed()
-            guiController.activateGui()
         }
         // down
         else if (keyCode === 40) {
             musicController.decreaseSpeed()
-            guiController.activateGui()
         }
         // l 
         else if (keyCode === 76) {
