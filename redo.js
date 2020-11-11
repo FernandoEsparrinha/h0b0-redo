@@ -14,14 +14,14 @@ let noSleep
 function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
 
-    noiseShader     = loadShader('shaders/shader.vert', 'shaders/noise.frag')
-    feedbackShader  = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
-    crtShader       = loadShader('shaders/shader.vert', 'shaders/crt.frag')
+    noiseShader = loadShader('shaders/shader.vert', 'shaders/noise.frag')
+    feedbackShader = loadShader('shaders/shader.vert', 'shaders/feedback.frag')
+    crtShader = loadShader('shaders/shader.vert', 'shaders/crt.frag')
 }
 
 function setup() {
     console.log(
-          "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
+        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
         + "░░░░░░░█▄█░█▀█░██▄░█▀█░░░█▀▄▒██▀░█▀▄░▄▀▄░░░░░░░\n"
         + "░░░░░░▒█▒█░█▄█▒█▄█░█▄█░░░█▀▄░█▄▄▒█▄▀░▀▄▀░░░░░░░\n"
         + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n"
@@ -63,7 +63,7 @@ function setup() {
     canvasPass = createCanvas(windowWidth, windowHeight)
     canvasPass.id('visuals')
 
-    polygonRadius  = mobileMode ? windowHeight * 0.40 : windowHeight * 0.36
+    polygonRadius = mobileMode ? windowHeight * 0.40 : windowHeight * 0.36
     circleDiameter = mobileMode ? windowHeight * 0.10 : polygonRadius * 0.25
 
     musicController = new MusicController()
@@ -140,22 +140,22 @@ function keyPressed() {
             guiController.switchMode()
             guiController.activateGui()
         }
-        // g
-        else if (keyCode === 71) {
-            guiController.activateGui()
-        }
         // c
         else if (keyCode === 67) {
             shaderController.crtMode()
+        }
+        // s
+        else if (keyCode === 83) {
+            tracks[musicController.trackPlaying].save(trackList[musicController.trackPlaying])
         }
     }
 }
 
 
 function mousePressed() {
-    if(!(isSafari && isiOS)){
+    if (!(isSafari && isiOS)) {
         guiController.activateGui()
-        
+
         if (tracksLoaded) {
             if (!open) {
                 polygon.refreshPositions()
@@ -169,9 +169,9 @@ function mousePressed() {
 }
 
 
-function touchStarted(){
+function touchStarted() {
     guiController.activateGui()
-    
+
     if (tracksLoaded) {
         if (!open) {
             polygon.refreshPositions()
@@ -181,7 +181,7 @@ function touchStarted(){
             guiController.handleClicking()
         }
     }
-    
+
 }
 
 
