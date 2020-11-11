@@ -10,7 +10,6 @@ let canvasPass
 
 let noSleep
 
-
 function preload() {
     fontVCR = loadFont('assets/type/VCR_OSD_MONO_EDIT.ttf')
 
@@ -138,6 +137,10 @@ function keyPressed() {
         // l 
         else if (keyCode === 76) {
             guiController.switchMode()
+            guiController.activateGui()
+        }
+        // g
+        else if (keyCode === 71) {
             guiController.activateGui()
         }
         // c
