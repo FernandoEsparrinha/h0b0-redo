@@ -103,6 +103,15 @@ function draw() {
 
 function keyPressed() {
 
+    if (tracksLoaded && !open) {
+        // enter
+        if (keyCode === 13) {
+            polygon.refreshPositions()
+            musicController.startPlaying()
+            open = true
+        }
+    }
+
     if (open) {
         // spacebar
         if (keyCode === 32) {
